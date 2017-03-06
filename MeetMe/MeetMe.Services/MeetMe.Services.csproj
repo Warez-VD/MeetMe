@@ -47,13 +47,17 @@
     <Compile Include="AccountService.cs" />
     <Compile Include="Contracts\IAccountService.cs" />
     <Compile Include="Contracts\IAspIdentityUserFactory.cs" />
-    <Compile Include="Contracts\IUserFactory.cs" />
+    <Compile Include="Contracts\ICustomUserFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MeetMe.Data.Models\MeetMe.Data.Models.csproj">
       <Project>{7CF478E2-12F4-4BD2-B6FE-6D6176A7851F}</Project>
       <Name>MeetMe.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MeetMe.Data\MeetMe.Data.csproj">
+      <Project>{F51420FD-1B11-4929-AD3F-D930A821D11F}</Project>
+      <Name>MeetMe.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

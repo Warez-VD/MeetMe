@@ -8,7 +8,6 @@ namespace MeetMe.Data.Migrations
         {
             AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;
-            ContextKey = "MeetMe.Data.MeetMeDbContext";
         }
     }
 }

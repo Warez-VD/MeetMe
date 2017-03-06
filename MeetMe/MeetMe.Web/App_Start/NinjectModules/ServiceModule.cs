@@ -19,7 +19,7 @@ namespace MeetMe.Web.App_Start.NinjectModules
             });
 
             this.Bind<IAspIdentityUserFactory>().ToFactory().InRequestScope();
-            this.Bind<IUserFactory>().ToFactory().InRequestScope();
+            this.Bind<ICustomUserFactory>().ToFactory().InRequestScope();
         }
     }
 }

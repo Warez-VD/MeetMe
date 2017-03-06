@@ -63,14 +63,15 @@
   <ItemGroup>
     <Compile Include="Contracts\IEntryState.cs" />
     <Compile Include="Contracts\IMeetMeDbContext.cs" />
+    <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Contracts\IStateFactory.cs" />
+    <Compile Include="Contracts\IUnitOfWork.cs" />
+    <Compile Include="EntryState.cs" />
+    <Compile Include="GenericRepository.cs" />
     <Compile Include="MeetMeDbContext.cs" />
-    <Compile Include="Migrations\201703061203273_InitialCreate.cs" />
-    <Compile Include="Migrations\201703061203273_InitialCreate.Designer.cs">
-      <DependentUpon>201703061203273_InitialCreate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -81,11 +82,6 @@
       <Project>{7CF478E2-12F4-4BD2-B6FE-6D6176A7851F}</Project>
       <Name>MeetMe.Data.Models</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201703061203273_InitialCreate.resx">
-      <DependentUpon>201703061203273_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

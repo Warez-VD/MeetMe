@@ -28,7 +28,7 @@ namespace MeetMe.Data
             return new MeetMeDbContext();
         }
 
-        public IDbSet<User> CustomUsers { get; set; }
+        public IDbSet<CustomUser> CustomUsers { get; set; }
 
         public virtual new IDbSet<T> Set<T>() where T : class
         {

@@ -8,7 +8,7 @@ namespace MeetMe.Data.Contracts
     {
         int SaveChanges();
 
-        IDbSet<User> CustomUsers { get; set; }
+        IDbSet<CustomUser> CustomUsers { get; set; }
 
         IDbSet<T> Set<T>() where T : class;
 

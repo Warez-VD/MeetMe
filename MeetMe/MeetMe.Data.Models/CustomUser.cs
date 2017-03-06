@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace MeetMe.Data.Models
 {
-    public class User
+    public class CustomUser
     {
-        public User(string firstName, string lastName, string aspIdentityUserId)
+        public CustomUser(string firstName, string lastName, string aspIdentityUserId)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
             this.AspIdentityUserId = aspIdentityUserId;
         }
 
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public string FirstName { get; set; }
 
