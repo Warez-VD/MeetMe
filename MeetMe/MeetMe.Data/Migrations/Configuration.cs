@@ -1,0 +1,14 @@
+using System.Data.Entity.Migrations;
+
+namespace MeetMe.Data.Migrations
+{
+    public sealed class Configuration : DbMigrationsConfiguration<MeetMeDbContext>
+    {
+        public Configuration()
+        {
+            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
+            ContextKey = "MeetMe.Data.MeetMeDbContext";
+        }
+    }
+}
