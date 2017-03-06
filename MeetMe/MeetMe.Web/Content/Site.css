@@ -22,3 +22,16 @@ select,
 textarea {
     max-width: 280px;
 }
+
+footer{
+    height: 100px;
+    width: 100%
+}
+
+.special{
+    font-size: 30px;
+}
+
+.github{
+    color: black;
+}

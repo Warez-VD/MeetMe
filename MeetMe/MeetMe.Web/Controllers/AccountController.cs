@@ -4,9 +4,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using MeetMe.Web.Models;
 using MeetMe.Web.Auth;
 using MeetMe.Services.Contracts;
+using MeetMe.Web.ViewModels.Account;
 
 namespace MeetMe.Web.Controllers
 {
@@ -36,18 +36,10 @@ namespace MeetMe.Web.Controllers
             }
         }
         
-        [HttpGet]
-        [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
-        {
-            this.ViewBag.ReturnUrl = returnUrl;
-            return this.View();
-        }
-        
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(AccountViewModel model, string returnUrl)
         {
             if (!this.ModelState.IsValid)
             {
@@ -56,7 +48,7 @@ namespace MeetMe.Web.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await this.SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await this.SignInManager.PasswordSignInAsync(model.Email, model.Password, true, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -68,17 +60,10 @@ namespace MeetMe.Web.Controllers
             }
         }
         
-        [HttpGet]
-        [AllowAnonymous]
-        public ActionResult Register()
-        {
-            return View();
-        }
-        
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(AccountViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +79,7 @@ namespace MeetMe.Web.Controllers
                 this.AddErrors(result);
             }
             
-            return this.View(model);
+            return this.View("Index", model);
         }
         
         [HttpPost]

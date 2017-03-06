@@ -1,0 +1,13 @@
+﻿@using MeetMe.Web.ViewModels.Layout
+@model LayoutViewModel
+
+<ul class="nav navbar-nav navbar-right">
+    <li>
+        @* search view model add *@
+        <input type="text" placeholder="Search" />
+    </li>
+    <li>
+        <img src="#" alt="User logo" />
+        @Html.ActionLink($"{Model.FirstName} {Model.LastName}", "Index", "Profile")
+    </li>
+</ul>
