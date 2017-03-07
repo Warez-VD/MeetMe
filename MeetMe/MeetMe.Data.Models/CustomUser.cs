@@ -8,6 +8,10 @@ namespace MeetMe.Data.Models
 {
     public class CustomUser
     {
+        public CustomUser()
+        {
+        }
+
         public CustomUser(string firstName, string lastName, string aspIdentityUserId)
         {
             this.FirstName = firstName;
