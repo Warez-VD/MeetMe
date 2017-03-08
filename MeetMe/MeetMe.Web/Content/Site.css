@@ -35,3 +35,14 @@ footer{
 .github{
     color: black;
 }
+
+#navbar-profile {
+    margin-left: 10%;
+    text-decoration: none;
+    color: #000;
+}
+
+#navbar-profile img {
+    height: 40px;
+    border-radius: 50px;
+}

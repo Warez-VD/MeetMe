@@ -1,0 +1,8 @@
+﻿@using MeetMe.Web.ViewModels.Home
+@model ProfilePartialViewModel
+<div>
+    <a id="navbar-profile" href="@Url.Action("Index", "Profile", new { id = Model.Id })">
+        <span>Welcome, @Model.FirstName @Model.LastName</span>
+        <img src=@Model.ProfileImageUrl alt="User logo" />
+    </a>
+</div>

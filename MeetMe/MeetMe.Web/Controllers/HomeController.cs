@@ -1,4 +1,5 @@
-﻿using MeetMe.Services.Contracts;
+﻿using Bytes2you.Validation;
+using MeetMe.Services.Contracts;
 using MeetMe.Web.Auth;
 using MeetMe.Web.ViewModels.Home;
 using Microsoft.AspNet.Identity;
@@ -15,10 +16,21 @@ namespace MeetMe.Web.Controllers
         private const string DefaultProfileLogoPath = "~/Content/default-user.jpg";
 
         private readonly IAccountService accountService;
+        private readonly IImageService imageService;
+        private readonly IUserService userService;
 
-        public HomeController(IAccountService accountService)
+        public HomeController(
+            IAccountService accountService,
+            IUserService userService,
+            IImageService imageService)
         {
+            Guard.WhenArgument(accountService, "AccountService").IsNull().Throw();
+            Guard.WhenArgument(userService, "UserService").IsNull().Throw();
+            Guard.WhenArgument(imageService, "ImageService").IsNull().Throw();
+
             this.accountService = accountService;
+            this.userService = userService;
+            this.imageService = imageService;
         }
 
         public ActionResult Index()
@@ -109,6 +121,23 @@ namespace MeetMe.Web.Controllers
         {
             this.AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return this.RedirectToAction("Index", "Home");
+        }
+
+        [ChildActionOnly]
+        public ActionResult ProfilePartial()
+        {
+            string id = this.HttpContext.User.Identity.GetUserId();
+            var user = this.userService.GetById(id);
+            var profileImageUrl = this.imageService.ByteArrayToImageUrl(user.ProfileImage.Content);
+            var model = new ProfilePartialViewModel()
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                ProfileImageUrl = profileImageUrl
+            };
+
+            return this.PartialView("_ProfilePartial", model);
         }
 
         private IAuthenticationManager AuthenticationManager
