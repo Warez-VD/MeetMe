@@ -6,6 +6,6 @@ namespace MeetMe.Services.Contracts
     {
         AspIdentityUser CreateUser(string username, string email);
 
-        void Register(string firstName, string lastName, string id);
+        void Register(string firstName, string lastName, string id, string path);
     }
 }

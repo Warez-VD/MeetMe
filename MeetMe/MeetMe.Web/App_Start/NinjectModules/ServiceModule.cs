@@ -20,6 +20,7 @@ namespace MeetMe.Web.App_Start.NinjectModules
 
             this.Bind<IAspIdentityUserFactory>().ToFactory().InRequestScope();
             this.Bind<ICustomUserFactory>().ToFactory().InRequestScope();
+            this.Bind<IProfileLogoFactory>().ToFactory().InRequestScope();
         }
     }
 }

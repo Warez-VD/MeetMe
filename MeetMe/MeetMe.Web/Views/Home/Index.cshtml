@@ -1,4 +1,4 @@
-﻿@using MeetMe.Web.ViewModels.Account
+﻿@using MeetMe.Web.ViewModels.Home
 @model AccountViewModel
 
 @section styles {
@@ -20,12 +20,13 @@ else
                 <div class="pull-right">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
                             {
                                 @Html.AntiForgeryToken()
-
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                                @Html.ValidationMessageFor(m => m.Login.ShowServerError, string.Empty, new { @class = "text-danger" })
+                                @Html.TextBoxFor(m => m.Login.Email, new { @class = "form-control", placeholder = "Email" })
+                                @Html.ValidationMessageFor(m => m.Login.Email, string.Empty, new { @class = "text-danger" });
+                                @Html.PasswordFor(m => m.Login.Password, new { @class = "form-control", placeholder = "Password" })
                                 <input type="submit" value="Sign in" class="btn btn-primary" />
                             }
                         </div>
@@ -38,14 +39,18 @@ else
                             <p>New to MeetMe? Sign up</p>
                         </div>
                         <div class="panel-body">
-                            @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+                            @using (Html.BeginForm("Register", "Home", FormMethod.Post))
                             {
                                 @Html.AntiForgeryToken()
-
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
-                                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First name" })
-                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Last name" })
+                                @Html.ValidationMessageFor(m => m.Register.ShowServerError, string.Empty, new { @class = "text-danger" })
+                                @Html.TextBoxFor(m => m.Register.Email, new { @class = "form-control", placeholder = "Email" })
+                                @Html.ValidationMessageFor(m => m.Register.Email, string.Empty, new { @class = "text-danger" })
+                                @Html.PasswordFor(m => m.Register.Password, new { @class = "form-control", placeholder = "Password" })
+                                @Html.ValidationMessageFor(m => m.Register.Password, string.Empty, new { @class = "text-danger" })
+                                @Html.TextBoxFor(m => m.Register.FirstName, new { @class = "form-control", placeholder = "First name" })
+                                @Html.ValidationMessageFor(m => m.Register.FirstName, string.Empty, new { @class = "text-danger" })
+                                @Html.TextBoxFor(m => m.Register.LastName, new { @class = "form-control", placeholder = "Last name" })
+                                @Html.ValidationMessageFor(m => m.Register.LastName, string.Empty, new { @class = "text-danger" })
                                 <input type="submit" value="Sign up" class="btn btn-success" />
                             }
                         </div>

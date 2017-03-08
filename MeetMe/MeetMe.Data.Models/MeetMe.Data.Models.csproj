@@ -57,6 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comment.cs" />
+    <Compile Include="ProfileImage.cs" />
+    <Compile Include="UserImage.cs" />
     <Compile Include="AspIdentityUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CustomUser.cs" />

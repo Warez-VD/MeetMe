@@ -40,6 +40,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,7 +53,10 @@
     <Compile Include="Contracts\IAccountService.cs" />
     <Compile Include="Contracts\IAspIdentityUserFactory.cs" />
     <Compile Include="Contracts\ICustomUserFactory.cs" />
+    <Compile Include="Contracts\IImageService.cs" />
     <Compile Include="Contracts\IMapperService.cs" />
+    <Compile Include="Contracts\IProfileLogoFactory.cs" />
+    <Compile Include="ImageService.cs" />
     <Compile Include="MapperService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

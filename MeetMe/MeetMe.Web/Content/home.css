@@ -31,7 +31,9 @@
     display: block;
 }
 
-
+#tabs-home {
+    border-radius: 10px;
+}
 
 .blogShort {
     border-bottom: 1px solid #ddd;

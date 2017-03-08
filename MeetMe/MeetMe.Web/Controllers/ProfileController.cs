@@ -21,23 +21,7 @@ namespace MeetMe.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var model = new UserViewModel()
-            {
-                FirstName = "Smith"
-            };
-
-            return this.View(model);
-        }
-
-        [HttpPost]
-        public ActionResult Index(UserViewModel user)
-        {
-            if (this.ModelState.IsValid)
-            {
-                var mapped = this.mapperService.MapObject<CustomUser>(user);
-            }
-
-            return View(user);
+            return this.View();
         }
     }
 }
