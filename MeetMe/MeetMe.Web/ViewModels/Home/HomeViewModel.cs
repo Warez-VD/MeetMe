@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace MeetMe.Web.ViewModels.Home
+﻿namespace MeetMe.Web.ViewModels.Home
 {
     public class HomeViewModel
     {
@@ -9,7 +7,5 @@ namespace MeetMe.Web.ViewModels.Home
         public RegisterViewModel Register { get; set; }
 
         public PersonalInfoViewModel PersonalInfo { get; set; }
-
-        public IEnumerable<PublicationViewModel> Publications { get; set; }
     }
 }

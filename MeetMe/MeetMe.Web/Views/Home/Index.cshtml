@@ -58,13 +58,13 @@
                         <h4>New publication</h4>
                     </div>
                     <div class="panel-body">
-                        @using (Ajax.BeginForm("AddPublication", null, new AjaxOptions()
+                        @using (Ajax.BeginForm("AddPublication", "Publication", new AjaxOptions()
                         {
                             UpdateTargetId = "publications",
                             InsertionMode = InsertionMode.InsertBefore,
                             HttpMethod = "POST",
                             OnSuccess = "OnAjaxRequestSuccess"
-                        }, new { ok = "some" }))
+                        }))
                         {
                             <div class="input-group text-center">
                                 <input class="form-control input-lg" placeholder="What are you thinking?" type="text" name="some">
@@ -81,7 +81,8 @@
                     </script>
                 </div>
                 <div id="publications">
-                    @Html.Partial("_PublicationPartial", Model.Publications)
+                    @Html.Action("Publications", "Publication")
+                    @*@Html.Partial("_PublicationPartial", Model.Publications)*@
                 </div>
             </div>
             <div class="col-md-3">

@@ -49,15 +49,6 @@ namespace MeetMe.Web.Controllers
 
                 model.PersonalInfo = this.mapperService.MapObject<PersonalInfoViewModel>(user);
                 model.PersonalInfo.ProfileImageUrl = profileImageUrl;
-
-                // TODO: Get real publications
-                model.Publications = new List<PublicationViewModel>()
-                    {
-                        new PublicationViewModel()
-                        {
-                            Author = "Test author"
-                        }
-                    };
             }
 
             return View(model);
@@ -68,26 +59,6 @@ namespace MeetMe.Web.Controllers
             ViewBag.Message = "Your application description page.";
 
             return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-        
-        public ActionResult AddPublication(string some)
-        {
-            var model = new List<PublicationViewModel>()
-            {
-                new PublicationViewModel()
-                {
-                    Author = some
-                }
-            };
-
-            return PartialView("_PublicationPartial", model);
         }
 
         public ApplicationSignInManager SignInManager
