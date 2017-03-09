@@ -9,7 +9,7 @@ namespace MeetMe.Services
     {
         private readonly IAspIdentityUserFactory aspIdentityUserFactory;
         private readonly ICustomUserFactory userFactory;
-        private readonly IRepository<CustomUser> userRepository;
+        private readonly IEFRepository<CustomUser> userRepository;
         private readonly IUnitOfWork unitOfWork;
         private readonly IImageService imageService;
         private readonly IProfileLogoFactory profileLogoFactory;
@@ -17,7 +17,7 @@ namespace MeetMe.Services
         public AccountService(
             IAspIdentityUserFactory aspIdentityUserFactory,
             ICustomUserFactory userFactory,
-            IRepository<CustomUser> userRepository,
+            IEFRepository<CustomUser> userRepository,
             IUnitOfWork unitOfWork,
             IImageService imageService,
             IProfileLogoFactory profileLogoFactory)

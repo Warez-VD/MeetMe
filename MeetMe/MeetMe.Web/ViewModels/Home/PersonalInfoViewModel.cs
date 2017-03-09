@@ -1,6 +1,9 @@
-﻿namespace MeetMe.Web.ViewModels.Home
+﻿using MeetMe.Data.Models;
+using MeetMe.Web.ViewModels.Contracts;
+
+namespace MeetMe.Web.ViewModels.Home
 {
-    public class PersonalInfoViewModel
+    public class PersonalInfoViewModel : IMapFrom<CustomUser>
     {
         public string FirstName { get; set; }
 

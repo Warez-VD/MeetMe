@@ -12,7 +12,7 @@ namespace MeetMe.Web.App_Start.NinjectModules
         {
             this.Bind<IMeetMeDbContext>().To<MeetMeDbContext>().InRequestScope();
             this.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
-            this.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>)).InRequestScope();
+            this.Bind(typeof(IEFRepository<>)).To(typeof(EFRepository<>)).InRequestScope();
             this.Bind<IStateFactory>().ToFactory().InRequestScope();
             this.Bind(typeof(IEntryState<>)).To(typeof(EntryState<>)).InRequestScope();
         }

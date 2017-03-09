@@ -1,4 +1,5 @@
 ﻿using MeetMe.Web.App_Start;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -16,7 +17,7 @@ namespace MeetMe.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            AutoMapperConfig.RegisterMapper();
+            AutoMapperConfig.RegisterMapper(Assembly.GetExecutingAssembly());
         }
     }
 }

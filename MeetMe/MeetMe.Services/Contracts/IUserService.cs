@@ -4,6 +4,6 @@ namespace MeetMe.Services.Contracts
 {
     public interface IUserService
     {
-        CustomUser GetById(string id);
+        CustomUser GetByIndentityId(string id);
     }
 }

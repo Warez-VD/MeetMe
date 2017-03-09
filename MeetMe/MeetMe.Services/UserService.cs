@@ -8,18 +8,22 @@ namespace MeetMe.Services
 {
     public class UserService : IUserService
     {
-        private readonly IRepository<CustomUser> userRepository;
+        private readonly IEFRepository<CustomUser> userRepository;
 
-        public UserService(IRepository<CustomUser> userRepository)
+        public UserService(IEFRepository<CustomUser> userRepository)
         {
             Guard.WhenArgument(userRepository, "UserRepository").IsNull().Throw();
 
             this.userRepository = userRepository;
         }
 
-        public CustomUser GetById(string id)
+        public CustomUser GetByIndentityId(string id)
         {
-            var user = this.userRepository.All(x => x.AspIdentityUserId == id).FirstOrDefault();
+            var user = this.userRepository
+                .All
+                .Where(x => x.AspIdentityUserId == id)
+                .FirstOrDefault();
+
             return user;
         }
     }

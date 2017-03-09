@@ -44,7 +44,7 @@ namespace MeetMe.Web.Controllers
             if (this.Request.IsAuthenticated)
             {
                 string userId = this.HttpContext.User.Identity.GetUserId();
-                var user = this.userService.GetById(userId);
+                var user = this.userService.GetByIndentityId(userId);
                 var profileImageUrl = this.imageService.ByteArrayToImageUrl(user.ProfileImage.Content);
 
                 model.PersonalInfo = this.mapperService.MapObject<PersonalInfoViewModel>(user);
@@ -134,7 +134,7 @@ namespace MeetMe.Web.Controllers
         public ActionResult ProfilePartial()
         {
             string id = this.HttpContext.User.Identity.GetUserId();
-            var user = this.userService.GetById(id);
+            var user = this.userService.GetByIndentityId(id);
             var profileImageUrl = this.imageService.ByteArrayToImageUrl(user.ProfileImage.Content);
             var model = this.mapperService.MapObject<ProfilePartialViewModel>(user);
             model.ProfileImageUrl = profileImageUrl;

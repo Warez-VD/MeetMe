@@ -1,6 +1,9 @@
-﻿namespace MeetMe.Web.ViewModels.Home
+﻿using MeetMe.Data.Models;
+using MeetMe.Web.ViewModels.Contracts;
+
+namespace MeetMe.Web.ViewModels.Home
 {
-    public class ProfilePartialViewModel
+    public class ProfilePartialViewModel : IMapFrom<CustomUser>
     {
         public int Id { get; set; }
 

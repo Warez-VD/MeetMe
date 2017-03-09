@@ -63,11 +63,11 @@
   <ItemGroup>
     <Compile Include="Contracts\IEntryState.cs" />
     <Compile Include="Contracts\IMeetMeDbContext.cs" />
-    <Compile Include="Contracts\IRepository.cs" />
+    <Compile Include="Contracts\IEFRepository.cs" />
     <Compile Include="Contracts\IStateFactory.cs" />
     <Compile Include="Contracts\IUnitOfWork.cs" />
     <Compile Include="EntryState.cs" />
-    <Compile Include="GenericRepository.cs" />
+    <Compile Include="EFRepository.cs" />
     <Compile Include="MeetMeDbContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
