@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Comment.cs" />
     <Compile Include="ProfileImage.cs" />
+    <Compile Include="Publication.cs" />
     <Compile Include="UserImage.cs" />
     <Compile Include="AspIdentityUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

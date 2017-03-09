@@ -1,20 +1,20 @@
 ﻿using AutoMapper;
-using MeetMe.Web.App_Start.AutomapperProfiles;
+using MeetMe.Data.Models;
+using MeetMe.Web.ViewModels.Home;
 
 namespace MeetMe.Web.App_Start
 {
     public class AutoMapperConfig
     {
-        public static MapperConfiguration Configuration { get; private set; }
-
-        public static void Execute()
+        public static void RegisterMapper()
         {
-            Mapper.Initialize(AddProfilesToAutomapperConfig);
-        }
-
-        private static void AddProfilesToAutomapperConfig(IMapperConfigurationExpression config)
-        {
-            config.AddProfile(new ModelsProfile());
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<CustomUser, ProfilePartialViewModel>();
+                cfg.CreateMap<CustomUser, PersonalInfoViewModel>();
+                cfg.CreateMap<CustomUser, PublicationViewModel>()
+                    .ForMember(dest => dest.Author, opts => opts.MapFrom(src => $"{src.FirstName} {src.LastName}"));
+            });
         }
     }
 }

@@ -16,6 +16,8 @@ namespace MeetMe.Data.Contracts
 
         IDbSet<Comment> Comments { get; set; }
 
+        IDbSet<Publication> Publications { get; set; }
+
         IDbSet<T> Set<T>() where T : class;
 
         DbEntityEntry<T> Entry<T>(T entity) where T : class;

@@ -1,5 +1,5 @@
 ﻿@using MeetMe.Web.ViewModels.Home
-@model AccountViewModel
+@model HomeViewModel
 
 @section styles {
     <link href="~/Content/home.css" rel="stylesheet" type="text/css" />
@@ -7,7 +7,106 @@
 
 @if (this.Request.IsAuthenticated)
 {
-    <h2>bachka</h2>
+    <div id="wrapper" class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="row profile">
+                    <div class="profile-sidebar">
+                        <div class="profile-userpic">
+                            <img src=@Model.PersonalInfo.ProfileImageUrl class="img-responsive"
+                                 alt="User profile image">
+                        </div>
+                        <div class="profile-usertitle">
+                            <div class="profile-usertitle-name">
+                                @Model.PersonalInfo.FirstName @Model.PersonalInfo.LastName
+                            </div>
+                        </div>
+                        <div class="profile-usermenu">
+                            <ul class="nav">
+                                @if (Model.PersonalInfo.Company != null)
+                                {
+                                    <li>
+                                        <span>
+                                            <i class="fa fa-briefcase"></i> Work for @Model.PersonalInfo.Company
+                                        </span>
+                                    </li>
+                                }
+                                @if (Model.PersonalInfo.School != null)
+                                {
+                                    <li>
+                                        <span>
+                                            <i class="fa fa-graduation-cap"></i> Study at @Model.PersonalInfo.School
+                                        </span>
+                                    </li>
+                                }
+                                @if (Model.PersonalInfo.City != null)
+                                {
+                                    <li>
+                                        <span>
+                                            <i class="fa fa-map-marker"></i> From @Model.PersonalInfo.City
+                                        </span>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default" id="publication-add">
+                    <div class="panel-heading">
+                        <h4>New publication</h4>
+                    </div>
+                    <div class="panel-body">
+                        @using (Ajax.BeginForm("AddPublication", null, new AjaxOptions()
+                        {
+                            UpdateTargetId = "publications",
+                            InsertionMode = InsertionMode.InsertBefore,
+                            HttpMethod = "POST",
+                            OnSuccess = "OnAjaxRequestSuccess"
+                        }, new { ok = "some" }))
+                        {
+                            <div class="input-group text-center">
+                                <input class="form-control input-lg" placeholder="What are you thinking?" type="text" name="some">
+                                <span class="input-group-btn"><input class="btn btn-lg btn-primary" type="submit" value="Publish" /></span>
+                            </div>
+                        }
+                    </div>
+
+                    @* TODO: Refactor this *@
+                    <script type="text/javascript">
+                        function OnAjaxRequestSuccess(data) {
+                            console.log("Call signalr to make notification")
+                        }
+                    </script>
+                </div>
+                <div id="publications">
+                    @Html.Partial("_PublicationPartial", Model.Publications)
+                </div>
+            </div>
+            <div class="col-md-3">
+                    <div class="card">
+                        <div class="text-center">
+                            <a href="#"><img src="~/Content/logo.png" class="img-circle" /></a>
+                            <h3 class="text-center">MeetMe</h3>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="home">
+                                <p>MeetMe gives you the chance to meet your friends and share what you think.</p>
+                            </div>
+                            <div class="tab-pane fade" id="about">
+                                <p>MeetMe is a social network for meeting new people. MeetMe makes it easy to discover new people to chat with and share you new moments.</p>
+                            </div>
+                        </div>
+
+                        <ul class="nav nav-tabs nav-tab nav-justified" id="myTab">
+                            <li class="active"><a class="tab-btn" href="#home" data-toggle="tab">MeetMe</a></li>
+                            <li><a class="tab-btn" href="#about" data-toggle="tab">About</a></li>
+                        </ul>
+                    </div>
+            </div>
+        </div>
+    </div>
 }
 else
 {
@@ -15,7 +114,6 @@ else
         <div id="tabs-home" class="row slider" style="background:url(../../Content/home.jpg) no-repeat center fixed;">
             <div class="col-sm-3">
             </div>
-            <!-- tab content -->
             <div id="wea" class="col-sm-9">
                 <div class="pull-right">
                     <div class="panel panel-default">
@@ -59,4 +157,8 @@ else
             </div>
         </div>
     </div>
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryunobtrusive")
 }

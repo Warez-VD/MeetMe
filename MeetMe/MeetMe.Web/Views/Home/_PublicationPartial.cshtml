@@ -1,0 +1,9 @@
+﻿@using MeetMe.Web.ViewModels.Home
+@model IEnumerable<PublicationViewModel>
+
+@foreach (var publication in Model)
+{
+    <div>
+        @publication.Author
+    </div>
+}

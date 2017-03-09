@@ -1,9 +1,1 @@
-﻿@model MeetMe.Web.ViewModels.UserViewModel
-
-@using (Html.BeginForm("Index", "Profile", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-
-    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
-    <input type="submit" value="test" class="btn btn-primary" />
-}
+﻿<h2>Profile</h2>
