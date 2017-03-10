@@ -12,6 +12,8 @@ namespace MeetMe.Web.ViewModels.Home
         
         public string Author { get; set; }
 
+        public string AuthorImageUrl { get; set; }
+
         public DateTime CreatedOn { get; set; }
 
         public int Likes { get; set; }
@@ -22,8 +24,8 @@ namespace MeetMe.Web.ViewModels.Home
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
-            configuration.CreateMap<CustomUser, PublicationViewModel>()
-                    .ForMember(dest => dest.Author, opts => opts.MapFrom(src => $"{src.FirstName} {src.LastName}"));
+            configuration.CreateMap<Publication, PublicationViewModel>()
+                    .ForMember(dest => dest.Author, opts => opts.MapFrom(src => $"{src.Author.FirstName} {src.Author.LastName}"));
         }
     }
 }

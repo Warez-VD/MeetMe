@@ -5,7 +5,6 @@ using MeetMe.Web.ViewModels.Home;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -20,22 +19,26 @@ namespace MeetMe.Web.Controllers
         private readonly IImageService imageService;
         private readonly IUserService userService;
         private readonly IMapperService mapperService;
+        private readonly IStatisticService statisticService;
 
         public HomeController(
             IAccountService accountService,
             IUserService userService,
             IImageService imageService,
-            IMapperService mapperService)
+            IMapperService mapperService,
+            IStatisticService statisticService)
         {
             Guard.WhenArgument(accountService, "AccountService").IsNull().Throw();
             Guard.WhenArgument(userService, "UserService").IsNull().Throw();
             Guard.WhenArgument(imageService, "ImageService").IsNull().Throw();
-            // TODO: Guard mapper service
+            Guard.WhenArgument(statisticService, "StatisticService").IsNull().Throw();
+            Guard.WhenArgument(mapperService, "MapperService").IsNull().Throw();
 
             this.accountService = accountService;
             this.userService = userService;
             this.imageService = imageService;
             this.mapperService = mapperService;
+            this.statisticService = statisticService;
         }
 
         public ActionResult Index()
@@ -112,6 +115,7 @@ namespace MeetMe.Web.Controllers
                 {
                     string profileLogoFullPath = Server.MapPath(DefaultProfileLogoPath);
                     this.accountService.Register(model.Register.FirstName, model.Register.LastName, user.Id, profileLogoFullPath);
+                    this.statisticService.CreateStatistic(user.Id);
                     await this.SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     return this.RedirectToAction("Index", "Home");
                 }

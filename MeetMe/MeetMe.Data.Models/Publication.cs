@@ -10,6 +10,14 @@ namespace MeetMe.Data.Models
             this.Comments = new HashSet<Comment>();
         }
 
+        public Publication(string content, int userId, DateTime createdOn)
+            : this()
+        {
+            this.Content = content;
+            this.CustomUserId = userId;
+            this.CreatedOn = createdOn;
+        }
+
         public int Id { get; set; }
 
         public string Content { get; set; }

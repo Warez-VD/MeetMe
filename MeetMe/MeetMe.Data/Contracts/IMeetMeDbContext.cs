@@ -18,6 +18,8 @@ namespace MeetMe.Data.Contracts
 
         IDbSet<Publication> Publications { get; set; }
 
+        IDbSet<Statistic> Statistics { get; set; }
+
         IDbSet<T> Set<T>() where T : class;
 
         DbEntityEntry<T> Entry<T>(T entity) where T : class;

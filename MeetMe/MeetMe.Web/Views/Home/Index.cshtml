@@ -1,5 +1,10 @@
-﻿@using MeetMe.Web.ViewModels.Home
+﻿@using Microsoft.AspNet.Identity
+@using MeetMe.Web.ViewModels.Home
 @model HomeViewModel
+
+@{
+    ViewBag.NotifacationCount = 12;
+}
 
 @section styles {
     <link href="~/Content/home.css" rel="stylesheet" type="text/css" />
@@ -61,28 +66,26 @@
                         @using (Ajax.BeginForm("AddPublication", "Publication", new AjaxOptions()
                         {
                             UpdateTargetId = "publications",
-                            InsertionMode = InsertionMode.InsertBefore,
-                            HttpMethod = "POST",
-                            OnSuccess = "OnAjaxRequestSuccess"
+                            InsertionMode = InsertionMode.Replace,
+                            HttpMethod = "POST"
                         }))
                         {
                             <div class="input-group text-center">
-                                <input class="form-control input-lg" placeholder="What are you thinking?" type="text" name="some">
-                                <span class="input-group-btn"><input class="btn btn-lg btn-primary" type="submit" value="Publish" /></span>
+                                <input class="form-control input-lg" placeholder="What are you thinking?" type="text" name="content">
+                                <input type="hidden" name="userId" id="user-id" value="@User.Identity.GetUserId()" />
+                                <input type="hidden" id="username-addpublication" value="@Model.PersonalInfo.FirstName @Model.PersonalInfo.LastName" />
+                                <span class="input-group-btn"><input class="btn btn-lg btn-primary" type="submit" id="btn-publication" value="Publish" /></span>
+                            </div>
+                            <div class="publication-add">
+                                <ul>
+                                    <li><a data-placement="bottom" title="Picture" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+                                </ul>
                             </div>
                         }
                     </div>
-
-                    @* TODO: Refactor this *@
-                    <script type="text/javascript">
-                        function OnAjaxRequestSuccess(data) {
-                            console.log("Call signalr to make notification")
-                        }
-                    </script>
                 </div>
                 <div id="publications">
-                    @Html.Action("Publications", "Publication")
-                    @*@Html.Partial("_PublicationPartial", Model.Publications)*@
+                    @Html.Action("Publications", "Publication", new { id = User.Identity.GetUserId() })
                 </div>
             </div>
             <div class="col-md-3">
@@ -162,4 +165,5 @@ else
 
 @section scripts {
     @Scripts.Render("~/bundles/jqueryunobtrusive")
+    @Scripts.Render("~/Scripts/notification.js")
 }

@@ -38,6 +38,8 @@ namespace MeetMe.Data
 
         public IDbSet<Publication> Publications { get; set; }
 
+        public IDbSet<Statistic> Statistics { get; set; }
+
         public virtual new IDbSet<T> Set<T>() where T : class
         {
             return base.Set<T>();

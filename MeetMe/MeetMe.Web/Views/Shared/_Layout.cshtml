@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -39,31 +41,11 @@
                 }
                 else
                 {
-                    <ul class="nav navbar-nav pull-left">
-                        <li>
-                            <a href="@Url.Action("Index", "Home")">
-                                <span class="glyphicon glyphicon-home"></span>
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("Notification", "Home")">
-                                <span class="fa fa-bell"></span>
-                                Notifications
-                            </a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("Message", "Home")">
-                                <span class="fa fa-envelope"></span>
-                                Messages
-                            </a>
-                        </li>
-                    </ul>
-
+                    @Html.Action("Index", "Navigation", new { id = User.Identity.GetUserId() })
                     
                     @Html.Partial("_LoginPartial")
                     <div class="navbar-form navbar-right" role="search">
-                        
+
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Search">
                         </div>
@@ -72,7 +54,7 @@
                             @Html.Action("ProfilePartial", "Home")
                         </div>
                     </div>
-                    
+
                 }
             </div>
         </div>
@@ -97,6 +79,8 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/jquery.signalR-2.2.1.js")
+    @Scripts.Render("~/signalr/hubs")
     @RenderSection("scripts", required: false)
 </body>
 </html>

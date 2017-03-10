@@ -1,9 +1,90 @@
 ﻿@using MeetMe.Web.ViewModels.Home
 @model IEnumerable<PublicationViewModel>
 
+<link href="~/Content/publication.css" rel="stylesheet" />
+
 @foreach (var publication in Model)
 {
-    <div>
-        @publication.Author
+    <div class="dashboard">
+        <div class="row">
+            <div class="tab-content col-md-9">
+                <div role="tabpanel" class="tab-pane profile-pane active" id="profile">
+                    <div>
+                        <div>
+                            <div class="header">
+                                <img class="col-sm-3" style="width:80px;height:40px;" src="@publication.AuthorImageUrl">
+                                <h4>@publication.Author <small>@publication.CreatedOn</small></h4>
+                            </div>
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-sm-11">
+                                        <p>@publication.Content</p>
+
+                                    </div>
+                                    <hr />
+                                    <div class="col-sm-2 col-sm-offset-1">
+                                        @if (publication.Likes == 0)
+                                        {
+                                            @Ajax.ActionLink(" ", "Like", "Publication", new AjaxOptions()
+                                       {
+                                           HttpMethod = "POST",
+                                           InsertionMode = InsertionMode.Replace,
+                                           UpdateTargetId = "like-publication"
+                                       }, new { id = "like-publication", @class = "comment-icons glyphicon glyphicon-thumbs-up" });
+
+                                        }
+                                        else
+                                        {
+                                            @Ajax.ActionLink(publication.Likes.ToString(), "Like", "Publication", new AjaxOptions()
+                                       {
+                                           HttpMethod = "POST",
+                                           InsertionMode = InsertionMode.Replace,
+                                           UpdateTargetId = "like-publication"
+                                       }, new { id = "like-publication", @class = "comment-icons glyphicon glyphicon-thumbs-up" });
+                                        }
+                                    </div>
+                                    <div class="col-sm-2">
+                                        @if (publication.Dislikes == 0)
+                                        {
+                                            @Ajax.ActionLink(" ", "Dislike", "Publication", new AjaxOptions()
+                                       {
+                                           HttpMethod = "POST",
+                                           InsertionMode = InsertionMode.Replace,
+                                           UpdateTargetId = "like-publication"
+                                       }, new { id = "like-publication", @class = "comment-icons glyphicon glyphicon-thumbs-down" });
+
+                                        }
+                                        else
+                                        {
+                                            @Ajax.ActionLink(publication.Dislikes.ToString(), "Dislike", "Publication", new AjaxOptions()
+                                       {
+                                           HttpMethod = "POST",
+                                           InsertionMode = InsertionMode.Replace,
+                                           UpdateTargetId = "like-publication"
+                                       }, new { id = "like-publication", @class = "comment-icons glyphicon glyphicon-thumbs-down" });
+                                        }
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <a class="comment-icons glyphicon glyphicon-share">
+                                            <span> Share</span>
+                                        </a>
+                                    </div>
+                                    <hr />
+                                </div>
+                            </div>
+                            <div class="widget-area no-padding blank">
+                                <div class="status-upload">
+                                    @* Ajax form! *@
+                                    <form>
+                                        <textarea class="fa-align-center" placeholder="What are you doing right now?"></textarea>
+                                        <button type="submit" title="Add comment" class="btn btn-success green"><i class="fa fa-comment-o"></i> Comment</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 }

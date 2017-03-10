@@ -4,6 +4,7 @@ using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject;
 using Ninject.Web.Common;
 using MeetMe.Web.App_Start.NinjectModules;
+using Microsoft.AspNet.SignalR;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(MeetMe.Web.App_Start.NinjectConfig), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(MeetMe.Web.App_Start.NinjectConfig), "Stop")]
@@ -44,6 +45,7 @@ namespace MeetMe.Web.App_Start
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
+                GlobalHost.DependencyResolver = new SignalRConfig(kernel);
                 RegisterServices(kernel);
                 return kernel;
             }
