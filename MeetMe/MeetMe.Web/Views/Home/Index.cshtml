@@ -2,10 +2,6 @@
 @using MeetMe.Web.ViewModels.Home
 @model HomeViewModel
 
-@{
-    ViewBag.NotifacationCount = 12;
-}
-
 @section styles {
     <link href="~/Content/home.css" rel="stylesheet" type="text/css" />
 }
@@ -67,7 +63,8 @@
                         {
                             UpdateTargetId = "publications",
                             InsertionMode = InsertionMode.Replace,
-                            HttpMethod = "POST"
+                            HttpMethod = "POST",
+                            OnSuccess = "ajaxSuccess"
                         }))
                         {
                             <div class="input-group text-center">

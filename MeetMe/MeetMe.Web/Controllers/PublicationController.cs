@@ -50,7 +50,7 @@ namespace MeetMe.Web.Controllers
         [HttpPost]
         public ActionResult AddPublication(string content, string userId)
         {
-            // this.publicationService.CreatePublication(content, userId);
+            this.publicationService.CreatePublication(content, userId);
             var publications = this.publicationService.UserPublications(userId);
             var model = new List<PublicationViewModel>();
 

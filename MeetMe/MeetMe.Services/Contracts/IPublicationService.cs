@@ -10,5 +10,11 @@ namespace MeetMe.Services.Contracts
         IEnumerable<Publication> FriendsPublications(string userId, int count);
 
         IEnumerable<Publication> UserPublications(string userId);
+
+        void AddLike(int id);
+
+        void AddDislike(int id);
+
+        Publication GetById(int id);
     }
 }

@@ -10,3 +10,4 @@
 /// <reference path="modernizr-2.6.2.js" />
 /// <reference path="notification.js" />
 /// <reference path="respond.js" />
+/// <reference path="toastr.min.js" />

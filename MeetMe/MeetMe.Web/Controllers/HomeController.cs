@@ -41,6 +41,7 @@ namespace MeetMe.Web.Controllers
             this.statisticService = statisticService;
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
             HomeViewModel model = new HomeViewModel();
@@ -57,6 +58,7 @@ namespace MeetMe.Web.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

@@ -1,4 +1,5 @@
-﻿@using MeetMe.Web.ViewModels.Home
+﻿@using Microsoft.AspNet.Identity
+@using MeetMe.Web.ViewModels.Home
 @model IEnumerable<PublicationViewModel>
 
 <link href="~/Content/publication.css" rel="stylesheet" />
@@ -25,43 +26,21 @@
                                     <div class="col-sm-2 col-sm-offset-1">
                                         @if (publication.Likes == 0)
                                         {
-                                            @Ajax.ActionLink(" ", "Like", "Publication", new AjaxOptions()
-                                       {
-                                           HttpMethod = "POST",
-                                           InsertionMode = InsertionMode.Replace,
-                                           UpdateTargetId = "like-publication"
-                                       }, new { id = "like-publication", @class = "comment-icons glyphicon glyphicon-thumbs-up" });
-
+                                            <a data-id="@publication.Id" data-userid="@User.Identity.GetUserId()" class="like-publication comment-icons glyphicon glyphicon-thumbs-up"><span id="publication-like-@publication.Id"></span></a>
                                         }
                                         else
                                         {
-                                            @Ajax.ActionLink(publication.Likes.ToString(), "Like", "Publication", new AjaxOptions()
-                                       {
-                                           HttpMethod = "POST",
-                                           InsertionMode = InsertionMode.Replace,
-                                           UpdateTargetId = "like-publication"
-                                       }, new { id = "like-publication", @class = "comment-icons glyphicon glyphicon-thumbs-up" });
+                                            <a data-id="@publication.Id" data-userid="@User.Identity.GetUserId()" class="like-publication comment-icons glyphicon glyphicon-thumbs-up"><span id="publication-like-@publication.Id">@publication.Likes</span></a>
                                         }
                                     </div>
                                     <div class="col-sm-2">
                                         @if (publication.Dislikes == 0)
                                         {
-                                            @Ajax.ActionLink(" ", "Dislike", "Publication", new AjaxOptions()
-                                       {
-                                           HttpMethod = "POST",
-                                           InsertionMode = InsertionMode.Replace,
-                                           UpdateTargetId = "like-publication"
-                                       }, new { id = "like-publication", @class = "comment-icons glyphicon glyphicon-thumbs-down" });
-
+                                            <a data-id="@publication.Id" class="dislike-publication comment-icons glyphicon glyphicon-thumbs-down"><span id="publication-dislike-@publication.Id"></span></a>
                                         }
                                         else
                                         {
-                                            @Ajax.ActionLink(publication.Dislikes.ToString(), "Dislike", "Publication", new AjaxOptions()
-                                       {
-                                           HttpMethod = "POST",
-                                           InsertionMode = InsertionMode.Replace,
-                                           UpdateTargetId = "like-publication"
-                                       }, new { id = "like-publication", @class = "comment-icons glyphicon glyphicon-thumbs-down" });
+                                            <a data-id="@publication.Id" class="dislike-publication comment-icons glyphicon glyphicon-thumbs-down"><span id="publication-dislike-@publication.Id">@publication.Dislikes</span></a>
                                         }
                                     </div>
                                     <div class="col-sm-2">

@@ -8,6 +8,8 @@ namespace MeetMe.Web.ViewModels.Home
 {
     public class PublicationViewModel : ICustomMappings
     {
+        public int Id { get; set; }
+
         public string Content { get; set; }
         
         public string Author { get; set; }

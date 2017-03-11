@@ -64,5 +64,27 @@ namespace MeetMe.Services
             var user = this.userService.GetByIndentityId(userId);
             return user.Publications.OrderByDescending(x => x.CreatedOn);
         }
+
+        public void AddLike(int id)
+        {
+            var publication = this.publicationRepository.GetById(id);
+            publication.Likes += 1;
+            this.publicationRepository.Update(publication);
+            this.unitOfWork.Commit();
+        }
+
+        public void AddDislike(int id)
+        {
+            var publication = this.publicationRepository.GetById(id);
+            publication.Dislikes += 1;
+            this.publicationRepository.Update(publication);
+            this.unitOfWork.Commit();
+        }
+
+        public Publication GetById(int id)
+        {
+            var publication = this.publicationRepository.GetById(id);
+            return publication;
+        }
     }
 }
