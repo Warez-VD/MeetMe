@@ -58,9 +58,11 @@
     <Compile Include="Contracts\IMapperService.cs" />
     <Compile Include="Contracts\IProfileLogoFactory.cs" />
     <Compile Include="Contracts\IPublicationFactory.cs" />
+    <Compile Include="Contracts\IPublicationImageFactory.cs" />
     <Compile Include="Contracts\IPublicationService.cs" />
     <Compile Include="Contracts\IStatisticFactory.cs" />
     <Compile Include="Contracts\IStatisticService.cs" />
+    <Compile Include="Contracts\ITextService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="DateTimeService.cs" />
     <Compile Include="ImageService.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublicationService.cs" />
     <Compile Include="StatisticService.cs" />
+    <Compile Include="TextService.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>

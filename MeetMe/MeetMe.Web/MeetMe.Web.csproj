@@ -259,7 +259,8 @@
     <Compile Include="ViewModels\Home\LoginViewModel.cs" />
     <Compile Include="ViewModels\Home\PersonalInfoViewModel.cs" />
     <Compile Include="ViewModels\Home\ProfilePartialViewModel.cs" />
-    <Compile Include="ViewModels\Home\PublicationViewModel.cs" />
+    <Compile Include="ViewModels\Publications\CommentViewModel.cs" />
+    <Compile Include="ViewModels\Publications\PublicationViewModel.cs" />
     <Compile Include="ViewModels\Home\RegisterViewModel.cs" />
     <Compile Include="ViewModels\Navigation\StatisticViewModel.cs" />
   </ItemGroup>
@@ -311,6 +312,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\notification.js" />
+    <Content Include="Scripts\publication.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\toastr.js" />
@@ -335,6 +337,7 @@
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Publication\_PublicationPartial.cshtml" />
     <Content Include="Views\Navigation\_IndexPartial.cshtml" />
+    <Content Include="Views\Publication\_PublicationCommentPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

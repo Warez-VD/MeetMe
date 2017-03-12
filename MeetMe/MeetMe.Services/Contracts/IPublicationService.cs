@@ -5,7 +5,7 @@ namespace MeetMe.Services.Contracts
 {
     public interface IPublicationService
     {
-        void CreatePublication(string content, string userId);
+        void CreatePublication(string content, string userId, byte[] imageContent);
 
         IEnumerable<Publication> FriendsPublications(string userId, int count);
 

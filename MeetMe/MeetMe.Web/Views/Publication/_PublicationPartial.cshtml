@@ -1,8 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity
-@using MeetMe.Web.ViewModels.Home
+@using MeetMe.Web.ViewModels.Publications
 @model IEnumerable<PublicationViewModel>
-
-<link href="~/Content/publication.css" rel="stylesheet" />
 
 @foreach (var publication in Model)
 {
@@ -19,8 +17,13 @@
                             <div class="content">
                                 <div class="row">
                                     <div class="col-sm-11">
-                                        <p>@publication.Content</p>
-
+                                        <p>
+                                            @if (publication.PublicationImageUrl.Length > 22)
+                                            {
+                                                <img class="publication-img" src="@publication.PublicationImageUrl" />
+                                            }
+                                            @publication.Content
+                                        </p>
                                     </div>
                                     <hr />
                                     <div class="col-sm-2 col-sm-offset-1">

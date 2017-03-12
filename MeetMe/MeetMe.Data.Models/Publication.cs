@@ -18,6 +18,12 @@ namespace MeetMe.Data.Models
             this.CreatedOn = createdOn;
         }
 
+        public Publication(string content, int userId, DateTime createdOn, PublicationImage image)
+            : this(content, userId, createdOn)
+        {
+            this.Image = image;
+        }
+
         public int Id { get; set; }
 
         public string Content { get; set; }
@@ -25,6 +31,10 @@ namespace MeetMe.Data.Models
         public int CustomUserId { get; set; }
 
         public virtual CustomUser Author { get; set; }
+
+        public int PublicationImageId { get; set; }
+
+        public virtual PublicationImage Image { get; set; }
 
         public DateTime CreatedOn { get; set; }
 

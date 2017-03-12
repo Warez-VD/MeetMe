@@ -60,6 +60,7 @@
     <Compile Include="Comment.cs" />
     <Compile Include="ProfileImage.cs" />
     <Compile Include="Publication.cs" />
+    <Compile Include="PublicationImage.cs" />
     <Compile Include="Statistic.cs" />
     <Compile Include="UserImage.cs" />
     <Compile Include="AspIdentityUser.cs" />

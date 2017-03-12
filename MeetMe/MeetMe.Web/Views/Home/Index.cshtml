@@ -4,6 +4,7 @@
 
 @section styles {
     <link href="~/Content/home.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/publication.css" rel="stylesheet" />
 }
 
 @if (this.Request.IsAuthenticated)
@@ -56,7 +57,11 @@
             <div class="col-md-6">
                 <div class="panel panel-default" id="publication-add">
                     <div class="panel-heading">
-                        <h4>New publication</h4>
+                        <h4>
+                            <i id="image-add" title="Add publication image" class="fa fa-picture-o"></i>
+                            <input id="publication-picture" title="Add publication image" type="file" name="file" />
+                             New publication
+                        </h4>
                     </div>
                     <div class="panel-body">
                         @using (Ajax.BeginForm("AddPublication", "Publication", new AjaxOptions()
@@ -68,15 +73,14 @@
                         }))
                         {
                             <div class="input-group text-center">
-                                <input class="form-control input-lg" placeholder="What are you thinking?" type="text" name="content">
+                                <input class="form-control input-lg" placeholder="What are you thinking?" type="text" id="publication-content" name="content">
                                 <input type="hidden" name="userId" id="user-id" value="@User.Identity.GetUserId()" />
+                                <input type="hidden" id="image-base" name="imageBase64" />
                                 <input type="hidden" id="username-addpublication" value="@Model.PersonalInfo.FirstName @Model.PersonalInfo.LastName" />
-                                <span class="input-group-btn"><input class="btn btn-lg btn-primary" type="submit" id="btn-publication" value="Publish" /></span>
+                                <div class="input-group-btn"><input class="btn btn-lg btn-primary" type="submit" id="btn-publication" value="Publish" /></div>
                             </div>
-                            <div class="publication-add">
-                                <ul>
-                                    <li><a data-placement="bottom" title="Picture" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
-                                </ul>
+                            <div>
+                                <div id="add-publication-content"></div>
                             </div>
                         }
                     </div>
@@ -163,4 +167,5 @@ else
 @section scripts {
     @Scripts.Render("~/bundles/jqueryunobtrusive")
     @Scripts.Render("~/Scripts/notification.js")
+    @Scripts.Render("~/Scripts/publication.js")
 }

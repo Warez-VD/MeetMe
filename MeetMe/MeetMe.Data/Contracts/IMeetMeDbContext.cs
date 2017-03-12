@@ -14,6 +14,8 @@ namespace MeetMe.Data.Contracts
 
         IDbSet<ProfileImage> ProfileImages { get; set; }
 
+        IDbSet<PublicationImage> PublicationImages { get; set; }
+
         IDbSet<Comment> Comments { get; set; }
 
         IDbSet<Publication> Publications { get; set; }

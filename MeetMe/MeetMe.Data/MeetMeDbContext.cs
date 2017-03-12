@@ -34,6 +34,8 @@ namespace MeetMe.Data
 
         public IDbSet<ProfileImage> ProfileImages { get; set; }
 
+        public IDbSet<PublicationImage> PublicationImages { get; set; }
+
         public IDbSet<Comment> Comments { get; set; }
 
         public IDbSet<Publication> Publications { get; set; }

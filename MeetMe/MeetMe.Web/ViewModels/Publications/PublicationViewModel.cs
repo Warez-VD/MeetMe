@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using AutoMapper;
 
-namespace MeetMe.Web.ViewModels.Home
+namespace MeetMe.Web.ViewModels.Publications
 {
     public class PublicationViewModel : ICustomMappings
     {
@@ -16,13 +16,15 @@ namespace MeetMe.Web.ViewModels.Home
 
         public string AuthorImageUrl { get; set; }
 
+        public string PublicationImageUrl { get; set; }
+
         public DateTime CreatedOn { get; set; }
 
         public int Likes { get; set; }
 
         public int Dislikes { get; set; }
 
-        public IEnumerable<Comment> Comments { get; set; }
+        public IEnumerable<CommentViewModel> Comments { get; set; }
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {

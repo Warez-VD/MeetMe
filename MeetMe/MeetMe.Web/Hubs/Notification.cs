@@ -60,8 +60,11 @@ namespace MeetMe.Web.Hubs
 
         public override Task OnConnected()
         {
-            string userId = this.Context.User.Identity.GetUserId();
-            this.Groups.Add(this.Context.ConnectionId, userId);
+            if (this.Context.User.Identity.GetUserId() != null)
+            {
+                string userId = this.Context.User.Identity.GetUserId();
+                this.Groups.Add(this.Context.ConnectionId, userId);
+            }
 
             return base.OnConnected();
         }

@@ -6,8 +6,6 @@ $(() => {
     var notification = $.connection.notification;
     ajaxSuccess();
 
-    
-
     notification.client.likePublication = likePublication;
     notification.client.dislikePublication = dislikePublication;
     notification.client.addNotification = addNotification;
@@ -25,6 +23,8 @@ function addNotification(message) {
 }
 
 function ajaxSuccess() {
+    $("#publication-content").val("");
+    $("#publication-image").remove();
     bindEvents();
 }
 

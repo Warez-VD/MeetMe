@@ -14,32 +14,37 @@ namespace MeetMe.Services
         private readonly IUnitOfWork unitOfWork;
         private readonly IPublicationFactory publicationFactory;
         private readonly IDateTimeService dateTimeService;
+        private readonly IPublicationImageFactory publicationImageFactory;
 
         public PublicationService(
             IEFRepository<Publication> publicationRepository,
             IUserService userService,
             IUnitOfWork unitOfWork,
             IPublicationFactory publicationFactory,
-            IDateTimeService dateTimeService)
+            IDateTimeService dateTimeService,
+            IPublicationImageFactory publicationImageFactory)
         {
             Guard.WhenArgument(publicationRepository, "PublicationRepository").IsNull().Throw();
             Guard.WhenArgument(userService, "UserService").IsNull().Throw();
             Guard.WhenArgument(unitOfWork, "UnitOfWork").IsNull().Throw();
             Guard.WhenArgument(publicationFactory, "PublicationFactory").IsNull().Throw();
             Guard.WhenArgument(dateTimeService, "DateTimeService").IsNull().Throw();
+            Guard.WhenArgument(publicationImageFactory, "PublicationImageFactory").IsNull().Throw();
 
             this.publicationRepository = publicationRepository;
             this.userService = userService;
             this.unitOfWork = unitOfWork;
             this.publicationFactory = publicationFactory;
             this.dateTimeService = dateTimeService;
+            this.publicationImageFactory = publicationImageFactory;
         }
 
-        public void CreatePublication(string content, string userId)
+        public void CreatePublication(string content, string userId, byte[] imageContent)
         {
             var user = this.userService.GetByIndentityId(userId);
             var createdOn = this.dateTimeService.GetCurrentDate();
-            var publication = this.publicationFactory.CreatePublication(content, user.Id, createdOn);
+            var publicationImage = this.publicationImageFactory.CreatePublicationImage(imageContent);
+            var publication = this.publicationFactory.CreatePublication(content, user.Id, createdOn, publicationImage);
             this.publicationRepository.Add(publication);
             this.unitOfWork.Commit();
         }
