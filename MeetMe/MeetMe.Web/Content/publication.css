@@ -3,6 +3,7 @@
     display: table;
     border-spacing: 10px;
 }
+
     .profile-pane .header {
         background: #337ab7;
         color: #fff;
@@ -10,9 +11,9 @@
         border-radius: 10px 10px 0 0;
     }
 
-    .profile-pane .header small {
-        color: #fff;
-    }
+        .profile-pane .header small {
+            color: #fff;
+        }
 
     .profile-pane .content {
         background: #ecf0f1;
@@ -109,24 +110,59 @@
                 margin-right: 7px;
             }
 
-            .dashboard {
-                margin-bottom: 15px;
-            }
+.dashboard {
+    margin-bottom: 15px;
+}
 
-            .thumb {
+.thumb {
     height: 100px;
     border: 1px solid #000;
     margin: 10px 5px 0 40px;
-  }
+}
 
-            #publication-picture {
-                position: absolute;
-                top: 10px;
-                opacity: 0.0001;
-            }
+#publication-picture {
+    position: absolute;
+    top: 10px;
+    opacity: 0.0001;
+}
 
-            .publication-img {
-                width: 100%;
-                height: 100%;
-                margin-bottom: 5%;
-            }
+.publication-img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 5%;
+}
+
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.comment-container {
+    margin-top: 5px;
+}
+
+.comment-item {
+    border: 1px solid #ecf0f1;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.comment-item pre {
+    margin-top: 5px;
+}
+
+.show-comments {
+    cursor: pointer;
+}
+
+.show-comments:hover {
+    text-decoration: underline;
+}
+
+.hide-comments {
+    cursor: pointer;
+}
+
+.hide-comments:hover {
+    text-decoration: underline;
+}
