@@ -52,6 +52,7 @@
     <Compile Include="AccountService.cs" />
     <Compile Include="Contracts\IAccountService.cs" />
     <Compile Include="Contracts\IAspIdentityUserFactory.cs" />
+    <Compile Include="Contracts\ICommentFactory.cs" />
     <Compile Include="Contracts\ICustomUserFactory.cs" />
     <Compile Include="Contracts\IDateTimeService.cs" />
     <Compile Include="Contracts\IImageService.cs" />

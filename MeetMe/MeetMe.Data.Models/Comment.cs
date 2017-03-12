@@ -1,13 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace MeetMe.Data.Models
 {
     public class Comment
     {
-        public Comment()
+        public Comment() {}
+
+        public Comment(string content, int userId, DateTime createdOn)
         {
-            this.Answers = new HashSet<Comment>();
+            this.Content = content;
+            this.CustomUserId = userId;
+            this.CreatedOn = createdOn;
         }
 
         public int Id { get; set; }
@@ -19,7 +22,5 @@ namespace MeetMe.Data.Models
         public string Content { get; set; }
 
         public DateTime CreatedOn { get; set; }
-        
-        public virtual ICollection<Comment> Answers { get; set; }
     }
 }

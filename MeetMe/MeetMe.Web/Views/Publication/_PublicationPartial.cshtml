@@ -55,33 +55,11 @@
                                 </div>
                             </div>
                             <div>
-                                <ul class="comment-container" id="comments-@publication.Id">
-                                    @for (int i = 0; i < 3; i++)
-                                    {
-                                        if (i > 1)
-                                        {
-                                            <li class="hidden">
-                                                <div class="comment-item">
-                                                    <img style="width:40px;height:40px;" src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" />
-                                                    <span>Author Name</span>
-                                                    <span class="label label-primary">author</span>
-                                                    <pre class="comment-area">My comment</pre>
-                                                </div>
-                                            </li>
-                                        }
-                                        else
-                                        {
-                                            <li>
-                                                <div class="comment-item">
-                                                    <img style="width:40px;height:40px;" src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" />
-                                                    <span>Author Name</span>
-                                                    <span class="label label-primary">author</span>
-                                                    <pre class="comment-area">My comment</pre>
-                                                </div>
-                                            </li>
-                                        }
-                                    }
-                                </ul>
+                                <div class="comments-container">
+                                    <ul class="comment-container" id="comments-@publication.Id">
+                                        @Html.Action("Comments", "Publication", new { id = publication.Id })
+                                    </ul>
+                                </div>
                                 <div id="show-@publication.Id" class="text-center show-comments">
                                     <span data-info="@publication.Id">Show all comments</span>
                                 </div>
@@ -91,11 +69,19 @@
                             </div>
                             <div class="widget-area no-padding blank">
                                 <div class="status-upload">
-                                    @* Ajax form! *@
-                                    <form>
-                                        <textarea class="fa-align-center" placeholder="What are you doing right now?"></textarea>
-                                        <button type="submit" title="Add comment" class="btn btn-success green"><i class="fa fa-comment-o"></i> Comment</button>
-                                    </form>
+                                    @using (Ajax.BeginForm("AddComment", "Publication", new { id = publication.Id },
+                                        new AjaxOptions()
+                                        {
+                                            HttpMethod = "Post",
+                                            InsertionMode = InsertionMode.Replace,
+                                            UpdateTargetId = $"comments-{publication.Id}",
+                                            OnSuccess = "ajaxCommentSuccess"
+                                        }))
+                                    {
+                                        <textarea class="fa-align-center area" name="comment" placeholder="What are you doing right now?"></textarea>
+                                            <input type="hidden" name="userId" value="@User.Identity.GetUserId()" />
+                                            <button type="submit" title="Add comment" data-userid="@User.Identity.GetUserId()" data-author="@publication.AuthorId" class="btn btn-success green btn-comment"><i class="fa fa-comment-o"></i> Comment</button>
+                                    }
                                 </div>
                             </div>
                         </div>

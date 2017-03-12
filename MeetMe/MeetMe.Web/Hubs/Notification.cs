@@ -10,6 +10,7 @@ namespace MeetMe.Web.Hubs
     public class Notification : Hub
     {
         private const string PublicationLike = "{0} liked your publication";
+        private const string PublicationComment = "{0} commented your publication";
 
         private readonly IUserService userService;
         private readonly IStatisticService statisticService;
@@ -56,6 +57,14 @@ namespace MeetMe.Web.Hubs
             //TODO: add as notification
             this.publicationService.AddDislike(id);
             this.Clients.Caller.dislikePublication(elementId);
+        }
+
+        public void AddCommentNotification(string publicationAuthorId, string currentUserId)
+        {
+            //TODO: add as notification
+            var currentUser = this.userService.GetByIndentityId(currentUserId);
+            string fullName = $"{currentUser.FirstName} {currentUser.LastName}";
+            this.Clients.Group(publicationAuthorId).addNotification(string.Format(PublicationComment, fullName));
         }
 
         public override Task OnConnected()

@@ -14,6 +14,8 @@ namespace MeetMe.Web.ViewModels.Publications
         
         public string Author { get; set; }
 
+        public string AuthorId { get; set; }
+
         public string AuthorImageUrl { get; set; }
 
         public string PublicationImageUrl { get; set; }
@@ -29,7 +31,8 @@ namespace MeetMe.Web.ViewModels.Publications
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
             configuration.CreateMap<Publication, PublicationViewModel>()
-                    .ForMember(dest => dest.Author, opts => opts.MapFrom(src => $"{src.Author.FirstName} {src.Author.LastName}"));
+                    .ForMember(dest => dest.Author, opts => opts.MapFrom(src => $"{src.Author.FirstName} {src.Author.LastName}"))
+                    .ForMember(dest => dest.AuthorId, opts => opts.MapFrom(src => src.Author.AspIdentityUserId));
         }
     }
 }

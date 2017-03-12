@@ -30,6 +30,7 @@ function handleFileSelect(ev) {
         reader.readAsDataURL(f);
     }
 }
+
 $(() => {
     $("#publication-picture").change(handleFileSelect);
 

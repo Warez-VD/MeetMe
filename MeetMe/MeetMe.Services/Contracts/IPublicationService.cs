@@ -7,6 +7,8 @@ namespace MeetMe.Services.Contracts
     {
         void CreatePublication(string content, string userId, byte[] imageContent);
 
+        void CreatePublicationComment(int publicationId, string content, string userId);
+
         IEnumerable<Publication> FriendsPublications(string userId, int count);
 
         IEnumerable<Publication> UserPublications(string userId);

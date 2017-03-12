@@ -1,28 +1,28 @@
 ﻿@using MeetMe.Web.ViewModels.Publications
-@model IEnumerable<CommentViewModel>
+@model IList<CommentViewModel>
 
-<div class="comments-container">
-    <ul id="comments-list" class="comments-list">
-        @foreach (var comment in Model)
-        {
-            <li>
-                <div class="comment-main-level">
-                    <div class="comment-avatar">
-                        <img src="@comment.AuthorImageUrl" alt="Comment user logo">
-                    </div>
-                    <div class="comment-box">
-                        <div class="comment-head">
-                            <h6 class="comment-name by-author">
-                                <a>@comment.Author</a>
-                            </h6>
-                            <span>@comment.CreatedOn</span>
-                        </div>
-                        <div class="comment-content">
-                            @comment.Content
-                        </div>
-                    </div>
-                </div>
-            </li>
-        }
-    </ul>
-</div>
+@for (int i = 0; i < Model.Count(); i++)
+{
+    if (i > 1)
+    {
+        <li class="hidden">
+            <div class="comment-item">
+                <img style="width:40px;height:40px;" src="@Model[i].AuthorImageUrl" />
+                <span>@Model[i].Author</span>
+                <span class="label label-primary">author</span>
+                <pre class="comment-area">@Model[i].Content</pre>
+            </div>
+        </li>
+    }
+    else
+    {
+        <li>
+            <div class="comment-item">
+                <img style="width:40px;height:40px;" src="@Model[i].AuthorImageUrl" />
+                <span>@Model[i].Author</span>
+                <span class="label label-primary">author</span>
+                <pre class="comment-area">@Model[i].Content</pre>
+            </div>
+        </li>
+    }
+}

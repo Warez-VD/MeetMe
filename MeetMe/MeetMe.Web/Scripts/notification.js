@@ -5,6 +5,13 @@ $(() => {
 
     var notification = $.connection.notification;
     ajaxSuccess();
+    ajaxCommentSuccess();
+    $(".btn-comment").on("click", (ev) => {
+        let commentBtn = $(ev.target);
+        let publicationAuthorId = commentBtn.attr("data-author");
+        let currentUserId = commentBtn.attr("data-userid");
+        notification.server.addCommentNotification(publicationAuthorId, currentUserId);
+    });
 
     notification.client.likePublication = likePublication;
     notification.client.dislikePublication = dislikePublication;
@@ -25,6 +32,11 @@ function addNotification(message) {
 function ajaxSuccess() {
     $("#publication-content").val("");
     $("#publication-image").remove();
+    bindEvents();
+}
+
+function ajaxCommentSuccess() {
+    $(".area").val("");
     bindEvents();
 }
 

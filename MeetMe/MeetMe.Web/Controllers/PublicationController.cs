@@ -1,10 +1,8 @@
 ﻿using Bytes2you.Validation;
 using MeetMe.Services.Contracts;
 using MeetMe.Web.ViewModels.Publications;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MeetMe.Web.Controllers
@@ -82,6 +80,38 @@ namespace MeetMe.Web.Controllers
             }
 
             return PartialView("_PublicationPartial", model);
+        }
+
+        [HttpPost]
+        public ActionResult AddComment(int id, string comment, string userId)
+        {
+            this.publicationService.CreatePublicationComment(id, comment, userId);
+
+            var publication = this.publicationService.GetById(id);
+            var mappedPublication = this.mapperService.MapObject<PublicationViewModel>(publication);
+            foreach (var publicationComment in mappedPublication.Comments)
+            {
+                var userLogoUrl = this.imageService.ByteArrayToImageUrl(publicationComment.Image);
+                publicationComment.AuthorImageUrl = userLogoUrl;
+            }
+
+            var model = mappedPublication.Comments.OrderByDescending(x => x.CreatedOn).ToList();
+            return this.PartialView("_PublicationCommentPartial", model);
+        }
+
+        [HttpGet]
+        public ActionResult Comments(int id)
+        {
+            var publication = this.publicationService.GetById(id);
+            var mappedPublication = this.mapperService.MapObject<PublicationViewModel>(publication);
+            foreach (var comment in mappedPublication.Comments)
+            {
+                var userLogoUrl = this.imageService.ByteArrayToImageUrl(comment.Image);
+                comment.AuthorImageUrl = userLogoUrl;
+            }
+
+            var model = mappedPublication.Comments.OrderByDescending(x => x.CreatedOn).ToList();
+            return this.PartialView("_PublicationCommentPartial", model);
         }
     }
 }
