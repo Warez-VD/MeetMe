@@ -96,7 +96,6 @@
     <Compile Include="MeetMeDbContextTests\UserImages_Should.cs" />
     <Compile Include="UnitOfWorkTests\Commit_Should.cs" />
     <Compile Include="UnitOfWorkTests\Constructor_Should.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
