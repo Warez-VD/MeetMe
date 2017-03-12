@@ -62,6 +62,7 @@ namespace MeetMe.Web.Hubs
         public void AddCommentNotification(string publicationAuthorId, string currentUserId)
         {
             //TODO: add as notification
+            this.statisticService.AddNotificationStatistic(publicationAuthorId);
             var currentUser = this.userService.GetByIndentityId(currentUserId);
             string fullName = $"{currentUser.FirstName} {currentUser.LastName}";
             this.Clients.Group(publicationAuthorId).addNotification(string.Format(PublicationComment, fullName));

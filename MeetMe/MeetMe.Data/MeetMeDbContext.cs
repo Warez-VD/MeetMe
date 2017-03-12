@@ -28,19 +28,19 @@ namespace MeetMe.Data
             return new MeetMeDbContext();
         }
 
-        public IDbSet<CustomUser> CustomUsers { get; set; }
-
-        public IDbSet<UserImage> UserImages { get; set; }
-
-        public IDbSet<ProfileImage> ProfileImages { get; set; }
-
-        public IDbSet<PublicationImage> PublicationImages { get; set; }
-
-        public IDbSet<Comment> Comments { get; set; }
-
-        public IDbSet<Publication> Publications { get; set; }
-
-        public IDbSet<Statistic> Statistics { get; set; }
+        public virtual IDbSet<CustomUser> CustomUsers { get; set; }
+               
+        public virtual IDbSet<UserImage> UserImages { get; set; }
+               
+        public virtual IDbSet<ProfileImage> ProfileImages { get; set; }
+               
+        public virtual IDbSet<PublicationImage> PublicationImages { get; set; }
+               
+        public virtual IDbSet<Comment> Comments { get; set; }
+               
+        public virtual IDbSet<Publication> Publications { get; set; }
+               
+        public virtual IDbSet<Statistic> Statistics { get; set; }
 
         public virtual new IDbSet<T> Set<T>() where T : class
         {

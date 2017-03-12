@@ -2,7 +2,6 @@
 using MeetMe.Data.Contracts;
 using System.Data.Entity;
 using System.Linq;
-using System;
 
 namespace MeetMe.Data
 {
@@ -12,20 +11,17 @@ namespace MeetMe.Data
         private readonly IMeetMeDbContext dbContext;
         private readonly IDbSet<T> set;
 
-        IQueryable<T> IEFRepository<T>.All
-        {
-            get
-            {
-                return this.set;
-            }
-        }
-
         public EFRepository(IMeetMeDbContext dbContext)
         {
             Guard.WhenArgument(dbContext, "DbContext").IsNull().Throw();
 
             this.dbContext = dbContext;
             this.set = this.dbContext.Set<T>();
+        }
+
+        public IQueryable<T> All
+        {
+            get { return this.set; }
         }
 
         public void Add(T entity)

@@ -22,6 +22,7 @@ namespace MeetMe.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Index(string id)
         {
             var statistic = this.statisticService.GetUserStatistic(id);

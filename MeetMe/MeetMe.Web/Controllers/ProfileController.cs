@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace MeetMe.Web.Controllers
 {
+    [Authorize]
     public class ProfileController : Controller
     {
         private readonly IMapperService mapperService;
