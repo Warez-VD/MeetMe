@@ -87,6 +87,13 @@
     <Compile Include="ImageServiceTests\ByteArrayToImageUrl_Should.cs" />
     <Compile Include="ImageServiceTests\GetImage_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PublicationServiceTests\AddDislike_Should.cs" />
+    <Compile Include="PublicationServiceTests\AddLike_Should.cs" />
+    <Compile Include="PublicationServiceTests\Constructor_Should.cs" />
+    <Compile Include="PublicationServiceTests\CreatePublicationComment_Should.cs" />
+    <Compile Include="PublicationServiceTests\CreatePublication_Should.cs" />
+    <Compile Include="PublicationServiceTests\GetById_Should.cs" />
+    <Compile Include="PublicationServiceTests\UserPublications_Should.cs" />
     <Compile Include="StatisticServiceTests\AddMessageStatistic_Should.cs" />
     <Compile Include="StatisticServiceTests\AddNotificationStatistic_Should.cs" />
     <Compile Include="StatisticServiceTests\Constructor_Should.cs" />

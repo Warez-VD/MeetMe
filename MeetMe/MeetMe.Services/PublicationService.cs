@@ -57,6 +57,7 @@ namespace MeetMe.Services
             this.unitOfWork.Commit();
         }
 
+        // TODO: unit test
         public IEnumerable<Publication> FriendsPublications(string userId, int count)
         {
             var user = this.userService.GetByIndentityId(userId);
@@ -104,7 +105,8 @@ namespace MeetMe.Services
         {
             var publication = this.publicationRepository.GetById(publicationId);
             var user = this.userService.GetByIndentityId(userId);
-            var comment = this.commentFactory.CreateComment(content, user.Id, this.dateTimeService.GetCurrentDate());
+            var date = this.dateTimeService.GetCurrentDate();
+            var comment = this.commentFactory.CreateComment(content, user.Id, date);
             this.commentRepository.Add(comment);
             publication.Comments.Add(comment);
             this.publicationRepository.Update(publication);
