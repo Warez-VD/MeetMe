@@ -87,6 +87,11 @@
     <Compile Include="ImageServiceTests\ByteArrayToImageUrl_Should.cs" />
     <Compile Include="ImageServiceTests\GetImage_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatisticServiceTests\AddMessageStatistic_Should.cs" />
+    <Compile Include="StatisticServiceTests\AddNotificationStatistic_Should.cs" />
+    <Compile Include="StatisticServiceTests\Constructor_Should.cs" />
+    <Compile Include="StatisticServiceTests\CreateStatistic_Should.cs" />
+    <Compile Include="StatisticServiceTests\GetUserStatistic_Should.cs" />
     <Compile Include="TextServiceTests\ConvertBase64_Should.cs" />
   </ItemGroup>
   <ItemGroup>
