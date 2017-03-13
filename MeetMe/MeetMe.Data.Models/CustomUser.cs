@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MeetMe.Data.Models
 {
@@ -22,18 +23,27 @@ namespace MeetMe.Data.Models
 
         public int Id { get; set; }
 
+        [Required]
+        [MinLength(3)]
+        [MaxLength(50)]
         public string FirstName { get; set; }
 
+        [Required]
+        [MinLength(3)]
+        [MaxLength(50)]
         public string LastName { get; set; }
 
         public string AspIdentityUserId { get; set; }
-
+        
         public int Age { get; set; }
 
+        [MaxLength(100)]
         public string City { get; set; }
 
+        [MaxLength(100)]
         public string School { get; set; }
 
+        [MaxLength(100)]
         public string Company { get; set; }
 
         public int ProfileImageId { get; set; }

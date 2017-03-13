@@ -35,7 +35,36 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Moq, Version=4.7.1.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.7.1\lib\net45\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -50,8 +79,37 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="AspIdentityUserTests\Constructor_Should.cs" />
+    <Compile Include="CommentTests\Author_Should.cs" />
+    <Compile Include="CommentTests\Constructor_Should.cs" />
+    <Compile Include="CommentTests\Content_Should.cs" />
+    <Compile Include="CommentTests\CreatedOn_Should.cs" />
+    <Compile Include="CommentTests\CustomUserId_Should.cs" />
+    <Compile Include="CommentTests\Id_Should.cs" />
+    <Compile Include="CustomUserTests\Age_Should.cs" />
+    <Compile Include="CustomUserTests\AspIdentityUserId_Should.cs" />
+    <Compile Include="CustomUserTests\City_Should.cs" />
+    <Compile Include="CustomUserTests\Company_Should.cs" />
+    <Compile Include="CustomUserTests\Constructor_Should.cs" />
+    <Compile Include="CustomUserTests\FirstName_Should.cs" />
+    <Compile Include="CustomUserTests\Friends_Should.cs" />
+    <Compile Include="CustomUserTests\Id_Should.cs" />
+    <Compile Include="CustomUserTests\Images_Should.cs" />
+    <Compile Include="CustomUserTests\LastName_Should.cs" />
+    <Compile Include="CustomUserTests\ProfileImageId_Should.cs" />
+    <Compile Include="CustomUserTests\Publications_Should.cs" />
+    <Compile Include="CustomUserTests\School_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MeetMe.Data.Models\MeetMe.Data.Models.csproj">
+      <Project>{7CF478E2-12F4-4BD2-B6FE-6D6176A7851F}</Project>
+      <Name>MeetMe.Data.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

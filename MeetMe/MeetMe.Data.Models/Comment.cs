@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace MeetMe.Data.Models
 {
@@ -18,7 +19,7 @@ namespace MeetMe.Data.Models
         public int CustomUserId { get; set; }
 
         public virtual CustomUser Author { get; set; }
-
+        
         public string Content { get; set; }
 
         public DateTime CreatedOn { get; set; }
