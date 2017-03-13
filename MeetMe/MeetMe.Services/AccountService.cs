@@ -25,7 +25,7 @@ namespace MeetMe.Services
             Guard.WhenArgument(aspIdentityUserFactory, "AspIdentityUserFactory").IsNull().Throw();
             Guard.WhenArgument(userFactory, "UserFactory").IsNull().Throw();
             Guard.WhenArgument(userRepository, "UserRepository").IsNull().Throw();
-            Guard.WhenArgument(userFactory, "UnitOfWork").IsNull().Throw();
+            Guard.WhenArgument(unitOfWork, "UnitOfWork").IsNull().Throw();
             Guard.WhenArgument(imageService, "ImageService").IsNull().Throw();
             Guard.WhenArgument(profileLogoFactory, "ProfileLogoFactory").IsNull().Throw();
 
