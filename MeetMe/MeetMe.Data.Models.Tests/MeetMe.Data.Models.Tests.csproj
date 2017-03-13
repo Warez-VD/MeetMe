@@ -99,7 +99,41 @@
     <Compile Include="CustomUserTests\ProfileImageId_Should.cs" />
     <Compile Include="CustomUserTests\Publications_Should.cs" />
     <Compile Include="CustomUserTests\School_Should.cs" />
+    <Compile Include="ProfileImageTests\Comments_Should.cs" />
+    <Compile Include="ProfileImageTests\Constructor_Should.cs" />
+    <Compile Include="ProfileImageTests\Content_Should.cs" />
+    <Compile Include="ProfileImageTests\Dislikes_Should.cs" />
+    <Compile Include="ProfileImageTests\Id_Should.cs" />
+    <Compile Include="ProfileImageTests\IsDeleted_Should.cs" />
+    <Compile Include="ProfileImageTests\Likes_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PublicationImageTests\Constructor_Should.cs" />
+    <Compile Include="PublicationImageTests\Content_Should.cs" />
+    <Compile Include="PublicationImageTests\Id_Should.cs" />
+    <Compile Include="PublicationTests\Author_Should.cs" />
+    <Compile Include="PublicationTests\Comments_Should.cs" />
+    <Compile Include="PublicationTests\Constructor_Should.cs" />
+    <Compile Include="PublicationTests\Content_Should.cs" />
+    <Compile Include="PublicationTests\CreatedOn_Should.cs" />
+    <Compile Include="PublicationTests\CustomUserId_Should.cs" />
+    <Compile Include="PublicationTests\Dislikes_Should.cs" />
+    <Compile Include="PublicationTests\Id_Should.cs" />
+    <Compile Include="PublicationTests\Image_Should.cs" />
+    <Compile Include="PublicationTests\Likes_Should.cs" />
+    <Compile Include="PublicationTests\PublicationImageId_Should.cs" />
+    <Compile Include="StatisticTests\Constructor_Should.cs" />
+    <Compile Include="StatisticTests\CustomUserId_Should.cs" />
+    <Compile Include="StatisticTests\Id_Should.cs" />
+    <Compile Include="StatisticTests\MessagesCount_Should.cs" />
+    <Compile Include="StatisticTests\NotificationsCount_Should.cs" />
+    <Compile Include="StatisticTests\User_Should.cs" />
+    <Compile Include="UserImageTests\Comments_Should.cs" />
+    <Compile Include="UserImageTests\Constructor_Should.cs" />
+    <Compile Include="UserImageTests\Content_Should.cs" />
+    <Compile Include="UserImageTests\Dislikes_Should.cs" />
+    <Compile Include="UserImageTests\Id_Should.cs" />
+    <Compile Include="UserImageTests\IsDeleted_Should.cs" />
+    <Compile Include="UserImageTests\Likes_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -111,6 +145,7 @@
       <Name>MeetMe.Data.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

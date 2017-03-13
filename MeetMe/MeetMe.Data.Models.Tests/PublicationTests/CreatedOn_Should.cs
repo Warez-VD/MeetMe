@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 
-namespace MeetMe.Data.Models.Tests.CommentTests
+namespace MeetMe.Data.Models.Tests.PublicationTests
 {
     [TestFixture]
     public class CreatedOn_Should
@@ -11,13 +11,13 @@ namespace MeetMe.Data.Models.Tests.CommentTests
         {
             // Arrange
             DateTime createdOn = new DateTime(1994, 11, 12);
-            var comment = new Comment();
+            var publication = new Publication();
 
             // Act
-            comment.CreatedOn = createdOn;
+            publication.CreatedOn = createdOn;
 
             // Assert
-            Assert.AreEqual(comment.CreatedOn, createdOn);
+            Assert.AreEqual(publication.CreatedOn, createdOn);
         }
     }
 }

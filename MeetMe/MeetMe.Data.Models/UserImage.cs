@@ -9,6 +9,12 @@ namespace MeetMe.Data.Models
             this.Comments = new HashSet<Comment>();
         }
 
+        public UserImage(byte[] content)
+            : this()
+        {
+            this.Content = content;
+        }
+
         public int Id { get; set; }
 
         public byte[] Content { get; set; }
