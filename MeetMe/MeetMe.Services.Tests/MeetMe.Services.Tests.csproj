@@ -93,6 +93,8 @@
     <Compile Include="StatisticServiceTests\CreateStatistic_Should.cs" />
     <Compile Include="StatisticServiceTests\GetUserStatistic_Should.cs" />
     <Compile Include="TextServiceTests\ConvertBase64_Should.cs" />
+    <Compile Include="UserServiceTests\Constructor_Should.cs" />
+    <Compile Include="UserServiceTests\GetByIndentityId_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -112,6 +114,7 @@
       <Name>MeetMe.Services</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
