@@ -3,6 +3,7 @@ using MeetMe.Data.Contracts;
 using MeetMe.Data.Models;
 using MeetMe.Services.Contracts;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace MeetMe.Services
 {
@@ -25,6 +26,15 @@ namespace MeetMe.Services
                 .FirstOrDefault();
 
             return user;
+        }
+
+        public IEnumerable<string> GetUsernames()
+        {
+            var usernames = this.userRepository.All
+                .ToList()
+                .Select(x => string.Format("{0} {1}", x.FirstName, x.LastName));
+
+            return usernames;
         }
     }
 }

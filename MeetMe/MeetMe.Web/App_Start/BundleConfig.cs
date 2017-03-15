@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace MeetMe.Web
 {
@@ -9,7 +8,8 @@ namespace MeetMe.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery-ui-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -37,6 +37,8 @@ namespace MeetMe.Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/themes/base/jquery-ui.css",
+                      "~/Content/themes/base/autocomplete.css",
                       "~/Content/font-awesome.css",
                       "~/Content/toastr.css",
                       "~/Content/site.css"));

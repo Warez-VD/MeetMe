@@ -18,10 +18,12 @@ namespace MeetMe.Web.ViewModels.Home
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Please enter your first name")]
+        [RegularExpression("^[\\s\\S]{3,50}$", ErrorMessage = "First name must be between 3 and 50 symbols")]
         [Display(Name = "First name")]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Please enter your last name")]
+        [RegularExpression("^[\\s\\S]{3,50}$", ErrorMessage = "Last name must be between 3 and 50 symbols")]
         [Display(Name = "Last name")]
         public string LastName { get; set; }
     }

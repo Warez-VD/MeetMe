@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetMe.Data.Models.Tests", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetMe.Services.Tests", "MeetMe.Services.Tests\MeetMe.Services.Tests.csproj", "{094267A3-C6D3-43EA-9C26-2A6EBA1A01FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetMe.Web.Tests", "MeetMe.Web.Tests\MeetMe.Web.Tests.csproj", "{B07B8F23-7001-4636-8920-D505A1C6F48D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +67,10 @@ Global
 		{094267A3-C6D3-43EA-9C26-2A6EBA1A01FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{094267A3-C6D3-43EA-9C26-2A6EBA1A01FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{094267A3-C6D3-43EA-9C26-2A6EBA1A01FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B07B8F23-7001-4636-8920-D505A1C6F48D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B07B8F23-7001-4636-8920-D505A1C6F48D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B07B8F23-7001-4636-8920-D505A1C6F48D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B07B8F23-7001-4636-8920-D505A1C6F48D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,5 +84,6 @@ Global
 		{18EF758D-9E86-4698-A9C4-861AC67C12D5} = {943304A1-8B70-43BD-9711-E1F944DB7E60}
 		{ED0A5ADD-461E-40BB-A742-D22B171CE9A5} = {943304A1-8B70-43BD-9711-E1F944DB7E60}
 		{094267A3-C6D3-43EA-9C26-2A6EBA1A01FE} = {943304A1-8B70-43BD-9711-E1F944DB7E60}
+		{B07B8F23-7001-4636-8920-D505A1C6F48D} = {943304A1-8B70-43BD-9711-E1F944DB7E60}
 	EndGlobalSection
 EndGlobal
