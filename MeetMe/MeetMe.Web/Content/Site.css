@@ -49,5 +49,5 @@ footer{
 
 .custom-autocomplete
 {
-    z-index:100 !important;
+    display: inline;
 }

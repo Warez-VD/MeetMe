@@ -1,0 +1,32 @@
+﻿@using MeetMe.Web.ViewModels.Search
+@model SearchViewModel
+
+@section styles {
+    <link href="~/Content/search.css" rel="stylesheet" />
+}
+<div id="search">
+    <hgroup>
+        <h1>Search Results</h1>
+        <h2 class="lead"><strong class="text-danger">@Model.ResultsCount</strong> results were found for the search for <strong class="text-danger">@Model.SearchedPattern</strong></h2>
+    </hgroup>
+    <ul class="search-list">
+        @foreach (var user in Model.FoundUsers)
+        {
+            <li class="search-item">
+                <a class="search-section" href="@Url.Action("Index", "Profile", new { id = user.Id })">
+                    <img src="@user.ImageUrl" width="100" height="100">
+                    <span class="username-color">@user.FullName</span>
+                </a>
+                @if (user.IsFriend)
+                {
+                    <span class="btn btn-info pull-right">Friends</span>
+                }
+                else
+                {
+                    <button class="btn btn-primary pull-right" type="button"><i class="glyphicon glyphicon-plus"></i> Add friend</button>
+                }
+                <hr />
+            </li>
+        }
+    </ul>
+</div>

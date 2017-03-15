@@ -20,10 +20,20 @@ namespace MeetMe.Web.Controllers
             this.statisticService = statisticService;
             this.mapperService = mapperService;
         }
-
+        
         [HttpGet]
         [Authorize]
         public ActionResult Index(string id)
+        {
+            var statistic = this.statisticService.GetUserStatistic(id);
+            var model = this.mapperService.MapObject<StatisticViewModel>(statistic);
+
+            return this.PartialView("_IndexPartial", model);
+        }
+
+        // Ask why this is working
+        [HttpPost]
+        public ActionResult Index(string id, string useless)
         {
             var statistic = this.statisticService.GetUserStatistic(id);
             var model = this.mapperService.MapObject<StatisticViewModel>(statistic);

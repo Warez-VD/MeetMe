@@ -249,6 +249,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PublicationController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -265,6 +266,8 @@
     <Compile Include="ViewModels\Publications\PublicationViewModel.cs" />
     <Compile Include="ViewModels\Home\RegisterViewModel.cs" />
     <Compile Include="ViewModels\Navigation\StatisticViewModel.cs" />
+    <Compile Include="ViewModels\Search\SearchUserViewModel.cs" />
+    <Compile Include="ViewModels\Search\SearchViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -276,6 +279,7 @@
     <Content Include="Content\home.jpg" />
     <Content Include="Content\logo.png" />
     <Content Include="Content\publication.css" />
+    <Content Include="Content\search.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -385,6 +389,7 @@
     <Content Include="Views\Publication\_PublicationPartial.cshtml" />
     <Content Include="Views\Navigation\_IndexPartial.cshtml" />
     <Content Include="Views\Publication\_PublicationCommentPartial.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
