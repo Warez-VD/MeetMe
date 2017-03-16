@@ -13,3 +13,12 @@ notifications:
   - vlado547@outlook.com
   on_build_failure: true
   on_build_status_changed: true
+
+environment:
+  COVERALLS_REPO_TOKEN:
+    secure: fZHjjBojJ2EzggfhifE+ph1K1OcIuTJ56SlqxU3N6TRJzJ/VtWg8SxOZStTijSsU
+
+after_test: 
+        - MeetMe\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[*]*" -target:"MeetMe\packages\NUnit.ConsoleRunner.3.6.1\tools\nunit3-console.exe" -targetargs:"/domain:single MeetMe\MeetMe\MeetMe.Data.Tests\bin\Debug\MeetMe.Data.Tests.dll" -output:cover.xml
+
+        - MeetMe\packages\coveralls.io.1.3.4\tools\coveralls.net.exe --opencover cover.xml
