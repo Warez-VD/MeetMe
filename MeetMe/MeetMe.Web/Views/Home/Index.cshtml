@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
-@using MeetMe.Web.ViewModels.Home
+@using MeetMe.Web.Models.Home
 @model HomeViewModel
 
 @section styles {
@@ -72,6 +72,7 @@
                             OnSuccess = "ajaxSuccess"
                         }))
                         {
+                            @Html.AntiForgeryToken()
                             <div class="input-group text-center">
                                 <input class="form-control input-lg" placeholder="What are you thinking?" type="text" id="publication-content" name="content">
                                 <input type="hidden" name="userId" id="user-id" value="@User.Identity.GetUserId()" />

@@ -1,6 +1,5 @@
 ﻿using MeetMe.Data.Models;
 using MeetMe.Services.Contracts;
-using MeetMe.Web.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

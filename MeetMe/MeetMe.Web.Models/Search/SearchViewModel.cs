@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MeetMe.Web.ViewModels.Search
+namespace MeetMe.Web.Models.Search
 {
     public class SearchViewModel
     {

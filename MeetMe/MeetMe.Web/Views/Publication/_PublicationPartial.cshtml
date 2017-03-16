@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
-@using MeetMe.Web.ViewModels.Publications
+@using MeetMe.Web.Models.Publications
 @model IEnumerable<PublicationViewModel>
 
 @foreach (var publication in Model)
@@ -78,6 +78,7 @@
                                             OnSuccess = "ajaxCommentSuccess"
                                         }))
                                     {
+                                        @Html.AntiForgeryToken()
                                         <textarea class="fa-align-center area" name="comment" placeholder="What are you doing right now?"></textarea>
                                             <input type="hidden" name="userId" value="@User.Identity.GetUserId()" />
                                             <button type="submit" title="Add comment" data-userid="@User.Identity.GetUserId()" data-author="@publication.AuthorId" class="btn btn-success green btn-comment"><i class="fa fa-comment-o"></i> Comment</button>

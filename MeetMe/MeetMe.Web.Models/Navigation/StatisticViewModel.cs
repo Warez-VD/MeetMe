@@ -1,7 +1,7 @@
 ﻿using MeetMe.Data.Models;
-using MeetMe.Web.ViewModels.Contracts;
+using MeetMe.Web.Models.Contracts;
 
-namespace MeetMe.Web.ViewModels.Navigation
+namespace MeetMe.Web.Models.Navigation
 {
     public class StatisticViewModel : IMapFrom<Statistic>
     {

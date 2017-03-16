@@ -1,4 +1,4 @@
-﻿using MeetMe.Web.ViewModels.Search;
+﻿using MeetMe.Web.Models.Search;
 using System.Collections.Generic;
 using System.Web.Mvc;
 

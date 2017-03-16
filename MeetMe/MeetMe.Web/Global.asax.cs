@@ -17,7 +17,7 @@ namespace MeetMe.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            AutoMapperConfig.RegisterMapper(Assembly.GetExecutingAssembly());
+            AutoMapperConfig.RegisterMapper(Assembly.Load("MeetMe.Web.Models"));
         }
     }
 }

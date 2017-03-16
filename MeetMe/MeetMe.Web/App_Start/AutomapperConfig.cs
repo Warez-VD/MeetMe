@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using MeetMe.Web.ViewModels.Contracts;
+using MeetMe.Web.Models.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;

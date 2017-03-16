@@ -1,10 +1,10 @@
 ﻿using MeetMe.Data.Models;
-using MeetMe.Web.ViewModels.Contracts;
+using MeetMe.Web.Models.Contracts;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
 
-namespace MeetMe.Web.ViewModels.Publications
+namespace MeetMe.Web.Models.Publications
 {
     public class PublicationViewModel : ICustomMappings
     {

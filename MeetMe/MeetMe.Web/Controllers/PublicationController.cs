@@ -1,6 +1,6 @@
 ﻿using Bytes2you.Validation;
 using MeetMe.Services.Contracts;
-using MeetMe.Web.ViewModels.Publications;
+using MeetMe.Web.Models.Publications;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -42,7 +42,7 @@ namespace MeetMe.Web.Controllers
             foreach (var publication in publications)
             {
                 var userImageUrl = this.imageService.ByteArrayToImageUrl(publication.Author.ProfileImage.Content);
-                string publicationImageUrl =  this.imageService.ByteArrayToImageUrl(publication.Image.Content);
+                string publicationImageUrl = this.imageService.ByteArrayToImageUrl(publication.Image.Content);
                 var mappedPublication = this.mapperService.MapObject<PublicationViewModel>(publication);
                 mappedPublication.AuthorImageUrl = userImageUrl;
                 mappedPublication.PublicationImageUrl = publicationImageUrl;
@@ -53,6 +53,7 @@ namespace MeetMe.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddPublication(string content, string userId, string imageBase64)
         {
             if (imageBase64 != string.Empty)
@@ -83,6 +84,7 @@ namespace MeetMe.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddComment(int id, string comment, string userId)
         {
             this.publicationService.CreatePublicationComment(id, comment, userId);
@@ -99,7 +101,7 @@ namespace MeetMe.Web.Controllers
             return this.PartialView("_PublicationCommentPartial", model);
         }
 
-        [HttpGet]
+        [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
         public ActionResult Comments(int id)
         {
             var publication = this.publicationService.GetById(id);

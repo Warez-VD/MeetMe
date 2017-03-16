@@ -1,7 +1,7 @@
 ﻿using MeetMe.Data.Models;
-using MeetMe.Web.ViewModels.Contracts;
+using MeetMe.Web.Models.Contracts;
 
-namespace MeetMe.Web.ViewModels.Home
+namespace MeetMe.Web.Models.Home
 {
     public class PersonalInfoViewModel : IMapFrom<CustomUser>
     {

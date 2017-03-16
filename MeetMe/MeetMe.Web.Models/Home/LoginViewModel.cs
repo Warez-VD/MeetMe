@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MeetMe.Web.ViewModels.Home
+namespace MeetMe.Web.Models.Home
 {
-    public class RegisterViewModel
+    public class LoginViewModel
     {
         public int ShowServerError { get; set; }
 
@@ -16,15 +16,5 @@ namespace MeetMe.Web.ViewModels.Home
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
-
-        [Required(ErrorMessage = "Please enter your first name")]
-        [RegularExpression("^[\\s\\S]{3,50}$", ErrorMessage = "First name must be between 3 and 50 symbols")]
-        [Display(Name = "First name")]
-        public string FirstName { get; set; }
-
-        [Required(ErrorMessage = "Please enter your last name")]
-        [RegularExpression("^[\\s\\S]{3,50}$", ErrorMessage = "Last name must be between 3 and 50 symbols")]
-        [Display(Name = "Last name")]
-        public string LastName { get; set; }
     }
 }

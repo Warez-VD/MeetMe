@@ -1,7 +1,7 @@
 ﻿using Bytes2you.Validation;
 using MeetMe.Services.Contracts;
 using MeetMe.Web.Auth;
-using MeetMe.Web.ViewModels.Home;
+using MeetMe.Web.Models.Home;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;

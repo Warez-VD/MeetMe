@@ -1,9 +1,9 @@
-﻿using MeetMe.Web.ViewModels.Contracts;
+﻿using MeetMe.Web.Models.Contracts;
 using System;
 using AutoMapper;
 using MeetMe.Data.Models;
 
-namespace MeetMe.Web.ViewModels.Publications
+namespace MeetMe.Web.Models.Publications
 {
     public class CommentViewModel : ICustomMappings
     {

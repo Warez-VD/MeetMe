@@ -1,4 +1,4 @@
-﻿namespace MeetMe.Web.ViewModels.Home
+﻿namespace MeetMe.Web.Models.Home
 {
     public class HomeViewModel
     {

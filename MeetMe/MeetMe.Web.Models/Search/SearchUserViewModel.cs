@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using MeetMe.Data.Models;
-using MeetMe.Web.ViewModels.Contracts;
+using MeetMe.Web.Models.Contracts;
 
-namespace MeetMe.Web.ViewModels.Search
+namespace MeetMe.Web.Models.Search
 {
     public class SearchUserViewModel : ICustomMappings
     {
