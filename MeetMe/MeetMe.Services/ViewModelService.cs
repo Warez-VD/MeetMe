@@ -4,6 +4,7 @@ using MeetMe.Data.Models;
 using MeetMe.Web.Models.Publications;
 using Bytes2you.Validation;
 using System.Linq;
+using MeetMe.Web.Models.Home;
 
 namespace MeetMe.Services
 {
@@ -51,6 +52,25 @@ namespace MeetMe.Services
             }
 
             var result = mappedPublication.Comments.OrderByDescending(x => x.CreatedOn).ToList();
+            return result;
+        }
+
+        public ProfilePartialViewModel GetMappedProfile(CustomUser user)
+        {
+            var profileImageUrl = this.imageService.ByteArrayToImageUrl(user.ProfileImage.Content);
+            var result = this.mapperService.MapObject<ProfilePartialViewModel>(user);
+            result.ProfileImageUrl = profileImageUrl;
+
+            return result;
+        }
+
+        public PersonalInfoViewModel GetMappedPersonalInfo(CustomUser user)
+        {
+            var profileImageUrl = this.imageService.ByteArrayToImageUrl(user.ProfileImage.Content);
+
+            var result = this.mapperService.MapObject<PersonalInfoViewModel>(user);
+            result.ProfileImageUrl = profileImageUrl;
+
             return result;
         }
     }

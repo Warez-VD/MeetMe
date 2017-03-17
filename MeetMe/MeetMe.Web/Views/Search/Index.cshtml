@@ -17,13 +17,16 @@
                     <img src="@user.ImageUrl" width="100" height="100">
                     <span class="username-color">@user.FullName</span>
                 </a>
-                @if (user.IsFriend)
+                @if (User.Identity.IsAuthenticated)
                 {
-                    <span class="btn btn-info pull-right">Friends</span>
-                }
-                else
-                {
-                    <button class="btn btn-primary pull-right" type="button"><i class="glyphicon glyphicon-plus"></i> Add friend</button>
+                    if (user.IsFriend)
+                    {
+                        <span class="btn btn-info pull-right">Friends</span>
+                    }
+                    else
+                    {
+                        <button class="btn btn-primary pull-right" type="button"><i class="glyphicon glyphicon-plus"></i> Add friend</button>
+                    }
                 }
                 <hr />
             </li>

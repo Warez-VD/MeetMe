@@ -11,7 +11,7 @@ namespace MeetMe.Web.Tests
         [Test]
         public void TestMethod1()
         {
-            Assert.Throws<ArgumentNullException>(() => new HomeController(null, null, null, null, null));
+            Assert.Throws<ArgumentNullException>(() => new HomeController(null, null, null, null));
         }
     }
 }

@@ -4,6 +4,7 @@ using MeetMe.Data.Models;
 using MeetMe.Services.Contracts;
 using System.Linq;
 using System.Collections.Generic;
+using MeetMe.Web.Models.Search;
 
 namespace MeetMe.Services
 {

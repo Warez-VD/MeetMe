@@ -9,8 +9,6 @@ namespace MeetMe.Web.Controllers
     {
         private readonly byte[] EmptyPublicationImage = new byte[0];
         private readonly IPublicationService publicationService;
-        private readonly IMapperService mapperService;
-        private readonly IImageService imageService;
         private readonly ITextService textService;
         private readonly IViewModelService viewModelService;
 

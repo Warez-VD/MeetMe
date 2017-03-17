@@ -16,29 +16,25 @@ namespace MeetMe.Web.Controllers
         private const string DefaultProfileLogoPath = "~/Content/default-user.jpg";
 
         private readonly IAccountService accountService;
-        private readonly IImageService imageService;
         private readonly IUserService userService;
-        private readonly IMapperService mapperService;
         private readonly IStatisticService statisticService;
+        private readonly IViewModelService viewModelService;
 
         public HomeController(
             IAccountService accountService,
             IUserService userService,
-            IImageService imageService,
-            IMapperService mapperService,
-            IStatisticService statisticService)
+            IStatisticService statisticService,
+            IViewModelService viewModelService)
         {
             Guard.WhenArgument(accountService, "AccountService").IsNull().Throw();
             Guard.WhenArgument(userService, "UserService").IsNull().Throw();
-            Guard.WhenArgument(imageService, "ImageService").IsNull().Throw();
             Guard.WhenArgument(statisticService, "StatisticService").IsNull().Throw();
-            Guard.WhenArgument(mapperService, "MapperService").IsNull().Throw();
+            Guard.WhenArgument(viewModelService, "ViewModelService").IsNull().Throw();
 
             this.accountService = accountService;
             this.userService = userService;
-            this.imageService = imageService;
-            this.mapperService = mapperService;
             this.statisticService = statisticService;
+            this.viewModelService = viewModelService;
         }
 
         [HttpGet]
@@ -49,10 +45,7 @@ namespace MeetMe.Web.Controllers
             {
                 string userId = this.HttpContext.User.Identity.GetUserId();
                 var user = this.userService.GetByIndentityId(userId);
-                var profileImageUrl = this.imageService.ByteArrayToImageUrl(user.ProfileImage.Content);
-
-                model.PersonalInfo = this.mapperService.MapObject<PersonalInfoViewModel>(user);
-                model.PersonalInfo.ProfileImageUrl = profileImageUrl;
+                model.PersonalInfo = this.viewModelService.GetMappedPersonalInfo(user);
             }
 
             return View(model);
@@ -109,7 +102,7 @@ namespace MeetMe.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(HomeViewModel model)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
                 var user = this.accountService.CreateUser(model.Register.Email, model.Register.Email);
                 var result = await this.UserManager.CreateAsync(user, model.Register.Password);
@@ -141,9 +134,7 @@ namespace MeetMe.Web.Controllers
         {
             string id = this.HttpContext.User.Identity.GetUserId();
             var user = this.userService.GetByIndentityId(id);
-            var profileImageUrl = this.imageService.ByteArrayToImageUrl(user.ProfileImage.Content);
-            var model = this.mapperService.MapObject<ProfilePartialViewModel>(user);
-            model.ProfileImageUrl = profileImageUrl;
+            var model = this.viewModelService.GetMappedProfile(user);
 
             return this.PartialView("_ProfilePartial", model);
         }

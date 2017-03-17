@@ -1,22 +1,31 @@
-﻿using MeetMe.Web.Models.Search;
+﻿using Bytes2you.Validation;
+using MeetMe.Services.Contracts;
+using MeetMe.Web.Models.Search;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace MeetMe.Web.Controllers
 {
     public class SearchController : Controller
     {
+        private readonly ISearchService searchService;
+
+        public SearchController(ISearchService searchService)
+        {
+            Guard.WhenArgument(searchService, "SearchService").IsNull().Throw();
+
+            this.searchService = searchService;
+        }
+
         [HttpGet]
         public ActionResult Index()
         {
+            var results = this.searchService.SearchedUsers(string.Empty, 0, 50);
             var model = new SearchViewModel();
             model.SearchedPattern = string.Empty;
-            model.ResultsCount = 12;
-            model.FoundUsers = new List<SearchUserViewModel>()
-            {
-                new SearchUserViewModel() { Id = 1, FullName = "John Smith", ImageUrl = "nqma", IsFriend = false },
-                new SearchUserViewModel() { Id = 2, FullName = "John Tarantino", ImageUrl = "nqma", IsFriend = true }
-            };
+            model.ResultsCount = results.Count();
+            model.FoundUsers = results;
 
             return this.View(model);
         }

@@ -61,18 +61,22 @@
     <Compile Include="Contracts\IPublicationFactory.cs" />
     <Compile Include="Contracts\IPublicationImageFactory.cs" />
     <Compile Include="Contracts\IPublicationService.cs" />
+    <Compile Include="Contracts\ISearchService.cs" />
     <Compile Include="Contracts\IStatisticFactory.cs" />
     <Compile Include="Contracts\IStatisticService.cs" />
     <Compile Include="Contracts\ITextService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
+    <Compile Include="Contracts\IViewModelService.cs" />
     <Compile Include="DateTimeService.cs" />
     <Compile Include="ImageService.cs" />
     <Compile Include="MapperService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublicationService.cs" />
+    <Compile Include="SearchService.cs" />
     <Compile Include="StatisticService.cs" />
     <Compile Include="TextService.cs" />
     <Compile Include="UserService.cs" />
+    <Compile Include="ViewModelService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MeetMe.Data.Models\MeetMe.Data.Models.csproj">
@@ -82,6 +86,10 @@
     <ProjectReference Include="..\MeetMe.Data\MeetMe.Data.csproj">
       <Project>{F51420FD-1B11-4929-AD3F-D930A821D11F}</Project>
       <Name>MeetMe.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MeetMe.Web.Models\MeetMe.Web.Models.csproj">
+      <Project>{45ABBB85-9FBC-4DB5-886C-358A0D6473B2}</Project>
+      <Name>MeetMe.Web.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
