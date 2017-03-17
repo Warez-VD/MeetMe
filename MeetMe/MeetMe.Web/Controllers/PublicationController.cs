@@ -1,9 +1,6 @@
-﻿using Bytes2you.Validation;
+﻿using System.Web.Mvc;
+using Bytes2you.Validation;
 using MeetMe.Services.Contracts;
-using MeetMe.Web.Models.Publications;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
 
 namespace MeetMe.Web.Controllers
 {
@@ -15,39 +12,27 @@ namespace MeetMe.Web.Controllers
         private readonly IMapperService mapperService;
         private readonly IImageService imageService;
         private readonly ITextService textService;
+        private readonly IViewModelService viewModelService;
 
         public PublicationController(
             IPublicationService publicationService,
-            IMapperService mapperService,
-            IImageService imageService,
-            ITextService textService)
+            ITextService textService,
+            IViewModelService viewModelService)
         {
             Guard.WhenArgument(publicationService, "PublicationService").IsNull().Throw();
-            Guard.WhenArgument(mapperService, "MapperService").IsNull().Throw();
-            Guard.WhenArgument(imageService, "ImageService").IsNull().Throw();
             Guard.WhenArgument(textService, "TextService").IsNull().Throw();
+            Guard.WhenArgument(viewModelService, "ViewModelService").IsNull().Throw();
 
             this.publicationService = publicationService;
-            this.mapperService = mapperService;
-            this.imageService = imageService;
             this.textService = textService;
+            this.viewModelService = viewModelService;
         }
 
         [HttpGet]
         public ActionResult Publications(string id)
         {
             var publications = this.publicationService.UserPublications(id);
-            var model = new List<PublicationViewModel>();
-
-            foreach (var publication in publications)
-            {
-                var userImageUrl = this.imageService.ByteArrayToImageUrl(publication.Author.ProfileImage.Content);
-                string publicationImageUrl = this.imageService.ByteArrayToImageUrl(publication.Image.Content);
-                var mappedPublication = this.mapperService.MapObject<PublicationViewModel>(publication);
-                mappedPublication.AuthorImageUrl = userImageUrl;
-                mappedPublication.PublicationImageUrl = publicationImageUrl;
-                model.Add(mappedPublication);
-            }
+            var model = this.viewModelService.GetMappedPublications(publications);
 
             return this.PartialView("_PublicationPartial", model);
         }
@@ -67,18 +52,7 @@ namespace MeetMe.Web.Controllers
             }
 
             var publications = this.publicationService.UserPublications(userId);
-            var model = new List<PublicationViewModel>();
-
-            foreach (var publication in publications)
-            {
-                var userImageUrl = this.imageService.ByteArrayToImageUrl(publication.Author.ProfileImage.Content);
-                var publicationImageUrl = this.imageService.ByteArrayToImageUrl(publication.Image.Content);
-                var mappedPublication = this.mapperService.MapObject<PublicationViewModel>(publication);
-                mappedPublication.AuthorImageUrl = userImageUrl;
-
-                mappedPublication.PublicationImageUrl = publicationImageUrl;
-                model.Add(mappedPublication);
-            }
+            var model = this.viewModelService.GetMappedPublications(publications);
 
             return PartialView("_PublicationPartial", model);
         }
@@ -90,14 +64,8 @@ namespace MeetMe.Web.Controllers
             this.publicationService.CreatePublicationComment(id, comment, userId);
 
             var publication = this.publicationService.GetById(id);
-            var mappedPublication = this.mapperService.MapObject<PublicationViewModel>(publication);
-            foreach (var publicationComment in mappedPublication.Comments)
-            {
-                var userLogoUrl = this.imageService.ByteArrayToImageUrl(publicationComment.Image);
-                publicationComment.AuthorImageUrl = userLogoUrl;
-            }
+            var model = this.viewModelService.GetMappedComments(publication);
 
-            var model = mappedPublication.Comments.OrderByDescending(x => x.CreatedOn).ToList();
             return this.PartialView("_PublicationCommentPartial", model);
         }
 
@@ -105,14 +73,8 @@ namespace MeetMe.Web.Controllers
         public ActionResult Comments(int id)
         {
             var publication = this.publicationService.GetById(id);
-            var mappedPublication = this.mapperService.MapObject<PublicationViewModel>(publication);
-            foreach (var comment in mappedPublication.Comments)
-            {
-                var userLogoUrl = this.imageService.ByteArrayToImageUrl(comment.Image);
-                comment.AuthorImageUrl = userLogoUrl;
-            }
+            var model = this.viewModelService.GetMappedComments(publication);
 
-            var model = mappedPublication.Comments.OrderByDescending(x => x.CreatedOn).ToList();
             return this.PartialView("_PublicationCommentPartial", model);
         }
     }
