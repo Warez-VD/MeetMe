@@ -4,6 +4,7 @@ using NUnit.Framework;
 using Moq;
 using MeetMe.Data.Contracts;
 using MeetMe.Data.Models;
+using MeetMe.Services.Contracts;
 
 namespace MeetMe.Services.Tests.UserServiceTests
 {
@@ -16,6 +17,8 @@ namespace MeetMe.Services.Tests.UserServiceTests
             // Arrange
             string searchedId = "fifth";
             var mockedUserRepository = new Mock<IEFRepository<CustomUser>>();
+            var mockedFriendService = new Mock<IFriendService>();
+            var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var user = new CustomUser() { AspIdentityUserId = searchedId };
             var users = new List<CustomUser>()
             {
@@ -24,7 +27,10 @@ namespace MeetMe.Services.Tests.UserServiceTests
                 new CustomUser() { AspIdentityUserId = "third" }
             }.AsQueryable();
             mockedUserRepository.Setup(x => x.All).Returns(users);
-            var userService = new UserService(mockedUserRepository.Object);
+            var userService = new UserService(
+                mockedUserRepository.Object,
+                mockedFriendService.Object,
+                mockedUnitOfWork.Object);
 
             // Act
             var result = userService.GetByIndentityId(searchedId);
@@ -39,13 +45,18 @@ namespace MeetMe.Services.Tests.UserServiceTests
             // Arrange
             string searchedId = "fifth";
             var mockedUserRepository = new Mock<IEFRepository<CustomUser>>();
+            var mockedFriendService = new Mock<IFriendService>();
+            var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var users = new List<CustomUser>()
             {
                 new CustomUser() { AspIdentityUserId = "first" },
                 new CustomUser() { AspIdentityUserId = "third" }
             }.AsQueryable();
             mockedUserRepository.Setup(x => x.All).Returns(users);
-            var userService = new UserService(mockedUserRepository.Object);
+            var userService = new UserService(
+                mockedUserRepository.Object,
+                mockedFriendService.Object,
+                mockedUnitOfWork.Object);
 
             // Act
             var result = userService.GetByIndentityId(searchedId);

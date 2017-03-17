@@ -97,6 +97,7 @@ namespace MeetMe.Services.Tests.AccountServiceTests
 
             string firstName = "some";
             string lastName = "other";
+            string fullname = $"{firstName} {lastName}";
             string id = "asdf-dsg";
             string path = "test-path";
 
@@ -109,6 +110,7 @@ namespace MeetMe.Services.Tests.AccountServiceTests
                     x => x.CreateCustomUser(
                         It.Is<string>(f => f == firstName),
                         It.Is<string>(l => l == lastName),
+                        It.Is<string>(n => n == fullname),
                         It.Is<string>(i => i == id),
                         It.Is<ProfileImage>(p => p == logo)),
                         Times.Once);
@@ -124,6 +126,7 @@ namespace MeetMe.Services.Tests.AccountServiceTests
             mockedUserFactory
                 .Setup(
                     x => x.CreateCustomUser(
+                        It.IsAny<string>(),
                         It.IsAny<string>(),
                         It.IsAny<string>(),
                         It.IsAny<string>(),
