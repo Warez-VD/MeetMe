@@ -26,6 +26,7 @@ namespace MeetMe.Web.App_Start.NinjectModules
             this.Bind<IPublicationImageFactory>().ToFactory().InRequestScope();
             this.Bind<ICommentFactory>().ToFactory().InRequestScope();
             this.Bind<IUserFriendFactory>().ToFactory().InRequestScope();
+            this.Bind<INotificationFactory>().ToFactory().InRequestScope();
         }
     }
 }

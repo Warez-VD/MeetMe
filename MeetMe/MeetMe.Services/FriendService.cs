@@ -4,7 +4,6 @@ using System.Linq;
 using MeetMe.Data.Models;
 using MeetMe.Data.Contracts;
 using Bytes2you.Validation;
-using System;
 
 namespace MeetMe.Services
 {

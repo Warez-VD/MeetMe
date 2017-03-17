@@ -58,6 +58,8 @@
     <Compile Include="Contracts\IFriendService.cs" />
     <Compile Include="Contracts\IImageService.cs" />
     <Compile Include="Contracts\IMapperService.cs" />
+    <Compile Include="Contracts\INotificationFactory.cs" />
+    <Compile Include="Contracts\INotificationService.cs" />
     <Compile Include="Contracts\IProfileLogoFactory.cs" />
     <Compile Include="Contracts\IPublicationFactory.cs" />
     <Compile Include="Contracts\IPublicationImageFactory.cs" />
@@ -73,6 +75,7 @@
     <Compile Include="FriendService.cs" />
     <Compile Include="ImageService.cs" />
     <Compile Include="MapperService.cs" />
+    <Compile Include="NotificationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublicationService.cs" />
     <Compile Include="SearchService.cs" />

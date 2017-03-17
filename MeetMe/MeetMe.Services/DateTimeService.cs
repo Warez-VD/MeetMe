@@ -7,7 +7,7 @@ namespace MeetMe.Services
     {
         public DateTime GetCurrentDate()
         {
-            return DateTime.Now;
+            return DateTime.UtcNow;
         }
     }
 }

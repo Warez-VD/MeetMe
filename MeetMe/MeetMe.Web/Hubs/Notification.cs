@@ -16,19 +16,23 @@ namespace MeetMe.Web.Hubs
         private readonly IUserService userService;
         private readonly IStatisticService statisticService;
         private readonly IPublicationService publicationService;
+        private readonly INotificationService notificationService;
 
         public Notification(
             IUserService userService,
             IStatisticService statisticService,
-            IPublicationService publicationService)
+            IPublicationService publicationService,
+            INotificationService notificationService)
         {
             Guard.WhenArgument(userService, "UserService").IsNull().Throw();
             Guard.WhenArgument(statisticService, "StatisticService").IsNull().Throw();
             Guard.WhenArgument(publicationService, "PublicationService").IsNull().Throw();
+            Guard.WhenArgument(notificationService, "NotificationService").IsNull().Throw();
 
             this.userService = userService;
             this.statisticService = statisticService;
             this.publicationService = publicationService;
+            this.notificationService = notificationService;
         }
 
         public void SendNotification(string content, string userId)
@@ -37,6 +41,7 @@ namespace MeetMe.Web.Hubs
             var friendsIds = user.Friends.Select(x => x.AspIdentityUserId).ToList();
 
             this.statisticService.AddNotificationStatistic(userId);
+            // this.notificationService.CreateNotification(user.Id, content);
 
             //TODO: Only friends
             this.Clients.All.addNotification();

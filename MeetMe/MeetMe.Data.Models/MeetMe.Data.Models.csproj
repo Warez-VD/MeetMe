@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comment.cs" />
+    <Compile Include="Notification.cs" />
     <Compile Include="ProfileImage.cs" />
     <Compile Include="Publication.cs" />
     <Compile Include="PublicationImage.cs" />

@@ -45,6 +45,8 @@ namespace MeetMe.Data
 
         public virtual IDbSet<UserFriend> UserFriends { get; set; }
 
+        public virtual IDbSet<Notification> Notifications { get; set; }
+
         public virtual new IDbSet<T> Set<T>() where T : class
         {
             return base.Set<T>();
