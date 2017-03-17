@@ -1,4 +1,5 @@
-﻿@using MeetMe.Web.Models.Search
+﻿@using Microsoft.AspNet.Identity
+@using MeetMe.Web.Models.Search
 @model SearchViewModel
 
 @section styles {
@@ -7,29 +8,29 @@
 <div id="search">
     <hgroup>
         <h1>Search Results</h1>
-        <h2 class="lead"><strong class="text-danger">@Model.ResultsCount</strong> results were found for the search for <strong class="text-danger">@Model.SearchedPattern</strong></h2>
+        <h2 class="lead"><strong class="text-danger">@Model.ResultsCount</strong> results were found for the search for "<strong class="text-danger">@Model.SearchedPattern</strong>"</h2>
     </hgroup>
-    <ul class="search-list">
-        @foreach (var user in Model.FoundUsers)
-        {
-            <li class="search-item">
-                <a class="search-section" href="@Url.Action("Index", "Profile", new { id = user.Id })">
-                    <img src="@user.ImageUrl" width="100" height="100">
-                    <span class="username-color">@user.FullName</span>
-                </a>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    if (user.IsFriend)
-                    {
-                        <span class="btn btn-info pull-right">Friends</span>
-                    }
-                    else
-                    {
-                        <button class="btn btn-primary pull-right" type="button"><i class="glyphicon glyphicon-plus"></i> Add friend</button>
-                    }
-                }
-                <hr />
-            </li>
-        }
+    <ul class="search-list" id="all-results">
+        @Html.Partial("_SearchResultsPartial", Model.FoundUsers)
     </ul>
+    @if (Model.ResultsCount > 5)
+    {
+        using (Ajax.BeginForm("ShowMoreResults", "Search", new { pattern = Model.SearchedPattern, skip = 5, count = byte.MaxValue, userId = User.Identity.GetUserId() }, new AjaxOptions()
+        {
+            HttpMethod = "POST",
+            InsertionMode = InsertionMode.InsertAfter,
+            UpdateTargetId = "all-results",
+            OnSuccess = "hideShowMoreLink"
+        }, new { id = "showMoreResults" }))
+        {
+            @Html.AntiForgeryToken()
+            <h4 class="text-center">
+                <input type="submit" class="btn btn-block" value="Show more" />
+            </h4>
+        }
+    }
 </div>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/search.js")
+}

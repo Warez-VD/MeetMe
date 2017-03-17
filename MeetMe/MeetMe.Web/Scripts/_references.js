@@ -15,4 +15,5 @@
 /// <reference path="publication.js" />
 /// <reference path="requester.js" />
 /// <reference path="respond.js" />
+/// <reference path="search.js" />
 /// <reference path="toastr.min.js" />

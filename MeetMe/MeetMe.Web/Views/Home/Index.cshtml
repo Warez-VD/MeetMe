@@ -41,7 +41,7 @@
                                         </span>
                                     </li>
                                 }
-                                @if (Model.PersonalInfo.City != string.Empty)
+                                @if (Model.PersonalInfo.City != null)
                                 {
                                     <li>
                                         <span>
@@ -166,7 +166,6 @@ else
 }
 
 @section scripts {
-    @Scripts.Render("~/bundles/jqueryunobtrusive")
     @Scripts.Render("~/Scripts/notification.js")
     @Scripts.Render("~/Scripts/publication.js")
 }

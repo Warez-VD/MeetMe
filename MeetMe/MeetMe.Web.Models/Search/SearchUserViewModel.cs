@@ -8,6 +8,8 @@ namespace MeetMe.Web.Models.Search
     {
         public int Id { get; set; }
 
+        public string AspIdentityUserId { get; set; }
+
         public string FullName { get; set; }
 
         public string ImageUrl { get; set; }

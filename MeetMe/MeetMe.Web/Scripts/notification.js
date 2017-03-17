@@ -5,7 +5,7 @@ $(() => {
 
     var notification = $.connection.notification;
     ajaxSuccess();
-    // ajaxCommentSuccess();
+
     $(".btn-comment").on("click", (ev) => {
         let commentBtn = $(ev.target);
         let publicationAuthorId = commentBtn.attr("data-author");

@@ -12,11 +12,12 @@ namespace MeetMe.Data.Models
             this.Publications = new HashSet<Publication>();
         }
 
-        public CustomUser(string firstName, string lastName, string aspIdentityUserId, ProfileImage profileLogo)
+        public CustomUser(string firstName, string lastName, string fullname, string aspIdentityUserId, ProfileImage profileLogo)
             : this()
         {
             this.FirstName = firstName;
             this.LastName = lastName;
+            this.FullName = fullname;
             this.AspIdentityUserId = aspIdentityUserId;
             this.ProfileImage = profileLogo;
         }
@@ -32,6 +33,8 @@ namespace MeetMe.Data.Models
         [MinLength(3)]
         [MaxLength(50)]
         public string LastName { get; set; }
+
+        public string FullName { get; set; }
 
         public string AspIdentityUserId { get; set; }
         
@@ -51,7 +54,7 @@ namespace MeetMe.Data.Models
         public virtual ProfileImage ProfileImage { get; set; }
 
         public virtual ICollection<UserImage> Images { get; set; }
-
+        
         public virtual ICollection<CustomUser> Friends { get; set; }
 
         public virtual ICollection<Publication> Publications { get; set; }

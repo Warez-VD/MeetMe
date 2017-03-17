@@ -11,6 +11,7 @@ namespace MeetMe.Web.Hubs
     {
         private const string PublicationLike = "{0} liked your publication";
         private const string PublicationComment = "{0} commented your publication";
+        private const string FriendshipInvitation = "You have new friendship invitation";
 
         private readonly IUserService userService;
         private readonly IStatisticService statisticService;
@@ -66,6 +67,16 @@ namespace MeetMe.Web.Hubs
             var currentUser = this.userService.GetByIndentityId(currentUserId);
             string fullName = $"{currentUser.FirstName} {currentUser.LastName}";
             this.Clients.Group(publicationAuthorId).addNotification(string.Format(PublicationComment, fullName));
+        }
+
+        public void AddFriend(string currentUserId, int friendId)
+        {
+            //TODO: add as notification
+            var friend = this.userService.GetById(friendId);
+            this.statisticService.AddNotificationStatistic(friend.AspIdentityUserId);
+            this.userService.AddFriend(currentUserId, friendId);
+            this.Clients.Caller.addFriend(friendId);
+            this.Clients.Group(currentUserId).addNotification(FriendshipInvitation);
         }
 
         public override Task OnConnected()

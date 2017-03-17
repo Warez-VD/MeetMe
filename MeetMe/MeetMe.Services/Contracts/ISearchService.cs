@@ -5,6 +5,6 @@ namespace MeetMe.Services.Contracts
 {
     public interface ISearchService
     {
-        IEnumerable<SearchUserViewModel> SearchedUsers(string pattern, int skip, int count);
+        IEnumerable<SearchUserViewModel> SearchedUsers(string pattern, int skip, int count, string userId);
     }
 }

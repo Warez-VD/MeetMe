@@ -35,8 +35,12 @@
                     <div class="navbar-form navbar-right" role="search">
                         @using (Html.BeginForm("Index", "Search", FormMethod.Post, new { @class = "custom-autocomplete" }))
                         {
+                            @Html.AntiForgeryToken()
                             <div class="form-group">
                                 <input type="text" id="search-bar" name="pattern" class="form-control" placeholder="Search">
+                                <input type="hidden" name="skip" value="0" />
+                                <input type="hidden" name="count" value="5" />
+                                <input type="hidden" name="userId" value="@User.Identity.GetUserId()" />
                             </div>
                             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
                         }
@@ -50,8 +54,12 @@
                     <div class="navbar-form navbar-right" role="search">
                         @using (Html.BeginForm("Index", "Search", FormMethod.Post, new { @class = "custom-autocomplete" }))
                         {
+                            @Html.AntiForgeryToken()
                             <div class="form-group">
                                 <input type="text" id="search-bar" name="pattern" class="form-control" placeholder="Search">
+                                <input type="hidden" name="skip" value="0" />
+                                <input type="hidden" name="count" value="5" />
+                                <input type="hidden" name="userId" value="@User.Identity.GetUserId()" />
                             </div>
                             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
                         }
@@ -84,6 +92,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/toastr")
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryunobtrusive")
     @Scripts.Render("~/Scripts/jquery.signalR-2.2.1.js")
     @Scripts.Render("~/signalr/hubs")
     @Scripts.Render("~/Scripts/requester.js")

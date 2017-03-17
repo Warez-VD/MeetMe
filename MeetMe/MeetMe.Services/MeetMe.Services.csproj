@@ -55,6 +55,7 @@
     <Compile Include="Contracts\ICommentFactory.cs" />
     <Compile Include="Contracts\ICustomUserFactory.cs" />
     <Compile Include="Contracts\IDateTimeService.cs" />
+    <Compile Include="Contracts\IFriendService.cs" />
     <Compile Include="Contracts\IImageService.cs" />
     <Compile Include="Contracts\IMapperService.cs" />
     <Compile Include="Contracts\IProfileLogoFactory.cs" />
@@ -65,9 +66,11 @@
     <Compile Include="Contracts\IStatisticFactory.cs" />
     <Compile Include="Contracts\IStatisticService.cs" />
     <Compile Include="Contracts\ITextService.cs" />
+    <Compile Include="Contracts\IUserFriendFactory.cs" />
     <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="Contracts\IViewModelService.cs" />
     <Compile Include="DateTimeService.cs" />
+    <Compile Include="FriendService.cs" />
     <Compile Include="ImageService.cs" />
     <Compile Include="MapperService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

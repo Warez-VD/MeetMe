@@ -48,7 +48,8 @@ namespace MeetMe.Services
             var image = this.imageService.GetImage(path);
             var convertedImage = this.imageService.ImageToByteArray(image);
             var profileLogo = this.profileLogoFactory.CreateProfileImage(convertedImage);
-            var user = this.userFactory.CreateCustomUser(firstName, lastName, id, profileLogo);
+            string fullname = $"{firstName} {lastName}";
+            var user = this.userFactory.CreateCustomUser(firstName, lastName, fullname, id, profileLogo);
             this.userRepository.Add(user);
             this.unitOfWork.Commit();
         }

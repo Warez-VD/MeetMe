@@ -1,14 +1,17 @@
 ﻿using Bytes2you.Validation;
 using MeetMe.Services.Contracts;
 using MeetMe.Web.Models.Search;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace MeetMe.Web.Controllers
 {
     public class SearchController : Controller
     {
+        private const int DefaultUsersSkip = 0;
+        private const int DefaultUsersToShow = 5;
+
         private readonly ISearchService searchService;
 
         public SearchController(ISearchService searchService)
@@ -21,7 +24,8 @@ namespace MeetMe.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var results = this.searchService.SearchedUsers(string.Empty, 0, 50);
+            var userId = this.HttpContext.User.Identity.GetUserId();
+            var results = this.searchService.SearchedUsers(string.Empty, DefaultUsersSkip, DefaultUsersToShow, userId);
             var model = new SearchViewModel();
             model.SearchedPattern = string.Empty;
             model.ResultsCount = results.Count();
@@ -31,17 +35,30 @@ namespace MeetMe.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(string pattern)
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(string pattern, int skip, int count, string userId)
         {
+            var results = this.searchService.SearchedUsers(pattern, skip, count, userId);
             var model = new SearchViewModel();
             model.SearchedPattern = pattern;
-            model.ResultsCount = 1;
-            model.FoundUsers = new List<SearchUserViewModel>()
-            {
-                new SearchUserViewModel() { Id = 1, FullName = "John Smith", ImageUrl = "nqma", IsFriend = false }
-            };
+            model.ResultsCount = results.Count();
+            model.FoundUsers = results;
 
             return this.View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ShowMoreResults(string pattern, int skip, int count, string userId)
+        {
+            if (pattern == null)
+            {
+                pattern = string.Empty;
+            }
+
+            var results = this.searchService.SearchedUsers(pattern, skip, count, userId);
+
+            return this.PartialView("_SearchResultsPartial", results);
         }
     }
 }

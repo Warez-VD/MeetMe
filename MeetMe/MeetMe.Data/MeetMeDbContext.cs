@@ -3,6 +3,7 @@ using MeetMe.Data.Contracts;
 using MeetMe.Data.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace MeetMe.Data
 {
@@ -41,6 +42,8 @@ namespace MeetMe.Data
         public virtual IDbSet<Publication> Publications { get; set; }
                
         public virtual IDbSet<Statistic> Statistics { get; set; }
+
+        public virtual IDbSet<UserFriend> UserFriends { get; set; }
 
         public virtual new IDbSet<T> Set<T>() where T : class
         {

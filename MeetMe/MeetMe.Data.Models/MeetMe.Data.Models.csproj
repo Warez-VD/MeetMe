@@ -62,6 +62,7 @@
     <Compile Include="Publication.cs" />
     <Compile Include="PublicationImage.cs" />
     <Compile Include="Statistic.cs" />
+    <Compile Include="UserFriend.cs" />
     <Compile Include="UserImage.cs" />
     <Compile Include="AspIdentityUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
