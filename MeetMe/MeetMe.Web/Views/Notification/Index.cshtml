@@ -13,8 +13,11 @@
 {
     using (Ajax.BeginForm("RemoveAllNotifications", "Notification", new { id = User.Identity.GetUserId() }, new AjaxOptions
     {
-        HttpMethod = "POST"
-    }, new { @class = "format" }))
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "notifications-container",
+        OnSuccess = "hideRemoveAllNotifications"
+    }, new { @class = "format", id = "removeAllNotifications" }))
     {
         @Html.AntiForgeryToken()
         <button type="submit" class="pull-right btn btn-danger">Remove all</button>

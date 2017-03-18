@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Bytes2you.Validation;
 using MeetMe.Data.Contracts;
@@ -73,6 +74,20 @@ namespace MeetMe.Services
             var notification = this.notificationRepository.GetById(id);
             notification.IsDeleted = true;
             this.notificationRepository.Update(notification);
+            this.unitOfWork.Commit();
+        }
+
+        public void RemoveAllNotifications(string userId)
+        {
+            var notifications = this.notificationRepository.All
+                .Where(x => x.User.AspIdentityUserId == userId && x.IsDeleted == false);
+
+            foreach (var notification in notifications)
+            {
+                notification.IsDeleted = true;
+                this.notificationRepository.Update(notification);
+            }
+
             this.unitOfWork.Commit();
         }
     }

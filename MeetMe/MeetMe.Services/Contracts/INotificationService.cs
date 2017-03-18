@@ -10,5 +10,7 @@ namespace MeetMe.Services.Contracts
         IEnumerable<NotificationUserViewModel> UserNotifications(int skip, int count, string userId);
 
         void RemoveNotification(int id);
+
+        void RemoveAllNotifications(string userId);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Bytes2you.Validation;
 using MeetMe.Services.Contracts;
 using MeetMe.Web.Models.Notifications;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace MeetMe.Web.Controllers
@@ -41,6 +42,14 @@ namespace MeetMe.Web.Controllers
         {
             this.notificationService.RemoveNotification(id);
             var model = this.notificationService.UserNotifications(DefaultNotificationsSkip, DefaultNotificationsTake, userId);
+
+            return this.PartialView("_NotificationsPartial", model);
+        }
+
+        public ActionResult RemoveAllNotifications(string id)
+        {
+            this.notificationService.RemoveAllNotifications(id);
+            var model = new List<NotificationUserViewModel>();
 
             return this.PartialView("_NotificationsPartial", model);
         }
