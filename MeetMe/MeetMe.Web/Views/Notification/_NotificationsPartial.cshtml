@@ -1,4 +1,5 @@
-﻿@using MeetMe.Web.Models.Notifications
+﻿@using Microsoft.AspNet.Identity
+@using MeetMe.Web.Models.Notifications
 @model IEnumerable<NotificationUserViewModel>
 
 @foreach (var notification in Model)
@@ -7,11 +8,13 @@
         <div class="col-xs-12 col-sm-offset-3 col-sm-5">
             <div class="panel panel-default panel-google-plus">
                 <div class="panel-heading">
-                    @using (Ajax.BeginForm("RemoveNotification", "Notification", new { }, new AjaxOptions()
-                {
-                    HttpMethod = "POST"
-                }, new { @class = "format" }))
-                {
+                    @using (Ajax.BeginForm("RemoveNotification", "Notification", new { id = notification.Id, userId = User.Identity.GetUserId() }, new AjaxOptions()
+                    {
+                        HttpMethod = "POST",
+                        InsertionMode = InsertionMode.Replace,
+                        UpdateTargetId = "notifications-container"
+                    }, new { @class = "format" }))
+                    {
                         @Html.AntiForgeryToken()
                         <button type="submit" class="btn btn-link pull-right"><i class="glyphicon glyphicon-remove text-danger"></i></button>
                     }

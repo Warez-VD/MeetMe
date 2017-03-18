@@ -36,5 +36,13 @@ namespace MeetMe.Web.Controllers
 
             return this.PartialView("_NotificationsPartial", model);
         }
+
+        public ActionResult RemoveNotification(int id, string userId)
+        {
+            this.notificationService.RemoveNotification(id);
+            var model = this.notificationService.UserNotifications(DefaultNotificationsSkip, DefaultNotificationsTake, userId);
+
+            return this.PartialView("_NotificationsPartial", model);
+        }
     }
 }
