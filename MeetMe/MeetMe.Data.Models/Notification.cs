@@ -7,12 +7,14 @@ namespace MeetMe.Data.Models
     {
         public Notification() {}
 
-        public Notification(int userId, string content, DateTime createdOn, bool isFriendship)
+        public Notification(int userId, string content, DateTime createdOn, bool isFriendship, int targetId)
+            : this()
         {
             this.CustomUserId = userId;
             this.Content = content;
             this.CreatedOn = createdOn;
             this.IsFriendship = isFriendship;
+            this.TargetUserId = targetId;
         }
 
         public int Id { get; set; }
@@ -21,11 +23,11 @@ namespace MeetMe.Data.Models
 
         public virtual CustomUser User { get; set; }
 
+        public int TargetUserId { get; set; }
+
         public DateTime CreatedOn { get; set; }
 
         public bool IsFriendship { get; set; }
-
-        // TODO: Mark as read
 
         [MaxLength(150)]
         public string Content { get; set; }

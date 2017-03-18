@@ -28,19 +28,24 @@
                 @if (notification.IsFriendship)
                 {
                     <div class="panel-footer">
-                        @using (Ajax.BeginForm("AcceptFriendship", "Notification", new { }, new AjaxOptions()
-                    {
-                        HttpMethod = "POST"
-                    }, new { @class = "format" }))
-                    {
+                        @using (Ajax.BeginForm("AcceptFriendship", "Notification", new { id = User.Identity.GetUserId(), notificationId = notification.Id }, new AjaxOptions()
+                        {
+                            HttpMethod = "POST",
+                            InsertionMode = InsertionMode.Replace,
+                            UpdateTargetId = "notifications-container"
+                        }, new { @class = "format" }))
+                        {
                             @Html.AntiForgeryToken()
-                            <button type="submit" class="btn btn-success">Accept</button>
+                            <input type="hidden" name="authorId" value="@notification.AuthorId" />
+                            <button type="submit" data-id="@User.Identity.GetUserId()" data-receiverId="@notification.AuthorId" class="btn btn-success btn-accept">Accept</button>
                         }
-                        @using (Ajax.BeginForm("RejectFriendship", "Notification", new { }, new AjaxOptions()
-                    {
-                        HttpMethod = "POST"
-                    }, new { @class = "format" }))
-                    {
+                        @using (Ajax.BeginForm("RejectFriendship", "Notification", new { id = User.Identity.GetUserId(), authorId = notification.AuthorId, notificationId = notification.Id }, new AjaxOptions()
+                        {
+                            HttpMethod = "POST",
+                            InsertionMode = InsertionMode.Replace,
+                            UpdateTargetId = "notifications-container"
+                        }, new { @class = "format" }))
+                        {
                             @Html.AntiForgeryToken()
                             <button type="submit" class="btn btn-danger">Reject</button>
                         }

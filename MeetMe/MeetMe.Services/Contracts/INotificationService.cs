@@ -5,7 +5,7 @@ namespace MeetMe.Services.Contracts
 {
     public interface INotificationService
     {
-        void CreateNotification(int userId, string content, bool isFriendship);
+        void CreateNotification(int userId, string content, bool isFriendship, int targetId);
 
         IEnumerable<NotificationUserViewModel> UserNotifications(int skip, int count, string userId);
 

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Bytes2you.Validation;
 using MeetMe.Data.Contracts;
@@ -17,6 +16,7 @@ namespace MeetMe.Services
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapperService mapperService;
         private readonly IImageService imageService;
+        private readonly IUserService userService;
 
         public NotificationService(
             IEFRepository<Notification> notificationRepository,
@@ -24,7 +24,8 @@ namespace MeetMe.Services
             INotificationFactory notificationFactory,
             IUnitOfWork unitOfWork,
             IMapperService mapperService,
-            IImageService imageService)
+            IImageService imageService,
+            IUserService userService)
         {
             Guard.WhenArgument(notificationRepository, "NotificationRepository").IsNull().Throw();
             Guard.WhenArgument(dateTimeService, "DateTimeService").IsNull().Throw();
@@ -32,6 +33,7 @@ namespace MeetMe.Services
             Guard.WhenArgument(unitOfWork, "UnitOfWork").IsNull().Throw();
             Guard.WhenArgument(mapperService, "MapperService").IsNull().Throw();
             Guard.WhenArgument(imageService, "ImageService").IsNull().Throw();
+            Guard.WhenArgument(userService, "UserService").IsNull().Throw();
 
             this.notificationRepository = notificationRepository;
             this.dateTimeService = dateTimeService;
@@ -39,20 +41,24 @@ namespace MeetMe.Services
             this.unitOfWork = unitOfWork;
             this.mapperService = mapperService;
             this.imageService = imageService;
+            this.userService = userService;
         }
 
-        public void CreateNotification(int userId, string content, bool isFriendship)
+        public void CreateNotification(int userId, string content, bool isFriendship, int targetId)
         {
             var date = this.dateTimeService.GetCurrentDate();
-            var notification = this.notificationFactory.CreateNotification(userId, content, date, isFriendship);
+            var notification = this.notificationFactory.CreateNotification(userId, content, date, isFriendship, targetId);
+            
             this.notificationRepository.Add(notification);
             this.unitOfWork.Commit();
         }
 
         public IEnumerable<NotificationUserViewModel> UserNotifications(int skip, int count, string userId)
         {
+            var user = this.userService.GetByIndentityId(userId);
+
             var notifications = this.notificationRepository.All
-                .Where(x => x.User.AspIdentityUserId == userId && x.IsDeleted == false)
+                .Where(x => x.TargetUserId == user.Id && x.IsDeleted == false)
                 .OrderByDescending(x => x.CreatedOn)
                 .Skip(skip)
                 .Take(count)

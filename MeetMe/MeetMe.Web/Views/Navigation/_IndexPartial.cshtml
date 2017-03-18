@@ -9,26 +9,36 @@
             Home
         </a>
     </li>
-    <li>
-        <a href="@Url.Action("Index", "Notification", new { id = User.Identity.GetUserId() })">
-            <span class="fa fa-bell"></span>
-            Notifications <span id="notificationCount">
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Notifications <span class="fa fa-bell"></span><span id="notificationCount">
                 @if (Model.NotificationsCount != 0)
                 {
                     @Model.NotificationsCount
                 }
             </span>
+
         </a>
-    </li>
-    <li>
-        <a href="@Url.Action("Message", "Home")">
-            <span class="fa fa-envelope"></span>
-            Messages <span id="messageCount">
-                @if (Model.MessagesCount != 0)
-                {
-                    @Model.MessagesCount
-                }
-            </span>
-        </a>
-    </li>
+        <ul class="dropdown-menu">
+            <li>
+                @Ajax.ActionLink("Mark visited", "MarkVisited", "Notification", new { id = User.Identity.GetUserId() }, new AjaxOptions
+           {
+               HttpMethod = "POST",
+               OnSuccess = "removeNotificationCount"
+           })
+        </li>
+        <li><a href="@Url.Action("Index", "Notification", new { id = User.Identity.GetUserId() })">Show notifications</a></li>
+    </ul>
+</li>
+<li>
+    <a href="@Url.Action("Message", "Home")">
+        <span class="fa fa-envelope"></span>
+        Messages <span id="messageCount">
+            @if (Model.MessagesCount != 0)
+            {
+                @Model.MessagesCount
+            }
+        </span>
+    </a>
+</li>
 </ul>

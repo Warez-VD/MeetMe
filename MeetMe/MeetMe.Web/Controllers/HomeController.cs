@@ -48,7 +48,7 @@ namespace MeetMe.Web.Controllers
                 model.PersonalInfo = this.viewModelService.GetMappedPersonalInfo(user);
             }
 
-            return View(model);
+            return this.View(model);
         }
 
         [HttpGet]
@@ -56,7 +56,7 @@ namespace MeetMe.Web.Controllers
         {
             ViewBag.Message = "Your application description page.";
 
-            return View();
+            return this.View();
         }
 
         public ApplicationSignInManager SignInManager

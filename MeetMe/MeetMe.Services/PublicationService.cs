@@ -63,10 +63,10 @@ namespace MeetMe.Services
             var user = this.userService.GetByIndentityId(userId);
             var friendsPublications = new List<Publication>();
 
-            foreach (var friend in user.Friends)
-            {
-                friendsPublications.AddRange(friend.Publications);
-            }
+            //foreach (var friend in user.Friends)
+            //{
+            //    friendsPublications.AddRange(friend.Publications);
+            //}
 
             return friendsPublications
                 .OrderByDescending(x => x.CreatedOn)

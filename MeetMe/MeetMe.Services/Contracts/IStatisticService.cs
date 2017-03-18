@@ -10,6 +10,10 @@ namespace MeetMe.Services.Contracts
 
         void AddMessageStatistic(string userId);
 
+        void RemoveNotificationStatistic(string userId);
+
         Statistic GetUserStatistic(string userId);
+
+        void MarkAsVisitedNotifications(string userId);
     }
 }

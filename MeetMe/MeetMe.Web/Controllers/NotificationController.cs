@@ -12,12 +12,21 @@ namespace MeetMe.Web.Controllers
         private const int DefaultNotificationsTake = 20;
 
         private readonly INotificationService notificationService;
+        private readonly IStatisticService statisticService;
+        private readonly IUserService userService;
 
-        public NotificationController(INotificationService notificationService)
+        public NotificationController(
+            INotificationService notificationService,
+            IStatisticService statisticService,
+            IUserService userService)
         {
             Guard.WhenArgument(notificationService, "NotificationService").IsNull().Throw();
+            Guard.WhenArgument(statisticService, "StatisticService").IsNull().Throw();
+            Guard.WhenArgument(userService, "UserService").IsNull().Throw();
 
             this.notificationService = notificationService;
+            this.statisticService = statisticService;
+            this.userService = userService;
         }
 
         [HttpGet]
@@ -38,6 +47,8 @@ namespace MeetMe.Web.Controllers
             return this.PartialView("_NotificationsPartial", model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult RemoveNotification(int id, string userId)
         {
             this.notificationService.RemoveNotification(id);
@@ -46,10 +57,30 @@ namespace MeetMe.Web.Controllers
             return this.PartialView("_NotificationsPartial", model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult RemoveAllNotifications(string id)
         {
             this.notificationService.RemoveAllNotifications(id);
+            this.statisticService.MarkAsVisitedNotifications(id);
             var model = new List<NotificationUserViewModel>();
+
+            return this.PartialView("_NotificationsPartial", model);
+        }
+
+        [HttpPost]
+        public void MarkVisited(string id)
+        {
+            this.statisticService.MarkAsVisitedNotifications(id);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AcceptFriendship(string id, int authorId, int notificationId)
+        {
+            this.userService.AddFriend(id, authorId);
+            this.notificationService.RemoveNotification(notificationId);
+            var model = this.notificationService.UserNotifications(DefaultNotificationsSkip, DefaultNotificationsTake, id);
 
             return this.PartialView("_NotificationsPartial", model);
         }

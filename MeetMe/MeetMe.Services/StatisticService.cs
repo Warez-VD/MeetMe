@@ -63,5 +63,22 @@ namespace MeetMe.Services
 
             return statistic;
         }
+
+        public void MarkAsVisitedNotifications(string userId)
+        {
+            var statistic = this.GetUserStatistic(userId);
+            statistic.NotificationsCount = 0;
+            this.statisticRepository.Update(statistic);
+            this.unitOfWork.Commit();
+        }
+
+        public void RemoveNotificationStatistic(string userId)
+        {
+            var user = this.userService.GetByIndentityId(userId);
+            var statistic = this.statisticRepository.All.Where(x => x.CustomUserId == user.Id).FirstOrDefault();
+            statistic.NotificationsCount--;
+            this.statisticRepository.Update(statistic);
+            this.unitOfWork.Commit();
+        }
     }
 }

@@ -8,8 +8,8 @@ namespace MeetMe.Data.Models
         public CustomUser()
         {
             this.Images = new HashSet<UserImage>();
-            this.Friends = new HashSet<CustomUser>();
             this.Publications = new HashSet<Publication>();
+            this.Notifications = new HashSet<Notification>();
         }
 
         public CustomUser(string firstName, string lastName, string fullname, string aspIdentityUserId, ProfileImage profileLogo)
@@ -54,9 +54,9 @@ namespace MeetMe.Data.Models
         public virtual ProfileImage ProfileImage { get; set; }
 
         public virtual ICollection<UserImage> Images { get; set; }
-        
-        public virtual ICollection<CustomUser> Friends { get; set; }
 
         public virtual ICollection<Publication> Publications { get; set; }
+
+        public virtual ICollection<Notification> Notifications { get; set; }
     }
 }
