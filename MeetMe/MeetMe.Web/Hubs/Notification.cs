@@ -41,7 +41,7 @@ namespace MeetMe.Web.Hubs
             var friendsIds = user.Friends.Select(x => x.AspIdentityUserId).ToList();
 
             this.statisticService.AddNotificationStatistic(userId);
-            // this.notificationService.CreateNotification(user.Id, content);
+            this.notificationService.CreateNotification(user.Id, content, false);
 
             //TODO: Only friends
             this.Clients.All.addNotification();

@@ -12,6 +12,7 @@
 /// <reference path="jquery-ui-1.12.1.min.js" />
 /// <reference path="modernizr-2.6.2.js" />
 /// <reference path="notification.js" />
+/// <reference path="notifications-view.js" />
 /// <reference path="publication.js" />
 /// <reference path="requester.js" />
 /// <reference path="respond.js" />

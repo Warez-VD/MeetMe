@@ -1,4 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity
+@using MeetMe.Web.Models.Notifications
+@model NotificationViewModel
 
 @section styles {
     <link href="~/Content/notification.css" rel="stylesheet" type="text/css" />
@@ -6,7 +8,10 @@
 
 <div>
     <h1>Notifications</h1>
-    @using (Ajax.BeginForm("RemoveAllNotifications", "Notification", new { id = User.Identity.GetUserId() }, new AjaxOptions
+</div>
+@if (Model.Notifications.Count() != 0)
+{
+    using (Ajax.BeginForm("RemoveAllNotifications", "Notification", new { id = User.Identity.GetUserId() }, new AjaxOptions
     {
         HttpMethod = "POST"
     }, new { @class = "format" }))
@@ -14,5 +19,35 @@
         @Html.AntiForgeryToken()
         <button type="submit" class="pull-right btn btn-danger">Remove all</button>
     }
+}
+
+<div id="notifications-container">
+    @if (Model.Notifications.Count() == 0)
+    {
+        <h4 class="text-info text-center">Currently you don't have notifications</h4>
+    }
+    else
+    {
+        @Html.Partial("_NotificationsPartial", Model.Notifications)
+    }
 </div>
-@Html.Action("Notifications", "Notification", new { id = User.Identity.GetUserId() })
+@if (Model.Notifications.Count() > 19)
+{
+    using (Ajax.BeginForm("ShowMoreResults", "Notification", new { skip = 20, count = byte.MaxValue, userId = User.Identity.GetUserId() }, new AjaxOptions()
+    {
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.InsertAfter,
+        UpdateTargetId = "notifications-container",
+        OnSuccess = "hideShowMoreLink"
+    }, new { id = "showMoreResults", @class = "moreResults" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4 class="text-center">
+            <input type="submit" class="btn btn-block" value="Show more" />
+        </h4>
+    }
+}
+
+@section scripts {
+    @Scripts.Render("~/Scripts/notifications-view.js")
+}

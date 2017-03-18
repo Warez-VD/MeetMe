@@ -1,4 +1,5 @@
-﻿@using MeetMe.Web.Models.Navigation
+﻿@using Microsoft.AspNet.Identity
+@using MeetMe.Web.Models.Navigation
 @model StatisticViewModel
 
 <ul class="nav navbar-nav pull-left">
@@ -9,7 +10,7 @@
         </a>
     </li>
     <li>
-        <a href="@Url.Action("Notification", "Home")">
+        <a href="@Url.Action("Index", "Notification", new { id = User.Identity.GetUserId() })">
             <span class="fa fa-bell"></span>
             Notifications <span id="notificationCount">
                 @if (Model.NotificationsCount != 0)

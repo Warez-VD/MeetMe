@@ -1,37 +1,38 @@
-﻿using MeetMe.Web.Models.Notifications;
-using System;
-using System.Collections.Generic;
+﻿using Bytes2you.Validation;
+using MeetMe.Services.Contracts;
+using MeetMe.Web.Models.Notifications;
 using System.Web.Mvc;
 
 namespace MeetMe.Web.Controllers
 {
     public class NotificationController : Controller
     {
-        public ActionResult Index()
+        private const int DefaultNotificationsSkip = 0;
+        private const int DefaultNotificationsTake = 20;
+
+        private readonly INotificationService notificationService;
+
+        public NotificationController(INotificationService notificationService)
         {
-            return this.View();
+            Guard.WhenArgument(notificationService, "NotificationService").IsNull().Throw();
+
+            this.notificationService = notificationService;
         }
 
         [HttpGet]
-        public ActionResult Notifications(string id)
+        public ActionResult Index(string id)
         {
-            var model = new List<NotificationViewModel>()
-            {
-                new NotificationViewModel()
-                {
-                    Author = "Mancho",
-                    Content = "Some content",
-                    CreatedOn = DateTime.UtcNow,
-                    IsFriendship = false
-                },
-                new NotificationViewModel()
-                {
-                    Author = "Papinho",
-                    Content = "Some other content",
-                    CreatedOn = DateTime.UtcNow,
-                    IsFriendship = true
-                }
-            };
+            var model = new NotificationViewModel();
+            model.Notifications = this.notificationService.UserNotifications(DefaultNotificationsSkip, DefaultNotificationsTake, id);
+
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ShowMoreResults(int skip, int count, string userId)
+        {
+            var model = this.notificationService.UserNotifications(skip, count, userId);
 
             return this.PartialView("_NotificationsPartial", model);
         }

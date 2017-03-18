@@ -2,6 +2,15 @@
     display: inline;
 }
 
+.notification-img {
+    width: 10%;
+    height: 10%;
+}
+
+.moreResults {
+    margin-left: 33%;
+}
+
 .panel-google-plus {
     position: relative;
     border-radius: 0px;
