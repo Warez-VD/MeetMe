@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace MeetMe.Services.Contracts
+﻿namespace MeetMe.Services.Contracts
 {
     public interface INotificationService
     {
-        void CreateNotification(int userId, string content);
+        void CreateNotification(int userId, string content, bool isFriendship);
     }
 }

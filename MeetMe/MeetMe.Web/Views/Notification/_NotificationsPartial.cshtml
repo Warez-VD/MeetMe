@@ -1,0 +1,58 @@
+﻿@using MeetMe.Web.Models.Notifications
+@model IEnumerable<NotificationViewModel>
+
+<div id="notifications-container">
+    @if (Model.Count() == 0)
+    {
+        <h4 class="text-info">Currently you don't have notifications</h4>
+    }
+    else
+    {
+        foreach (var notification in Model)
+        {
+            <div class="row">
+                <div class="col-xs-12 col-sm-offset-3 col-sm-5">
+                    <div class="panel panel-default panel-google-plus">
+                        <div class="panel-heading">
+                            @using (Ajax.BeginForm("RemoveNotification", "Notification", new { }, new AjaxOptions()
+                            {
+                                HttpMethod = "POST"
+                            }, new { @class = "format" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-link pull-right"><i class="glyphicon glyphicon-remove text-danger"></i></button>
+                            }
+                            <img class="img-circle pull-left" src="@notification.AuthorImageUrl" alt="Notification image" />
+                            <h3>@notification.Author</h3>
+                            <h5><span>Shared publicly</span> - <span>@notification.CreatedOn</span> </h5>
+                        </div>
+                        <div class="panel-body">
+                            <p>@notification.Content</p>
+                        </div>
+                        @if (notification.IsFriendship)
+                        {
+                            <div class="panel-footer">
+                                @using (Ajax.BeginForm("AcceptFriendship", "Notification", new { }, new AjaxOptions()
+                                {
+                                    HttpMethod = "POST"
+                                }, new { @class = "format" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-success">Accept</button>
+                                }
+                                @using (Ajax.BeginForm("RejectFriendship", "Notification", new { }, new AjaxOptions()
+                                {
+                                    HttpMethod = "POST"
+                                }, new { @class = "format" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-danger">Reject</button>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

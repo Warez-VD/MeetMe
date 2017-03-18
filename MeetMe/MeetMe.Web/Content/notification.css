@@ -1,0 +1,38 @@
+﻿.format {
+    display: inline;
+}
+
+.panel-google-plus {
+    position: relative;
+    border-radius: 0px;
+    border: 1px solid rgb(216, 216, 216);
+    font-family: 'Roboto', sans-serif;
+}
+
+    .panel-google-plus > .panel-heading {
+        margin-top: 20px;
+        padding-bottom: 5px;
+        background-color: rgb(255, 255, 255);
+        border-width: 0px;
+    }
+
+        .panel-google-plus > .panel-heading > img {
+            margin-right: 15px;
+        }
+
+        .panel-google-plus > .panel-heading > h3 {
+            margin: 0px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .panel-google-plus > .panel-heading > h5 {
+            color: rgb(153, 153, 153);
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+    .panel-google-plus > .panel-body {
+        padding-top: 5px;
+        font-size: 13px;
+    }

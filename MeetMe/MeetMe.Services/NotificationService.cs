@@ -29,10 +29,10 @@ namespace MeetMe.Services
             this.unitOfWork = unitOfWork;
         }
 
-        public void CreateNotification(int userId, string content)
+        public void CreateNotification(int userId, string content, bool isFriendship)
         {
             var date = this.dateTimeService.GetCurrentDate();
-            var notification = this.notificationFactory.CreateNotification(userId, content, date);
+            var notification = this.notificationFactory.CreateNotification(userId, content, date, isFriendship);
             this.notificationRepository.Add(notification);
             this.unitOfWork.Commit();
         }

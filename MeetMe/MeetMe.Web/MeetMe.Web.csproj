@@ -242,6 +242,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\SignalRConfig.cs" />
     <Compile Include="Controllers\NavigationController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="App_Start\NinjectConfig.cs" />
     <Compile Include="App_Start\NinjectModules\DataModule.cs" />
@@ -268,6 +269,7 @@
     <Content Include="Content\home.css" />
     <Content Include="Content\home.jpg" />
     <Content Include="Content\logo.png" />
+    <Content Include="Content\notification.css" />
     <Content Include="Content\publication.css" />
     <Content Include="Content\search.css" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -390,6 +392,8 @@
     <Content Include="Views\Publication\_PublicationCommentPartial.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Search\_SearchResultsPartial.cshtml" />
+    <Content Include="Views\Notification\Index.cshtml" />
+    <Content Include="Views\Notification\_NotificationsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -60,7 +60,6 @@ namespace MeetMe.Web.Hubs
 
         public void AddDislikeNotification(int id, string elementId)
         {
-            //TODO: add as notification
             this.publicationService.AddDislike(id);
             this.Clients.Caller.dislikePublication(elementId);
         }

@@ -53,6 +53,7 @@
     <Compile Include="Home\ProfilePartialViewModel.cs" />
     <Compile Include="Home\RegisterViewModel.cs" />
     <Compile Include="Navigation\StatisticViewModel.cs" />
+    <Compile Include="Notifications\NotificationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publications\CommentViewModel.cs" />
     <Compile Include="Publications\PublicationViewModel.cs" />

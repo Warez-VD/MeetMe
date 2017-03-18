@@ -5,6 +5,6 @@ namespace MeetMe.Services.Contracts
 {
     public interface INotificationFactory
     {
-        Notification CreateNotification(int userId, string content, DateTime createdOn);
+        Notification CreateNotification(int userId, string content, DateTime createdOn, bool isNotification);
     }
 }

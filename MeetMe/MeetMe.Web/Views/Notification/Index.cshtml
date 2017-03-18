@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNet.Identity
+
+@section styles {
+    <link href="~/Content/notification.css" rel="stylesheet" type="text/css" />
+}
+
+<div>
+    <h1>Notifications</h1>
+    @using (Ajax.BeginForm("RemoveAllNotifications", "Notification", new { id = User.Identity.GetUserId() }, new AjaxOptions
+    {
+        HttpMethod = "POST"
+    }, new { @class = "format" }))
+    {
+        @Html.AntiForgeryToken()
+        <button type="submit" class="pull-right btn btn-danger">Remove all</button>
+    }
+</div>
+@Html.Action("Notifications", "Notification", new { id = User.Identity.GetUserId() })
