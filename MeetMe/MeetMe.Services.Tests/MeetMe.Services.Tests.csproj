@@ -86,6 +86,9 @@
     <Compile Include="CommentServiceTests\Constructor_Should.cs" />
     <Compile Include="CommentServiceTests\CreatePublicationComment_Should.cs" />
     <Compile Include="DateTimeServiceTests\GetCurrentDate_Should.cs" />
+    <Compile Include="FriendServiceTests\AddFriendship_Should.cs" />
+    <Compile Include="FriendServiceTests\Constructor_Should.cs" />
+    <Compile Include="FriendServiceTests\GetAllUserFriendsIds_Should.cs" />
     <Compile Include="ImageServiceTests\ByteArrayToImageUrl_Should.cs" />
     <Compile Include="ImageServiceTests\GetImage_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

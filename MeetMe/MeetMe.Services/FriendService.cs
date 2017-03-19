@@ -38,12 +38,10 @@ namespace MeetMe.Services
             this.unitOfWork.Commit();
         }
 
+        // TODO: unit test
         public ICollection<CustomUser> GetAllUserFriends(int id)
         {
-            var friendIds = this.userFriendRepository.All
-                .Where(x => x.UserId == id)
-                .Select(x => x.FriendId)
-                .ToList();
+            var friendIds = this.GetAllUserFriendsIds(id);
             var result = new List<CustomUser>();
 
             foreach (var friendId in friendIds)
