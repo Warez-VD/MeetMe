@@ -14,7 +14,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         public void ThrowsWhen_PublicationRepositoryIsNull()
         {
             // Arrange
-            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
+            var mockedFriendsService = new Mock<IFriendService>();
             var mockedUserService = new Mock<IUserService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
@@ -25,7 +25,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             // Act
             var ex = Assert.Throws<ArgumentNullException>(() => new PublicationService(
                 null,
-                mockedFriendsRepository.Object,
+                mockedFriendsService.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
@@ -38,7 +38,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         }
 
         [Test]
-        public void ThrowsWhen_FriendsRepositoryIsNull()
+        public void ThrowsWhen_FriendsServiceIsNull()
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
@@ -61,7 +61,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
                 mockedCommentService.Object));
 
             // Assert
-            Assert.That(ex.Message.Contains("FriendsRepository"));
+            Assert.That(ex.Message.Contains("FriendService"));
         }
 
         [Test]
@@ -69,7 +69,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
+            var mockedFriendsService = new Mock<IFriendService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
             var mockedDateTimeService = new Mock<IDateTimeService>();
@@ -79,7 +79,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             // Act
             var ex = Assert.Throws<ArgumentNullException>(() => new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedFriendsRepository.Object,
+                mockedFriendsService.Object,
                 null,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
@@ -96,7 +96,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
+            var mockedFriendsService = new Mock<IFriendService>();
             var mockedUserService = new Mock<IUserService>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
             var mockedDateTimeService = new Mock<IDateTimeService>();
@@ -106,7 +106,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             // Act
             var ex = Assert.Throws<ArgumentNullException>(() => new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedFriendsRepository.Object,
+                mockedFriendsService.Object,
                 mockedUserService.Object,
                 null,
                 mockedPublicationFactory.Object,
@@ -123,7 +123,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
+            var mockedFriendsService = new Mock<IFriendService>();
             var mockedUserService = new Mock<IUserService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedDateTimeService = new Mock<IDateTimeService>();
@@ -133,7 +133,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             // Act
             var ex = Assert.Throws<ArgumentNullException>(() => new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedFriendsRepository.Object,
+                mockedFriendsService.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 null,
@@ -150,7 +150,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
+            var mockedFriendsService = new Mock<IFriendService>();
             var mockedUserService = new Mock<IUserService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
@@ -160,7 +160,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             // Act
             var ex = Assert.Throws<ArgumentNullException>(() => new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedFriendsRepository.Object,
+                mockedFriendsService.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
@@ -177,7 +177,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
+            var mockedFriendsService = new Mock<IFriendService>();
             var mockedUserService = new Mock<IUserService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
@@ -187,7 +187,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             // Act
             var ex = Assert.Throws<ArgumentNullException>(() => new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedFriendsRepository.Object,
+                mockedFriendsService.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
@@ -204,7 +204,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
+            var mockedFriendsService = new Mock<IFriendService>();
             var mockedUserService = new Mock<IUserService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
@@ -214,7 +214,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             // Act
             var ex = Assert.Throws<ArgumentNullException>(() => new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedFriendsRepository.Object,
+                mockedFriendsService.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
@@ -231,7 +231,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
+            var mockedFriendsService = new Mock<IFriendService>();
             var mockedUserService = new Mock<IUserService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
@@ -242,7 +242,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             // Act
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedFriendsRepository.Object,
+                mockedFriendsService.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,

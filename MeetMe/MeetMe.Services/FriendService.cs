@@ -55,7 +55,7 @@ namespace MeetMe.Services
             return result;
         }
 
-        public IEnumerable<int> GetAllUserFriendsIds(int id)
+        public ICollection<int> GetAllUserFriendsIds(int id)
         {
             var friendIds = this.userFriendRepository.All
                 .Where(x => x.UserId == id)

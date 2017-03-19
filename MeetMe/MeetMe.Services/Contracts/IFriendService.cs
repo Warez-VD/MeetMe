@@ -7,7 +7,7 @@ namespace MeetMe.Services.Contracts
     {
         ICollection<CustomUser> GetAllUserFriends(int id);
 
-        IEnumerable<int> GetAllUserFriendsIds(int id);
+        ICollection<int> GetAllUserFriendsIds(int id);
 
         void AddFriendship(int userId, string friendIdentityId, int friendId);
     }

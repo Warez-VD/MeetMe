@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
 using Moq;
 using MeetMe.Data.Contracts;
@@ -21,7 +17,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
             var publication = new Publication();
             mockedPublicationRepository.Setup(x => x.GetById(It.IsAny<int>())).Returns(publication);
-            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
+            var mockedFriendsService = new Mock<IFriendService>();
             var mockedUserService = new Mock<IUserService>();
             var user = new CustomUser();
             mockedUserService.Setup(x => x.GetByIndentityId(It.IsAny<string>())).Returns(user);
@@ -33,7 +29,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
 
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedFriendsRepository.Object,
+                mockedFriendsService.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
@@ -58,7 +54,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
             var publication = new Publication();
             mockedPublicationRepository.Setup(x => x.GetById(It.IsAny<int>())).Returns(publication);
-            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
+            var mockedFriendsService = new Mock<IFriendService>();
             var mockedUserService = new Mock<IUserService>();
             var user = new CustomUser();
             mockedUserService.Setup(x => x.GetByIndentityId(It.IsAny<string>())).Returns(user);
@@ -70,7 +66,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
 
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedFriendsRepository.Object,
+                mockedFriendsService.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
@@ -95,7 +91,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
             var publication = new Publication();
             mockedPublicationRepository.Setup(x => x.GetById(It.IsAny<int>())).Returns(publication);
-            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
+            var mockedFriendsService = new Mock<IFriendService>();
             var mockedUserService = new Mock<IUserService>();
             var user = new CustomUser();
             mockedUserService.Setup(x => x.GetByIndentityId(It.IsAny<string>())).Returns(user);
@@ -107,7 +103,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
 
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedFriendsRepository.Object,
+                mockedFriendsService.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
@@ -133,7 +129,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
             var publication = new Publication();
             mockedPublicationRepository.Setup(x => x.GetById(It.IsAny<int>())).Returns(publication);
-            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
+            var mockedFriendsService = new Mock<IFriendService>();
             var mockedUserService = new Mock<IUserService>();
             var user = new CustomUser() { Id = 14 };
             mockedUserService.Setup(x => x.GetByIndentityId(It.IsAny<string>())).Returns(user);
@@ -147,7 +143,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
 
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedFriendsRepository.Object,
+                mockedFriendsService.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
@@ -178,7 +174,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
             var publication = new Publication();
             mockedPublicationRepository.Setup(x => x.GetById(It.IsAny<int>())).Returns(publication);
-            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
+            var mockedFriendsService = new Mock<IFriendService>();
             var mockedUserService = new Mock<IUserService>();
             var user = new CustomUser() { Id = 14 };
             mockedUserService.Setup(x => x.GetByIndentityId(It.IsAny<string>())).Returns(user);
@@ -192,7 +188,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
 
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedFriendsRepository.Object,
+                mockedFriendsService.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
@@ -217,7 +213,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
             var publication = new Publication();
             mockedPublicationRepository.Setup(x => x.GetById(It.IsAny<int>())).Returns(publication);
-            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
+            var mockedFriendsService = new Mock<IFriendService>();
             var mockedUserService = new Mock<IUserService>();
             var user = new CustomUser() { Id = 14 };
             mockedUserService.Setup(x => x.GetByIndentityId(It.IsAny<string>())).Returns(user);
@@ -231,7 +227,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
 
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedFriendsRepository.Object,
+                mockedFriendsService.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
@@ -256,7 +252,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
             var publication = new Publication();
             mockedPublicationRepository.Setup(x => x.GetById(It.IsAny<int>())).Returns(publication);
-            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
+            var mockedFriendsService = new Mock<IFriendService>();
             var mockedUserService = new Mock<IUserService>();
             var user = new CustomUser() { Id = 14 };
             mockedUserService.Setup(x => x.GetByIndentityId(It.IsAny<string>())).Returns(user);
@@ -270,7 +266,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
 
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedFriendsRepository.Object,
+                mockedFriendsService.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,

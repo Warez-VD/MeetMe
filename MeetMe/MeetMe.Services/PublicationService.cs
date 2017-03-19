@@ -10,7 +10,7 @@ namespace MeetMe.Services
     public class PublicationService : IPublicationService
     {
         private readonly IEFRepository<Publication> publicationRepository;
-        private readonly IEFRepository<UserFriend> friendsRepository;
+        private readonly IFriendService friendService;
         private readonly IUserService userService;
         private readonly IUnitOfWork unitOfWork;
         private readonly IPublicationFactory publicationFactory;
@@ -20,7 +20,7 @@ namespace MeetMe.Services
 
         public PublicationService(
             IEFRepository<Publication> publicationRepository,
-            IEFRepository<UserFriend> friendsRepository,
+            IFriendService friendService,
             IUserService userService,
             IUnitOfWork unitOfWork,
             IPublicationFactory publicationFactory,
@@ -29,7 +29,7 @@ namespace MeetMe.Services
             ICommentService commentService)
         {
             Guard.WhenArgument(publicationRepository, "PublicationRepository").IsNull().Throw();
-            Guard.WhenArgument(friendsRepository, "FriendsRepository").IsNull().Throw();
+            Guard.WhenArgument(friendService, "FriendService").IsNull().Throw();
             Guard.WhenArgument(userService, "UserService").IsNull().Throw();
             Guard.WhenArgument(unitOfWork, "UnitOfWork").IsNull().Throw();
             Guard.WhenArgument(publicationFactory, "PublicationFactory").IsNull().Throw();
@@ -38,7 +38,7 @@ namespace MeetMe.Services
             Guard.WhenArgument(commentService, "CommentService").IsNull().Throw();
 
             this.publicationRepository = publicationRepository;
-            this.friendsRepository = friendsRepository;
+            this.friendService = friendService;
             this.userService = userService;
             this.unitOfWork = unitOfWork;
             this.publicationFactory = publicationFactory;
@@ -60,10 +60,7 @@ namespace MeetMe.Services
         public IEnumerable<Publication> FriendsPublications(string userId, int skip, int count)
         {
             var user = this.userService.GetByIndentityId(userId);
-            var friendsIds = this.friendsRepository.All
-                .Where(x => x.UserId == user.Id)
-                .Select(x => x.FriendId)
-                .ToList();
+            var friendsIds = this.friendService.GetAllUserFriendsIds(user.Id);
             friendsIds.Add(user.Id);
 
             var friendsPublications = this.publicationRepository

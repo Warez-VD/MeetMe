@@ -16,7 +16,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
             var publication = new Publication();
             mockedPublicationRepository.Setup(x => x.GetById(It.IsAny<int>())).Returns(publication);
-            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
+            var mockedFriendsService = new Mock<IFriendService>();
             var mockedUserService = new Mock<IUserService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
@@ -26,7 +26,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
 
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedFriendsRepository.Object,
+                mockedFriendsService.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
@@ -49,7 +49,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
             var publication = new Publication();
             mockedPublicationRepository.Setup(x => x.GetById(It.IsAny<int>())).Returns(publication);
-            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
+            var mockedFriendsService = new Mock<IFriendService>();
             var mockedUserService = new Mock<IUserService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
@@ -59,7 +59,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
 
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedFriendsRepository.Object,
+                mockedFriendsService.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
@@ -82,7 +82,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
             var publication = new Publication();
             mockedPublicationRepository.Setup(x => x.GetById(It.IsAny<int>())).Returns(publication);
-            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
+            var mockedFriendsService = new Mock<IFriendService>();
             var mockedUserService = new Mock<IUserService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
@@ -92,7 +92,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
 
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedFriendsRepository.Object,
+                mockedFriendsService.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
@@ -115,7 +115,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
             var publication = new Publication();
             mockedPublicationRepository.Setup(x => x.GetById(It.IsAny<int>())).Returns(publication);
-            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
+            var mockedFriendsService = new Mock<IFriendService>();
             var mockedUserService = new Mock<IUserService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
@@ -125,7 +125,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
 
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedFriendsRepository.Object,
+                mockedFriendsService.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,

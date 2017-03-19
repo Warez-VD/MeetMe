@@ -92,6 +92,7 @@
     <Compile Include="PublicationServiceTests\Constructor_Should.cs" />
     <Compile Include="PublicationServiceTests\CreatePublicationComment_Should.cs" />
     <Compile Include="PublicationServiceTests\CreatePublication_Should.cs" />
+    <Compile Include="PublicationServiceTests\FriendsPublications_Should.cs" />
     <Compile Include="PublicationServiceTests\GetById_Should.cs" />
     <Compile Include="PublicationServiceTests\UserPublications_Should.cs" />
     <Compile Include="StatisticServiceTests\AddMessageStatistic_Should.cs" />
