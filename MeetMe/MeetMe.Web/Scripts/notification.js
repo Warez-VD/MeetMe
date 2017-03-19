@@ -55,7 +55,8 @@ function bindEvents() {
         let elementId = target.children().first().attr("id");
         let id = target.attr("data-id");
         let userId = target.attr("data-userid");
-        notification.server.addLikeNotification(id, userId, elementId);
+        let publicationAuthorId = target.attr("publication-author");
+        notification.server.addLikeNotification(id, userId, publicationAuthorId, elementId);
     });
 
     $(".dislike-publication").on("click", (ev) => {

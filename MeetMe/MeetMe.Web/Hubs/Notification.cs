@@ -61,15 +61,22 @@ namespace MeetMe.Web.Hubs
             }
         }
 
-        public void AddLikeNotification(int id, string userId, string elementId)
+        public void AddLikeNotification(int id, string userId, string publicationAuthorId, string elementId)
         {
-            //TODO: add as notification
-            var user = this.userService.GetByIndentityId(this.Context.User.Identity.GetUserId());
+            if (userId != publicationAuthorId)
+            {
+                var user = this.userService.GetByIndentityId(userId);
+                var publicationAuthor = this.userService.GetByIndentityId(publicationAuthorId);
+                string message = string.Format(PublicationLike, user.FullName);
+
+                this.notificationService.CreateNotification(user.Id, message, false, publicationAuthor.Id);
+                this.statisticService.AddNotificationStatistic(userId);
+                
+                this.Clients.Group(publicationAuthorId).addNotification(message);
+            }
+
             this.publicationService.AddLike(id);
-            this.statisticService.AddNotificationStatistic(userId);
             this.Clients.Group(userId).likePublication(elementId);
-            string fullName = $"{user.FirstName} {user.LastName}";
-            this.Clients.Group(userId).addNotification(string.Format(PublicationLike, fullName));
         }
 
         public void AddDislikeNotification(int id, string elementId)
@@ -80,11 +87,13 @@ namespace MeetMe.Web.Hubs
 
         public void AddCommentNotification(string publicationAuthorId, string currentUserId)
         {
-            //TODO: add as notification
             this.statisticService.AddNotificationStatistic(publicationAuthorId);
             var currentUser = this.userService.GetByIndentityId(currentUserId);
-            string fullName = $"{currentUser.FirstName} {currentUser.LastName}";
-            this.Clients.Group(publicationAuthorId).addNotification(string.Format(PublicationComment, fullName));
+            var publicationAuthor = this.userService.GetByIndentityId(publicationAuthorId);
+            string message = string.Format(PublicationComment, currentUser.FullName);
+
+            this.notificationService.CreateNotification(currentUser.Id, message, false, publicationAuthor.Id);
+            this.Clients.Group(publicationAuthorId).addNotification(message);
         }
 
         public void AddFriend(string currentUserId, int friendId)

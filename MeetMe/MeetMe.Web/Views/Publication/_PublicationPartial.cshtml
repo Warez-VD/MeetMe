@@ -29,11 +29,11 @@
                                     <div class="col-sm-2 col-sm-offset-1">
                                         @if (publication.Likes == 0)
                                         {
-                                            <a data-id="@publication.Id" data-userid="@User.Identity.GetUserId()" class="like-publication comment-icons glyphicon glyphicon-thumbs-up"><span id="publication-like-@publication.Id"></span></a>
+                                            <a data-id="@publication.Id" publication-author="@publication.AuthorId" data-userid="@User.Identity.GetUserId()" class="like-publication comment-icons glyphicon glyphicon-thumbs-up"><span id="publication-like-@publication.Id"></span></a>
                                         }
                                         else
                                         {
-                                            <a data-id="@publication.Id" data-userid="@User.Identity.GetUserId()" class="like-publication comment-icons glyphicon glyphicon-thumbs-up"><span id="publication-like-@publication.Id">@publication.Likes</span></a>
+                                            <a data-id="@publication.Id" publication-author="@publication.AuthorId" data-userid="@User.Identity.GetUserId()" class="like-publication comment-icons glyphicon glyphicon-thumbs-up"><span id="publication-like-@publication.Id">@publication.Likes</span></a>
                                         }
                                     </div>
                                     <div class="col-sm-2">

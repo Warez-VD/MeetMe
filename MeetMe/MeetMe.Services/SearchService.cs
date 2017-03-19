@@ -46,13 +46,24 @@ namespace MeetMe.Services
                 .ToList();
 
             var result = users.Select(x => this.mapperService.MapObject<SearchUserViewModel>(x)).ToList();
-            var currentUser = this.userService.GetByIndentityId(userId);
-            var currentUserFriendsIds = this.friendService.GetAllUserFriendsIds(currentUser.Id);
-            for (int i = 0; i < users.Count; i++)
+
+            if (userId == string.Empty)
             {
-                bool isFriend = currentUserFriendsIds.Contains(users[i].Id);
-                result[i].IsFriend = isFriend;
-                result[i].ImageUrl = this.imageService.ByteArrayToImageUrl(users[i].ProfileImage.Content);
+                for (int i = 0; i < users.Count; i++)
+                {
+                    result[i].ImageUrl = this.imageService.ByteArrayToImageUrl(users[i].ProfileImage.Content);
+                }
+            }
+            else
+            {
+                var currentUser = this.userService.GetByIndentityId(userId);
+                var currentUserFriendsIds = this.friendService.GetAllUserFriendsIds(currentUser.Id);
+                for (int i = 0; i < users.Count; i++)
+                {
+                    bool isFriend = currentUserFriendsIds.Contains(users[i].Id);
+                    result[i].IsFriend = isFriend;
+                    result[i].ImageUrl = this.imageService.ByteArrayToImageUrl(users[i].ProfileImage.Content);
+                }
             }
 
             return result;
