@@ -30,7 +30,8 @@ namespace MeetMe.Services
         public void AddFriend(string userId, int friendId)
         {
             var user = this.GetByIndentityId(userId);
-            this.friendService.AddFriendship(user.Id, friendId);
+            var friendUser = this.userRepository.GetById(friendId);
+            this.friendService.AddFriendship(user.Id, friendUser.AspIdentityUserId, friendId);
         }
 
         public CustomUser GetById(int id)

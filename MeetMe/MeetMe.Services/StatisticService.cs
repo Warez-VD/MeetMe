@@ -3,6 +3,7 @@ using System.Linq;
 using MeetMe.Data.Models;
 using MeetMe.Data.Contracts;
 using Bytes2you.Validation;
+using System;
 
 namespace MeetMe.Services
 {
@@ -43,6 +44,14 @@ namespace MeetMe.Services
         {
             var user = this.userService.GetByIndentityId(userId);
             var statistic = this.statisticRepository.All.Where(x => x.CustomUserId == user.Id).FirstOrDefault();
+            statistic.NotificationsCount++;
+            this.statisticRepository.Update(statistic);
+            this.unitOfWork.Commit();
+        }
+
+        public void AddNotificationStatistic(int userId)
+        {
+            var statistic = this.statisticRepository.All.Where(x => x.CustomUserId == userId).FirstOrDefault();
             statistic.NotificationsCount++;
             this.statisticRepository.Update(statistic);
             this.unitOfWork.Commit();

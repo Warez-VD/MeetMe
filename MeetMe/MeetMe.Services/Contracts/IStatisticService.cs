@@ -8,6 +8,8 @@ namespace MeetMe.Services.Contracts
 
         void AddNotificationStatistic(string userId);
 
+        void AddNotificationStatistic(int userId);
+
         void AddMessageStatistic(string userId);
 
         void RemoveNotificationStatistic(string userId);

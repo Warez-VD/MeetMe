@@ -9,6 +9,6 @@ namespace MeetMe.Services.Contracts
 
         IEnumerable<int> GetAllUserFriendsIds(int id);
 
-        void AddFriendship(int userId, int friendId);
+        void AddFriendship(int userId, string friendIdentityId, int friendId);
     }
 }

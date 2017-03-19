@@ -4,6 +4,6 @@ namespace MeetMe.Services.Contracts
 {
     public interface IUserFriendFactory
     {
-        UserFriend CreateUserFriend(int userId, int friendId);
+        UserFriend CreateUserFriend(int userId, string friendIdentityId, int friendId);
     }
 }

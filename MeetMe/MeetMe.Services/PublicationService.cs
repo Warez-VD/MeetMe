@@ -56,8 +56,7 @@ namespace MeetMe.Services
             this.publicationRepository.Add(publication);
             this.unitOfWork.Commit();
         }
-
-        // TODO: unit test
+        
         public IEnumerable<Publication> FriendsPublications(string userId, int skip, int count)
         {
             var user = this.userService.GetByIndentityId(userId);

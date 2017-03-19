@@ -31,9 +31,9 @@ namespace MeetMe.Services
             this.unitOfWork = unitOfWork;
         }
 
-        public void AddFriendship(int userId, int friendId)
+        public void AddFriendship(int userId, string friendIdentityId, int friendId)
         {
-            var userFriend = this.userFriendFactory.CreateUserFriend(userId, friendId);
+            var userFriend = this.userFriendFactory.CreateUserFriend(userId, friendIdentityId, friendId);
             this.userFriendRepository.Add(userFriend);
             this.unitOfWork.Commit();
         }
