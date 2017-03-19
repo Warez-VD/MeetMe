@@ -14,26 +14,31 @@ namespace MeetMe.Web.Controllers
         private readonly INotificationService notificationService;
         private readonly IStatisticService statisticService;
         private readonly IUserService userService;
+        private readonly IViewModelService viewModelService;
 
         public NotificationController(
             INotificationService notificationService,
             IStatisticService statisticService,
-            IUserService userService)
+            IUserService userService,
+            IViewModelService viewModelService)
         {
             Guard.WhenArgument(notificationService, "NotificationService").IsNull().Throw();
             Guard.WhenArgument(statisticService, "StatisticService").IsNull().Throw();
             Guard.WhenArgument(userService, "UserService").IsNull().Throw();
+            Guard.WhenArgument(viewModelService, "ViewModelService").IsNull().Throw();
 
             this.notificationService = notificationService;
             this.statisticService = statisticService;
             this.userService = userService;
+            this.viewModelService = viewModelService;
         }
 
         [HttpGet]
         public ActionResult Index(string id)
         {
             var model = new NotificationViewModel();
-            model.Notifications = this.notificationService.UserNotifications(DefaultNotificationsSkip, DefaultNotificationsTake, id);
+            var notifications = this.notificationService.UserNotifications(DefaultNotificationsSkip, DefaultNotificationsTake, id);
+            model.Notifications = this.viewModelService.GetMappedUserNotifications(notifications);
 
             return this.View(model);
         }
@@ -42,7 +47,8 @@ namespace MeetMe.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ShowMoreResults(int skip, int count, string userId)
         {
-            var model = this.notificationService.UserNotifications(skip, count, userId);
+            var notifications = this.notificationService.UserNotifications(skip, count, userId);
+            var model = this.viewModelService.GetMappedUserNotifications(notifications);
 
             return this.PartialView("_NotificationsPartial", model);
         }
@@ -52,7 +58,8 @@ namespace MeetMe.Web.Controllers
         public ActionResult RemoveNotification(int id, string userId)
         {
             this.notificationService.RemoveNotification(id);
-            var model = this.notificationService.UserNotifications(DefaultNotificationsSkip, DefaultNotificationsTake, userId);
+            var notifications = this.notificationService.UserNotifications(DefaultNotificationsSkip, DefaultNotificationsTake, userId);
+            var model = this.viewModelService.GetMappedUserNotifications(notifications);
 
             return this.PartialView("_NotificationsPartial", model);
         }
@@ -80,7 +87,8 @@ namespace MeetMe.Web.Controllers
         {
             this.userService.AddFriend(id, authorId);
             this.notificationService.RemoveNotification(notificationId);
-            var model = this.notificationService.UserNotifications(DefaultNotificationsSkip, DefaultNotificationsTake, id);
+            var notifications = this.notificationService.UserNotifications(DefaultNotificationsSkip, DefaultNotificationsTake, id);
+            var model = this.viewModelService.GetMappedUserNotifications(notifications);
 
             return this.PartialView("_NotificationsPartial", model);
         }

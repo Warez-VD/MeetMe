@@ -91,6 +91,11 @@
     <Compile Include="FriendServiceTests\GetAllUserFriendsIds_Should.cs" />
     <Compile Include="ImageServiceTests\ByteArrayToImageUrl_Should.cs" />
     <Compile Include="ImageServiceTests\GetImage_Should.cs" />
+    <Compile Include="NotificationServiceTests\Constructor_Should.cs" />
+    <Compile Include="NotificationServiceTests\CreateNotification_Should.cs" />
+    <Compile Include="NotificationServiceTests\RemoveAllNotifications_Should.cs" />
+    <Compile Include="NotificationServiceTests\RemoveNotification_Should.cs" />
+    <Compile Include="NotificationServiceTests\UserNotifications_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublicationServiceTests\AddDislike_Should.cs" />
     <Compile Include="PublicationServiceTests\AddLike_Should.cs" />

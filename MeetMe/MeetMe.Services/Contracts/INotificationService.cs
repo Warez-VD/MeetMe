@@ -1,5 +1,5 @@
-﻿using MeetMe.Web.Models.Notifications;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MeetMe.Data.Models;
 
 namespace MeetMe.Services.Contracts
 {
@@ -7,7 +7,7 @@ namespace MeetMe.Services.Contracts
     {
         void CreateNotification(int userId, string content, bool isFriendship, int targetId);
 
-        IEnumerable<NotificationUserViewModel> UserNotifications(int skip, int count, string userId);
+        IEnumerable<Notification> UserNotifications(int skip, int count, string userId);
 
         void RemoveNotification(int id);
 

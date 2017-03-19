@@ -5,6 +5,7 @@ using MeetMe.Web.Models.Publications;
 using Bytes2you.Validation;
 using System.Linq;
 using MeetMe.Web.Models.Home;
+using MeetMe.Web.Models.Notifications;
 
 namespace MeetMe.Services
 {
@@ -72,6 +73,19 @@ namespace MeetMe.Services
             result.ProfileImageUrl = profileImageUrl;
 
             return result;
+        }
+
+        public IEnumerable<NotificationUserViewModel> GetMappedUserNotifications(IEnumerable<Notification> notifications)
+        {
+            var userImageContents = notifications.Select(x => x.User.ProfileImage.Content).ToList();
+            var mappedNotifications = notifications.Select(x => this.mapperService.MapObject<NotificationUserViewModel>(x)).ToList();
+            for (int i = 0; i < mappedNotifications.Count; i++)
+            {
+                var notificationImageUrl = this.imageService.ByteArrayToImageUrl(userImageContents[i]);
+                mappedNotifications[i].AuthorImageUrl = notificationImageUrl;
+            }
+
+            return mappedNotifications;
         }
     }
 }
