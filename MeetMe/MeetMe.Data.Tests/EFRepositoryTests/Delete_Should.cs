@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Data.Entity;
-using NUnit.Framework;
-using Moq;
-using MeetMe.Data.Models;
 using MeetMe.Data.Contracts;
+using MeetMe.Data.Models;
+using Moq;
+using NUnit.Framework;
 
 namespace MeetMe.Data.Tests.EFRepositoryTests
 {

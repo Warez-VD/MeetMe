@@ -1,7 +1,7 @@
-﻿using NUnit.Framework;
-using Moq;
+﻿using System.Data.Entity;
 using MeetMe.Data.Models;
-using System.Data.Entity;
+using Moq;
+using NUnit.Framework;
 
 namespace MeetMe.Data.Tests.MeetMeDbContextTests
 {

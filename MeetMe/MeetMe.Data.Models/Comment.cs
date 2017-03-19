@@ -4,7 +4,9 @@ namespace MeetMe.Data.Models
 {
     public class Comment
     {
-        public Comment() {}
+        public Comment()
+        {
+        }
 
         public Comment(string content, int userId, DateTime createdOn)
         {

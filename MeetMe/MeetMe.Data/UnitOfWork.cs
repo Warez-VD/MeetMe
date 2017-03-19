@@ -5,18 +5,18 @@ namespace MeetMe.Data
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly IMeetMeDbContext dbContext;
+        private readonly IMeetMeDbContext context;
 
-        public UnitOfWork(IMeetMeDbContext dbContext)
+        public UnitOfWork(IMeetMeDbContext context)
         {
-            Guard.WhenArgument(dbContext, "DbContext").IsNull().Throw();
+            Guard.WhenArgument(context, "DbContext").IsNull().Throw();
 
-            this.dbContext = dbContext;
+            this.context = context;
         }
 
         public void Commit()
         {
-            this.dbContext.SaveChanges();
+            this.context.SaveChanges();
         }
     }
 }

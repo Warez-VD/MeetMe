@@ -2,7 +2,9 @@
 {
     public class PublicationImage
     {
-        public PublicationImage() {}
+        public PublicationImage()
+        {
+        }
 
         public PublicationImage(byte[] content)
         {

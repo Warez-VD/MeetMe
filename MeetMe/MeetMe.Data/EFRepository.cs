@@ -1,22 +1,22 @@
-﻿using Bytes2you.Validation;
-using MeetMe.Data.Contracts;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
+using Bytes2you.Validation;
+using MeetMe.Data.Contracts;
 
 namespace MeetMe.Data
 {
     public class EFRepository<T> : IEFRepository<T>
         where T : class
     {
-        private readonly IMeetMeDbContext dbContext;
+        private readonly IMeetMeDbContext context;
         private readonly IDbSet<T> set;
 
-        public EFRepository(IMeetMeDbContext dbContext)
+        public EFRepository(IMeetMeDbContext context)
         {
-            Guard.WhenArgument(dbContext, "DbContext").IsNull().Throw();
+            Guard.WhenArgument(context, "DbContext").IsNull().Throw();
 
-            this.dbContext = dbContext;
-            this.set = this.dbContext.Set<T>();
+            this.context = context;
+            this.set = this.context.Set<T>();
         }
 
         public IQueryable<T> All
@@ -28,7 +28,7 @@ namespace MeetMe.Data
         {
             Guard.WhenArgument(entity, "Entity").IsNull().Throw();
 
-            var entry = this.dbContext.GetState(entity);
+            var entry = this.context.GetState(entity);
             entry.State = EntityState.Added;
         }
 
@@ -52,7 +52,7 @@ namespace MeetMe.Data
         {
             Guard.WhenArgument(entity, "Entity").IsNull().Throw();
 
-            var entry = this.dbContext.GetState(entity);
+            var entry = this.context.GetState(entity);
             entry.State = EntityState.Deleted;
         }
 
@@ -60,7 +60,7 @@ namespace MeetMe.Data
         {
             Guard.WhenArgument(entity, "Entity").IsNull().Throw();
 
-            var entry = this.dbContext.GetState(entity);
+            var entry = this.context.GetState(entity);
             entry.State = EntityState.Modified;
         }
     }

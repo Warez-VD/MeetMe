@@ -2,7 +2,9 @@
 {
     public class UserFriend
     {
-        public UserFriend() {}
+        public UserFriend()
+        {
+        }
 
         public UserFriend(int userId, string friendIdentityId, int friendId)
         {

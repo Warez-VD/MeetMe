@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Linq;
-using NUnit.Framework;
-using Moq;
 using System.Data.Entity;
-using MeetMe.Data.Models;
+using System.Linq;
 using MeetMe.Data.Contracts;
+using MeetMe.Data.Models;
+using Moq;
+using NUnit.Framework;
 
 namespace MeetMe.Data.Tests.EFRepositoryTests
 {

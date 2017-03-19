@@ -1,14 +1,16 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MeetMe.Data.Models
 {
     public class AspIdentityUser : IdentityUser
     {
         public AspIdentityUser()
-            : base() { }
+            : base()
+        {
+        }
 
         public AspIdentityUser(string username, string email)
             : this()
@@ -25,7 +27,7 @@ namespace MeetMe.Data.Models
 
         public Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<AspIdentityUser> manager)
         {
-            return Task.FromResult(GenerateUserIdentity(manager));
+            return Task.FromResult(this.GenerateUserIdentity(manager));
         }
     }
 }

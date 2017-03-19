@@ -1,6 +1,6 @@
-﻿using MeetMe.Data.Contracts;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using MeetMe.Data.Contracts;
 
 namespace MeetMe.Data
 {

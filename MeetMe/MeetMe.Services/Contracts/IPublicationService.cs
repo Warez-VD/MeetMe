@@ -1,5 +1,5 @@
-﻿using MeetMe.Data.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MeetMe.Data.Models;
 
 namespace MeetMe.Services.Contracts
 {

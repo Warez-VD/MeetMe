@@ -1,7 +1,7 @@
-﻿using MeetMe.Services.Contracts;
-using MeetMe.Data.Models;
-using Bytes2you.Validation;
+﻿using Bytes2you.Validation;
 using MeetMe.Data.Contracts;
+using MeetMe.Data.Models;
+using MeetMe.Services.Contracts;
 
 namespace MeetMe.Services
 {

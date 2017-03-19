@@ -2,7 +2,9 @@
 {
     public class Statistic
     {
-        public Statistic() {}
+        public Statistic()
+        {
+        }
 
         public Statistic(int notificationCount, int messageCount, int userId)
         {

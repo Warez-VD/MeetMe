@@ -1,9 +1,8 @@
-﻿using Bytes2you.Validation;
+﻿using System.Data.Entity;
+using Bytes2you.Validation;
 using MeetMe.Data.Contracts;
 using MeetMe.Data.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace MeetMe.Data
 {
@@ -24,11 +23,6 @@ namespace MeetMe.Data
             this.stateFactory = stateFactory;
         }
 
-        public static MeetMeDbContext Create()
-        {
-            return new MeetMeDbContext();
-        }
-
         public virtual IDbSet<CustomUser> CustomUsers { get; set; }
                
         public virtual IDbSet<UserImage> UserImages { get; set; }
@@ -46,6 +40,11 @@ namespace MeetMe.Data
         public virtual IDbSet<UserFriend> UserFriends { get; set; }
 
         public virtual IDbSet<Notification> Notifications { get; set; }
+
+        public static MeetMeDbContext Create()
+        {
+            return new MeetMeDbContext();
+        }
 
         public virtual new IDbSet<T> Set<T>() where T : class
         {

@@ -1,9 +1,9 @@
-﻿using NUnit.Framework;
-using Moq;
-using MeetMe.Services.Contracts;
+﻿using System.Drawing;
 using MeetMe.Data.Contracts;
 using MeetMe.Data.Models;
-using System.Drawing;
+using MeetMe.Services.Contracts;
+using Moq;
+using NUnit.Framework;
 
 namespace MeetMe.Services.Tests.AccountServiceTests
 {

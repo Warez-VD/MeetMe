@@ -1,8 +1,8 @@
-﻿using NUnit.Framework;
-using Moq;
-using MeetMe.Services.Contracts;
-using MeetMe.Data.Contracts;
+﻿using MeetMe.Data.Contracts;
 using MeetMe.Data.Models;
+using MeetMe.Services.Contracts;
+using Moq;
+using NUnit.Framework;
 
 namespace MeetMe.Services.Tests.AccountServiceTests
 {
@@ -36,11 +36,12 @@ namespace MeetMe.Services.Tests.AccountServiceTests
 
             // Assert
             mockedAspIdentityUserFactory
-                .Verify(x =>
-                    x.CreateAspIdentityUser(
-                        It.Is<string>(u => u == username),
-                        It.Is<string>(e => e == email)),
-                        Times.Once);
+                .Verify(
+                    x =>
+                        x.CreateAspIdentityUser(
+                            It.Is<string>(u => u == username),
+                            It.Is<string>(e => e == email)),
+                            Times.Once);
         }
 
         [Test]

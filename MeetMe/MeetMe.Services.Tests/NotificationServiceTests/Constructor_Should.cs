@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
-using Moq;
-using MeetMe.Services.Contracts;
 using MeetMe.Data.Contracts;
 using MeetMe.Data.Models;
+using MeetMe.Services.Contracts;
+using Moq;
+using NUnit.Framework;
 
 namespace MeetMe.Services.Tests.NotificationServiceTests
 {

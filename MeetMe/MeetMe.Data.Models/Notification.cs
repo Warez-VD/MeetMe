@@ -5,7 +5,9 @@ namespace MeetMe.Data.Models
 {
     public class Notification
     {
-        public Notification() {}
+        public Notification()
+        {
+        }
 
         public Notification(int userId, string content, DateTime createdOn, bool isFriendship, int targetId)
             : this()

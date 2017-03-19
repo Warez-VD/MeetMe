@@ -1,11 +1,11 @@
-﻿using MeetMe.Services.Contracts;
-using System.Collections.Generic;
-using MeetMe.Data.Models;
-using MeetMe.Web.Models.Publications;
-using Bytes2you.Validation;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Bytes2you.Validation;
+using MeetMe.Data.Models;
+using MeetMe.Services.Contracts;
 using MeetMe.Web.Models.Home;
 using MeetMe.Web.Models.Notifications;
+using MeetMe.Web.Models.Publications;
 
 namespace MeetMe.Services
 {

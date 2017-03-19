@@ -4,13 +4,13 @@ namespace MeetMe.Data.Contracts
 {
     public interface IEFRepository<T>
     {
+        IQueryable<T> All { get; }
+
         void Add(T entity);
 
         T GetById(int id);
 
         T GetById(string id);
-
-        IQueryable<T> All { get; }
 
         void Update(T entity);
 

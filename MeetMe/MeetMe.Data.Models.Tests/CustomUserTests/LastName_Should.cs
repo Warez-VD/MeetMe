@@ -1,6 +1,6 @@
 ﻿using System;
-using NUnit.Framework;
 using System.ComponentModel.DataAnnotations;
+using NUnit.Framework;
 
 namespace MeetMe.Data.Models.Tests.CustomUserTests
 {

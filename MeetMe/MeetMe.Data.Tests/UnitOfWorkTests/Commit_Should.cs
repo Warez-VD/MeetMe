@@ -1,6 +1,6 @@
-﻿using NUnit.Framework;
+﻿using MeetMe.Data.Contracts;
 using Moq;
-using MeetMe.Data.Contracts;
+using NUnit.Framework;
 
 namespace MeetMe.Data.Tests.UnitOfWorkTests
 {

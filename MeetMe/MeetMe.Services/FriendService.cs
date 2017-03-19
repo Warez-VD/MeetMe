@@ -1,9 +1,9 @@
-﻿using MeetMe.Services.Contracts;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using MeetMe.Data.Models;
-using MeetMe.Data.Contracts;
 using Bytes2you.Validation;
+using MeetMe.Data.Contracts;
+using MeetMe.Data.Models;
+using MeetMe.Services.Contracts;
 
 namespace MeetMe.Services
 {

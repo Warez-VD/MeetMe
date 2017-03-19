@@ -1,8 +1,8 @@
-﻿using MeetMe.Data.Models;
+﻿using System.Collections.Generic;
+using MeetMe.Data.Models;
 using MeetMe.Web.Models.Home;
 using MeetMe.Web.Models.Notifications;
 using MeetMe.Web.Models.Publications;
-using System.Collections.Generic;
 
 namespace MeetMe.Services.Contracts
 {

@@ -1,6 +1,6 @@
 ﻿using System;
-using NUnit.Framework;
 using Moq;
+using NUnit.Framework;
 
 namespace MeetMe.Data.Models.Tests.PublicationTests
 {

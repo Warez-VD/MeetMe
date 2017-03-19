@@ -1,13 +1,11 @@
-﻿using MeetMe.Data.Models;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using MeetMe.Data.Models;
 
 namespace MeetMe.Data.Contracts
 {
     public interface IMeetMeDbContext
     {
-        int SaveChanges();
-
         IDbSet<CustomUser> CustomUsers { get; set; }
 
         IDbSet<UserImage> UserImages { get; set; }
@@ -31,5 +29,7 @@ namespace MeetMe.Data.Contracts
         DbEntityEntry<T> Entry<T>(T entity) where T : class;
 
         IEntryState<T> GetState<T>(T entity) where T : class;
+
+        int SaveChanges();
     }
 }
