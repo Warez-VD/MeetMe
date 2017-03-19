@@ -100,6 +100,8 @@
     <Compile Include="StatisticServiceTests\Constructor_Should.cs" />
     <Compile Include="StatisticServiceTests\CreateStatistic_Should.cs" />
     <Compile Include="StatisticServiceTests\GetUserStatistic_Should.cs" />
+    <Compile Include="StatisticServiceTests\MarkAsVisitedNotifications_Should.cs" />
+    <Compile Include="StatisticServiceTests\RemoveNotificationStatistic_Should.cs" />
     <Compile Include="TextServiceTests\ConvertBase64_Should.cs" />
     <Compile Include="UserServiceTests\Constructor_Should.cs" />
     <Compile Include="UserServiceTests\GetByIndentityId_Should.cs" />
