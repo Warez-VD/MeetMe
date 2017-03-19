@@ -103,8 +103,11 @@
     <Compile Include="StatisticServiceTests\MarkAsVisitedNotifications_Should.cs" />
     <Compile Include="StatisticServiceTests\RemoveNotificationStatistic_Should.cs" />
     <Compile Include="TextServiceTests\ConvertBase64_Should.cs" />
+    <Compile Include="UserServiceTests\AddFriend_Should.cs" />
     <Compile Include="UserServiceTests\Constructor_Should.cs" />
+    <Compile Include="UserServiceTests\GetById_Should.cs" />
     <Compile Include="UserServiceTests\GetByIndentityId_Should.cs" />
+    <Compile Include="UserServiceTests\GetUsernames_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

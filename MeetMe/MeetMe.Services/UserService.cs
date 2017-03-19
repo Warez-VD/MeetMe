@@ -54,7 +54,7 @@ namespace MeetMe.Services
         {
             var usernames = this.userRepository.All
                 .ToList()
-                .Select(x => string.Format("{0} {1}", x.FirstName, x.LastName));
+                .Select(x => x.FullName);
 
             return usernames;
         }
