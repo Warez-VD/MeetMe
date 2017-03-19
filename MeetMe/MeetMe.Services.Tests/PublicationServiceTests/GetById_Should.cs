@@ -14,23 +14,23 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedCommentRepository = new Mock<IEFRepository<Comment>>();
+            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
             var mockedUserService = new Mock<IUserService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
             var mockedDateTimeService = new Mock<IDateTimeService>();
             var mockedPublicationImageFactory = new Mock<IPublicationImageFactory>();
-            var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedCommentRepository.Object,
+                mockedFriendsRepository.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
                 mockedDateTimeService.Object,
                 mockedPublicationImageFactory.Object,
-                mockedCommentFactory.Object);
+                mockedCommentService.Object);
             int publicationId = 12;
 
             // Act
@@ -47,23 +47,23 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
             var publication = new Publication();
             mockedPublicationRepository.Setup(x => x.GetById(It.IsAny<int>())).Returns(publication);
-            var mockedCommentRepository = new Mock<IEFRepository<Comment>>();
+            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
             var mockedUserService = new Mock<IUserService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
             var mockedDateTimeService = new Mock<IDateTimeService>();
             var mockedPublicationImageFactory = new Mock<IPublicationImageFactory>();
-            var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedCommentRepository.Object,
+                mockedFriendsRepository.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
                 mockedDateTimeService.Object,
                 mockedPublicationImageFactory.Object,
-                mockedCommentFactory.Object);
+                mockedCommentService.Object);
             int publicationId = 12;
 
             // Act
@@ -78,23 +78,23 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedCommentRepository = new Mock<IEFRepository<Comment>>();
+            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
             var mockedUserService = new Mock<IUserService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
             var mockedDateTimeService = new Mock<IDateTimeService>();
             var mockedPublicationImageFactory = new Mock<IPublicationImageFactory>();
-            var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedCommentRepository.Object,
+                mockedFriendsRepository.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
                 mockedDateTimeService.Object,
                 mockedPublicationImageFactory.Object,
-                mockedCommentFactory.Object);
+                mockedCommentService.Object);
             int publicationId = 12;
 
             // Act

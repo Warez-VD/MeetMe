@@ -9,7 +9,7 @@ namespace MeetMe.Services.Contracts
 
         void CreatePublicationComment(int publicationId, string content, string userId);
 
-        IEnumerable<Publication> FriendsPublications(string userId, int count);
+        IEnumerable<Publication> FriendsPublications(string userId, int skip, int count);
 
         IEnumerable<Publication> UserPublications(string userId);
 

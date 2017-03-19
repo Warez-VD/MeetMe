@@ -17,7 +17,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedCommentRepository = new Mock<IEFRepository<Comment>>();
+            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
             var mockedUserService = new Mock<IUserService>();
             var user = new CustomUser() { Publications = new List<Publication>() };
             mockedUserService.Setup(x => x.GetByIndentityId(It.IsAny<string>())).Returns(user);
@@ -25,17 +25,17 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
             var mockedDateTimeService = new Mock<IDateTimeService>();
             var mockedPublicationImageFactory = new Mock<IPublicationImageFactory>();
-            var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedCommentRepository.Object,
+                mockedFriendsRepository.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
                 mockedDateTimeService.Object,
                 mockedPublicationImageFactory.Object,
-                mockedCommentFactory.Object);
+                mockedCommentService.Object);
             string userId = "test-id";
 
             // Act
@@ -50,7 +50,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedCommentRepository = new Mock<IEFRepository<Comment>>();
+            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
             var mockedUserService = new Mock<IUserService>();
             var publications = new List<Publication>()
             {
@@ -64,17 +64,17 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
             var mockedDateTimeService = new Mock<IDateTimeService>();
             var mockedPublicationImageFactory = new Mock<IPublicationImageFactory>();
-            var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedCommentRepository.Object,
+                mockedFriendsRepository.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
                 mockedDateTimeService.Object,
                 mockedPublicationImageFactory.Object,
-                mockedCommentFactory.Object);
+                mockedCommentService.Object);
             string userId = "test-id";
 
             // Act

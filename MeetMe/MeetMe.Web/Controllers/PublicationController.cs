@@ -27,9 +27,9 @@ namespace MeetMe.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Publications(string id)
+        public ActionResult Publications(string id, int skip, int count)
         {
-            var publications = this.publicationService.UserPublications(id);
+            var publications = this.publicationService.FriendsPublications(id, skip, count);
             var model = this.viewModelService.GetMappedPublications(publications);
 
             return this.PartialView("_PublicationPartial", model);
@@ -37,7 +37,7 @@ namespace MeetMe.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddPublication(string content, string userId, string imageBase64)
+        public ActionResult AddPublication(string content, string userId, string imageBase64, int skip, int count)
         {
             if (imageBase64 != string.Empty)
             {
@@ -49,7 +49,7 @@ namespace MeetMe.Web.Controllers
                 this.publicationService.CreatePublication(content, userId, this.EmptyPublicationImage);
             }
 
-            var publications = this.publicationService.UserPublications(userId);
+            var publications = this.publicationService.FriendsPublications(userId, skip, count);
             var model = this.viewModelService.GetMappedPublications(publications);
 
             return PartialView("_PublicationPartial", model);

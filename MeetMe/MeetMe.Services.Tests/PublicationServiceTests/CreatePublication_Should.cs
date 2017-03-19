@@ -15,7 +15,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedCommentRepository = new Mock<IEFRepository<Comment>>();
+            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
             var mockedUserService = new Mock<IUserService>();
             var user = new CustomUser() { Id = 1 };
             mockedUserService.Setup(x => x.GetByIndentityId(It.IsAny<string>())).Returns(user);
@@ -23,17 +23,17 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
             var mockedDateTimeService = new Mock<IDateTimeService>();
             var mockedPublicationImageFactory = new Mock<IPublicationImageFactory>();
-            var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedCommentRepository.Object,
+                mockedFriendsRepository.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
                 mockedDateTimeService.Object,
                 mockedPublicationImageFactory.Object,
-                mockedCommentFactory.Object);
+                mockedCommentService.Object);
             string content = "some content";
             string userId = "some-id";
             byte[] imageContent = new byte[] { 12, 43, 65, 12, 1, 45 };
@@ -50,7 +50,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedCommentRepository = new Mock<IEFRepository<Comment>>();
+            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
             var mockedUserService = new Mock<IUserService>();
             var user = new CustomUser() { Id = 1 };
             mockedUserService.Setup(x => x.GetByIndentityId(It.IsAny<string>())).Returns(user);
@@ -58,17 +58,17 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
             var mockedDateTimeService = new Mock<IDateTimeService>();
             var mockedPublicationImageFactory = new Mock<IPublicationImageFactory>();
-            var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedCommentRepository.Object,
+                mockedFriendsRepository.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
                 mockedDateTimeService.Object,
                 mockedPublicationImageFactory.Object,
-                mockedCommentFactory.Object);
+                mockedCommentService.Object);
             string content = "some content";
             string userId = "some-id";
             byte[] imageContent = new byte[] { 12, 43, 65, 12, 1, 45 };
@@ -85,7 +85,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedCommentRepository = new Mock<IEFRepository<Comment>>();
+            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
             var mockedUserService = new Mock<IUserService>();
             var user = new CustomUser() { Id = 1 };
             mockedUserService.Setup(x => x.GetByIndentityId(It.IsAny<string>())).Returns(user);
@@ -93,17 +93,17 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
             var mockedDateTimeService = new Mock<IDateTimeService>();
             var mockedPublicationImageFactory = new Mock<IPublicationImageFactory>();
-            var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedCommentRepository.Object,
+                mockedFriendsRepository.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
                 mockedDateTimeService.Object,
                 mockedPublicationImageFactory.Object,
-                mockedCommentFactory.Object);
+                mockedCommentService.Object);
             string content = "some content";
             string userId = "some-id";
             byte[] imageContent = new byte[] { 12, 43, 65, 12, 1, 45 };
@@ -120,7 +120,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedCommentRepository = new Mock<IEFRepository<Comment>>();
+            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
             var mockedUserService = new Mock<IUserService>();
             var user = new CustomUser() { Id = 1 };
             mockedUserService.Setup(x => x.GetByIndentityId(It.IsAny<string>())).Returns(user);
@@ -132,17 +132,17 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             var mockedPublicationImageFactory = new Mock<IPublicationImageFactory>();
             var image = new PublicationImage();
             mockedPublicationImageFactory.Setup(x => x.CreatePublicationImage(It.IsAny<byte[]>())).Returns(image);
-            var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedCommentRepository.Object,
+                mockedFriendsRepository.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
                 mockedDateTimeService.Object,
                 mockedPublicationImageFactory.Object,
-                mockedCommentFactory.Object);
+                mockedCommentService.Object);
             string content = "some content";
             string userId = "some-id";
             byte[] imageContent = new byte[] { 12, 43, 65, 12, 1, 45 };
@@ -166,7 +166,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedCommentRepository = new Mock<IEFRepository<Comment>>();
+            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
             var mockedUserService = new Mock<IUserService>();
             var user = new CustomUser() { Id = 1 };
             mockedUserService.Setup(x => x.GetByIndentityId(It.IsAny<string>())).Returns(user);
@@ -182,17 +182,17 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
                         It.IsAny<PublicationImage>())).Returns(publication);
             var mockedDateTimeService = new Mock<IDateTimeService>();
             var mockedPublicationImageFactory = new Mock<IPublicationImageFactory>();
-            var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedCommentRepository.Object,
+                mockedFriendsRepository.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
                 mockedDateTimeService.Object,
                 mockedPublicationImageFactory.Object,
-                mockedCommentFactory.Object);
+                mockedCommentService.Object);
             string content = "some content";
             string userId = "some-id";
             byte[] imageContent = new byte[] { 12, 43, 65, 12, 1, 45 };
@@ -209,7 +209,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedCommentRepository = new Mock<IEFRepository<Comment>>();
+            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
             var mockedUserService = new Mock<IUserService>();
             var user = new CustomUser() { Id = 1 };
             mockedUserService.Setup(x => x.GetByIndentityId(It.IsAny<string>())).Returns(user);
@@ -217,17 +217,17 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
             var mockedDateTimeService = new Mock<IDateTimeService>();
             var mockedPublicationImageFactory = new Mock<IPublicationImageFactory>();
-            var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedCommentRepository.Object,
+                mockedFriendsRepository.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
                 mockedDateTimeService.Object,
                 mockedPublicationImageFactory.Object,
-                mockedCommentFactory.Object);
+                mockedCommentService.Object);
             string content = "some content";
             string userId = "some-id";
             byte[] imageContent = new byte[] { 12, 43, 65, 12, 1, 45 };

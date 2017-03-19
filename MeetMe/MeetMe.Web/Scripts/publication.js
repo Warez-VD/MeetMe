@@ -31,6 +31,16 @@ function handleFileSelect(ev) {
     }
 }
 
+function showHidePublications() {
+    $("#show-publications-user").addClass("hidden");
+    $("#hide-publications-user").removeClass("hidden");
+}
+
+function showPublications() {
+    $("#show-publications-user").removeClass("hidden");
+    $("#hide-publications-user").addClass("hidden");
+}
+
 $(() => {
     $("#publication-picture").change(handleFileSelect);
 

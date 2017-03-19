@@ -10,41 +10,41 @@ namespace MeetMe.Services
     public class PublicationService : IPublicationService
     {
         private readonly IEFRepository<Publication> publicationRepository;
-        private readonly IEFRepository<Comment> commentRepository;
+        private readonly IEFRepository<UserFriend> friendsRepository;
         private readonly IUserService userService;
         private readonly IUnitOfWork unitOfWork;
         private readonly IPublicationFactory publicationFactory;
         private readonly IDateTimeService dateTimeService;
         private readonly IPublicationImageFactory publicationImageFactory;
-        private readonly ICommentFactory commentFactory;
+        private readonly ICommentService commentService;
 
         public PublicationService(
             IEFRepository<Publication> publicationRepository,
-            IEFRepository<Comment> commentRepository,
+            IEFRepository<UserFriend> friendsRepository,
             IUserService userService,
             IUnitOfWork unitOfWork,
             IPublicationFactory publicationFactory,
             IDateTimeService dateTimeService,
             IPublicationImageFactory publicationImageFactory,
-            ICommentFactory commentFactory)
+            ICommentService commentService)
         {
             Guard.WhenArgument(publicationRepository, "PublicationRepository").IsNull().Throw();
-            Guard.WhenArgument(commentRepository, "CommentRepository").IsNull().Throw();
+            Guard.WhenArgument(friendsRepository, "FriendsRepository").IsNull().Throw();
             Guard.WhenArgument(userService, "UserService").IsNull().Throw();
             Guard.WhenArgument(unitOfWork, "UnitOfWork").IsNull().Throw();
             Guard.WhenArgument(publicationFactory, "PublicationFactory").IsNull().Throw();
             Guard.WhenArgument(dateTimeService, "DateTimeService").IsNull().Throw();
             Guard.WhenArgument(publicationImageFactory, "PublicationImageFactory").IsNull().Throw();
-            Guard.WhenArgument(commentFactory, "CommentFactory").IsNull().Throw();
+            Guard.WhenArgument(commentService, "CommentService").IsNull().Throw();
 
             this.publicationRepository = publicationRepository;
-            this.commentRepository = commentRepository;
+            this.friendsRepository = friendsRepository;
             this.userService = userService;
             this.unitOfWork = unitOfWork;
             this.publicationFactory = publicationFactory;
             this.dateTimeService = dateTimeService;
             this.publicationImageFactory = publicationImageFactory;
-            this.commentFactory = commentFactory;
+            this.commentService = commentService;
         }
 
         public void CreatePublication(string content, string userId, byte[] imageContent)
@@ -58,19 +58,24 @@ namespace MeetMe.Services
         }
 
         // TODO: unit test
-        public IEnumerable<Publication> FriendsPublications(string userId, int count)
+        public IEnumerable<Publication> FriendsPublications(string userId, int skip, int count)
         {
             var user = this.userService.GetByIndentityId(userId);
-            var friendsPublications = new List<Publication>();
+            var friendsIds = this.friendsRepository.All
+                .Where(x => x.UserId == user.Id)
+                .Select(x => x.FriendId)
+                .ToList();
+            friendsIds.Add(user.Id);
 
-            //foreach (var friend in user.Friends)
-            //{
-            //    friendsPublications.AddRange(friend.Publications);
-            //}
-
-            return friendsPublications
+            var friendsPublications = this.publicationRepository
+                .All
+                .Where(x => friendsIds.Contains(x.Author.Id))
                 .OrderByDescending(x => x.CreatedOn)
-                .Take(count);
+                .Skip(skip)
+                .Take(count)
+                .ToList();
+
+            return friendsPublications;
         }
 
         public IEnumerable<Publication> UserPublications(string userId)
@@ -106,8 +111,7 @@ namespace MeetMe.Services
             var publication = this.publicationRepository.GetById(publicationId);
             var user = this.userService.GetByIndentityId(userId);
             var date = this.dateTimeService.GetCurrentDate();
-            var comment = this.commentFactory.CreateComment(content, user.Id, date);
-            this.commentRepository.Add(comment);
+            var comment = this.commentService.CreatePublicationComment(content, user.Id, date);
             publication.Comments.Add(comment);
             this.publicationRepository.Update(publication);
             this.unitOfWork.Commit();

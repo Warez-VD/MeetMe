@@ -14,31 +14,31 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         public void ThrowsWhen_PublicationRepositoryIsNull()
         {
             // Arrange
-            var mockedCommentRepository = new Mock<IEFRepository<Comment>>();
+            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
             var mockedUserService = new Mock<IUserService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
             var mockedDateTimeService = new Mock<IDateTimeService>();
             var mockedPublicationImageFactory = new Mock<IPublicationImageFactory>();
-            var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             // Act
             var ex = Assert.Throws<ArgumentNullException>(() => new PublicationService(
                 null,
-                mockedCommentRepository.Object,
+                mockedFriendsRepository.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
                 mockedDateTimeService.Object,
                 mockedPublicationImageFactory.Object,
-                mockedCommentFactory.Object));
+                mockedCommentService.Object));
 
             // Assert
             Assert.That(ex.Message.Contains("PublicationRepository"));
         }
 
         [Test]
-        public void ThrowsWhen_CommentRepositoryIsNull()
+        public void ThrowsWhen_FriendsRepositoryIsNull()
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
@@ -47,7 +47,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
             var mockedDateTimeService = new Mock<IDateTimeService>();
             var mockedPublicationImageFactory = new Mock<IPublicationImageFactory>();
-            var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             // Act
             var ex = Assert.Throws<ArgumentNullException>(() => new PublicationService(
@@ -58,10 +58,10 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
                 mockedPublicationFactory.Object,
                 mockedDateTimeService.Object,
                 mockedPublicationImageFactory.Object,
-                mockedCommentFactory.Object));
+                mockedCommentService.Object));
 
             // Assert
-            Assert.That(ex.Message.Contains("CommentRepository"));
+            Assert.That(ex.Message.Contains("FriendsRepository"));
         }
 
         [Test]
@@ -69,23 +69,23 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedCommentRepository = new Mock<IEFRepository<Comment>>();
+            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
             var mockedDateTimeService = new Mock<IDateTimeService>();
             var mockedPublicationImageFactory = new Mock<IPublicationImageFactory>();
-            var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             // Act
             var ex = Assert.Throws<ArgumentNullException>(() => new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedCommentRepository.Object,
+                mockedFriendsRepository.Object,
                 null,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
                 mockedDateTimeService.Object,
                 mockedPublicationImageFactory.Object,
-                mockedCommentFactory.Object));
+                mockedCommentService.Object));
 
             // Assert
             Assert.That(ex.Message.Contains("UserService"));
@@ -96,23 +96,23 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedCommentRepository = new Mock<IEFRepository<Comment>>();
+            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
             var mockedUserService = new Mock<IUserService>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
             var mockedDateTimeService = new Mock<IDateTimeService>();
             var mockedPublicationImageFactory = new Mock<IPublicationImageFactory>();
-            var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             // Act
             var ex = Assert.Throws<ArgumentNullException>(() => new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedCommentRepository.Object,
+                mockedFriendsRepository.Object,
                 mockedUserService.Object,
                 null,
                 mockedPublicationFactory.Object,
                 mockedDateTimeService.Object,
                 mockedPublicationImageFactory.Object,
-                mockedCommentFactory.Object));
+                mockedCommentService.Object));
 
             // Assert
             Assert.That(ex.Message.Contains("UnitOfWork"));
@@ -123,23 +123,23 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedCommentRepository = new Mock<IEFRepository<Comment>>();
+            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
             var mockedUserService = new Mock<IUserService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedDateTimeService = new Mock<IDateTimeService>();
             var mockedPublicationImageFactory = new Mock<IPublicationImageFactory>();
-            var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             // Act
             var ex = Assert.Throws<ArgumentNullException>(() => new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedCommentRepository.Object,
+                mockedFriendsRepository.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 null,
                 mockedDateTimeService.Object,
                 mockedPublicationImageFactory.Object,
-                mockedCommentFactory.Object));
+                mockedCommentService.Object));
 
             // Assert
             Assert.That(ex.Message.Contains("PublicationFactory"));
@@ -150,23 +150,23 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedCommentRepository = new Mock<IEFRepository<Comment>>();
+            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
             var mockedUserService = new Mock<IUserService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
             var mockedPublicationImageFactory = new Mock<IPublicationImageFactory>();
-            var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             // Act
             var ex = Assert.Throws<ArgumentNullException>(() => new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedCommentRepository.Object,
+                mockedFriendsRepository.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
                 null,
                 mockedPublicationImageFactory.Object,
-                mockedCommentFactory.Object));
+                mockedCommentService.Object));
 
             // Assert
             Assert.That(ex.Message.Contains("DateTimeService"));
@@ -177,34 +177,34 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedCommentRepository = new Mock<IEFRepository<Comment>>();
+            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
             var mockedUserService = new Mock<IUserService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
             var mockedDateTimeService = new Mock<IDateTimeService>();
-            var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             // Act
             var ex = Assert.Throws<ArgumentNullException>(() => new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedCommentRepository.Object,
+                mockedFriendsRepository.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
                 mockedDateTimeService.Object,
                 null,
-                mockedCommentFactory.Object));
+                mockedCommentService.Object));
 
             // Assert
             Assert.That(ex.Message.Contains("PublicationImageFactory"));
         }
 
         [Test]
-        public void ThrowsWhen_CommentFactoryIsNull()
+        public void ThrowsWhen_CommentServiceIsNull()
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedCommentRepository = new Mock<IEFRepository<Comment>>();
+            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
             var mockedUserService = new Mock<IUserService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
@@ -214,7 +214,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             // Act
             var ex = Assert.Throws<ArgumentNullException>(() => new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedCommentRepository.Object,
+                mockedFriendsRepository.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
@@ -223,7 +223,7 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
                 null));
 
             // Assert
-            Assert.That(ex.Message.Contains("CommentFactory"));
+            Assert.That(ex.Message.Contains("CommentService"));
         }
 
         [Test]
@@ -231,24 +231,24 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
         {
             // Arrange
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
-            var mockedCommentRepository = new Mock<IEFRepository<Comment>>();
+            var mockedFriendsRepository = new Mock<IEFRepository<UserFriend>>();
             var mockedUserService = new Mock<IUserService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
             var mockedDateTimeService = new Mock<IDateTimeService>();
             var mockedPublicationImageFactory = new Mock<IPublicationImageFactory>();
-            var mockedCommentFactory = new Mock<ICommentFactory>();
+            var mockedCommentService = new Mock<ICommentService>();
 
             // Act
             var publicationService = new PublicationService(
                 mockedPublicationRepository.Object,
-                mockedCommentRepository.Object,
+                mockedFriendsRepository.Object,
                 mockedUserService.Object,
                 mockedUnitOfWork.Object,
                 mockedPublicationFactory.Object,
                 mockedDateTimeService.Object,
                 mockedPublicationImageFactory.Object,
-                mockedCommentFactory.Object);
+                mockedCommentService.Object);
 
             // Assert
             Assert.IsNotNull(publicationService);

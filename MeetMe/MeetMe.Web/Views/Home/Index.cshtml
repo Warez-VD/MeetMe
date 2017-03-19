@@ -78,6 +78,8 @@
                                 <input type="hidden" name="userId" id="user-id" value="@User.Identity.GetUserId()" />
                                 <input type="hidden" id="image-base" name="imageBase64" />
                                 <input type="hidden" id="username-addpublication" value="@Model.PersonalInfo.FirstName @Model.PersonalInfo.LastName" />
+                                <input type="hidden" name="skip" value="0" />
+                                <input type="hidden" name="count" value="20" />
                                 <div class="input-group-btn"><input class="btn btn-lg btn-primary" type="submit" id="btn-publication" value="Publish" /></div>
                             </div>
                             <div>
@@ -87,7 +89,25 @@
                     </div>
                 </div>
                 <div id="publications">
-                    @Html.Action("Publications", "Publication", new { id = User.Identity.GetUserId() })
+                    @Html.Action("Publications", "Publication", new { id = User.Identity.GetUserId(), skip = 0, count = 20 })
+                </div>
+                <div id="show-publications-user" class="text-center show-publications">
+                    @Ajax.ActionLink("Show all publications", "Publications", "Publication", new { id = User.Identity.GetUserId(), skip = 20, count = byte.MaxValue }, new AjaxOptions
+               {
+                   HttpMethod = "GET",
+                   InsertionMode = InsertionMode.InsertAfter,
+                   UpdateTargetId = "publications",
+                   OnSuccess = "showHidePublications"
+               }, new { @class = "btn btn-info" })
+                </div>
+                <div id="hide-publications-user" class="text-center hidden hide-publications">
+                    @Ajax.ActionLink("Hide publications", "Publications", "Publication", new { id = User.Identity.GetUserId(), skip = 0, count = 20 }, new AjaxOptions
+               {
+                   HttpMethod = "GET",
+                   InsertionMode = InsertionMode.Replace,
+                   UpdateTargetId = "publications",
+                   OnSuccess = "showPublications"
+               }, new { @class = "btn btn-info" })
                 </div>
             </div>
             <div class="col-md-3">

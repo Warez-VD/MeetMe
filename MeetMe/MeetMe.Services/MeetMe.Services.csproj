@@ -50,9 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountService.cs" />
+    <Compile Include="CommentService.cs" />
     <Compile Include="Contracts\IAccountService.cs" />
     <Compile Include="Contracts\IAspIdentityUserFactory.cs" />
     <Compile Include="Contracts\ICommentFactory.cs" />
+    <Compile Include="Contracts\ICommentService.cs" />
     <Compile Include="Contracts\ICustomUserFactory.cs" />
     <Compile Include="Contracts\IDateTimeService.cs" />
     <Compile Include="Contracts\IFriendService.cs" />
