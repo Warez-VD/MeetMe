@@ -1,7 +1,7 @@
-﻿using MeetMe.Web.Models.Contracts;
-using System;
+﻿using System;
 using AutoMapper;
 using MeetMe.Data.Models;
+using MeetMe.Web.Models.Contracts;
 
 namespace MeetMe.Web.Models.Publications
 {

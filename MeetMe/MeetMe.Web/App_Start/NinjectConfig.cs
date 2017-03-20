@@ -1,10 +1,10 @@
 using System;
 using System.Web;
+using MeetMe.Web.App_Start.NinjectModules;
+using Microsoft.AspNet.SignalR;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject;
 using Ninject.Web.Common;
-using MeetMe.Web.App_Start.NinjectModules;
-using Microsoft.AspNet.SignalR;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(MeetMe.Web.App_Start.NinjectConfig), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(MeetMe.Web.App_Start.NinjectConfig), "Stop")]
@@ -13,7 +13,7 @@ namespace MeetMe.Web.App_Start
 {
     public static class NinjectConfig 
     {
-        private static readonly Bootstrapper bootstrapper = new Bootstrapper();
+        private static readonly Bootstrapper Bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
@@ -22,7 +22,7 @@ namespace MeetMe.Web.App_Start
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
-            bootstrapper.Initialize(CreateKernel);
+            Bootstrapper.Initialize(CreateKernel);
         }
         
         /// <summary>
@@ -30,7 +30,7 @@ namespace MeetMe.Web.App_Start
         /// </summary>
         public static void Stop()
         {
-            bootstrapper.ShutDown();
+            Bootstrapper.ShutDown();
         }
         
         /// <summary>

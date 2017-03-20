@@ -1,8 +1,8 @@
-﻿using MeetMe.Data.Models;
-using MeetMe.Web.Models.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using AutoMapper;
+using MeetMe.Data.Models;
+using MeetMe.Web.Models.Contracts;
 
 namespace MeetMe.Web.Models.Publications
 {

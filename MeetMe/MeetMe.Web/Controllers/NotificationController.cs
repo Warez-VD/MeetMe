@@ -1,8 +1,8 @@
-﻿using Bytes2you.Validation;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
+using Bytes2you.Validation;
 using MeetMe.Services.Contracts;
 using MeetMe.Web.Models.Notifications;
-using System.Collections.Generic;
-using System.Web.Mvc;
 
 namespace MeetMe.Web.Controllers
 {

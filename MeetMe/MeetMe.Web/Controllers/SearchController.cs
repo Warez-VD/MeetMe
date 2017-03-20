@@ -1,8 +1,8 @@
-﻿using Bytes2you.Validation;
+﻿using System.Linq;
+using System.Web.Mvc;
+using Bytes2you.Validation;
 using MeetMe.Services.Contracts;
 using MeetMe.Web.Models.Search;
-using System.Linq;
-using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 
 namespace MeetMe.Web.Controllers

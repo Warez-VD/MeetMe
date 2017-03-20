@@ -1,7 +1,7 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using MeetMe.Data.Models;
 using MeetMe.Web.Models.Contracts;
-using System;
 
 namespace MeetMe.Web.Models.Notifications
 {

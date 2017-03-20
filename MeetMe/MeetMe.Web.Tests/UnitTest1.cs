@@ -1,7 +1,6 @@
 ﻿using System;
-using NUnit.Framework;
-using Moq;
 using MeetMe.Web.Controllers;
+using NUnit.Framework;
 
 namespace MeetMe.Web.Tests
 {

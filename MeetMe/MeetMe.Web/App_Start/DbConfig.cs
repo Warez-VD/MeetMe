@@ -1,6 +1,6 @@
-﻿using MeetMe.Data;
+﻿using System.Data.Entity;
+using MeetMe.Data;
 using MeetMe.Data.Migrations;
-using System.Data.Entity;
 
 namespace MeetMe.Web.App_Start
 {

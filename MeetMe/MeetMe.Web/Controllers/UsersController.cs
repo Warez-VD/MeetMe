@@ -1,6 +1,6 @@
-﻿using Bytes2you.Validation;
+﻿using System.Web.Mvc;
+using Bytes2you.Validation;
 using MeetMe.Services.Contracts;
-using System.Web.Mvc;
 
 namespace MeetMe.Web.Controllers
 {
@@ -20,7 +20,7 @@ namespace MeetMe.Web.Controllers
         {
             var usernames = this.userService.GetUsernames();
 
-            return Json(usernames, JsonRequestBehavior.AllowGet);
+            return this.Json(usernames, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System;
+using MeetMe.Data;
+using MeetMe.Data.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
-using MeetMe.Data.Models;
-using MeetMe.Data;
 
 [assembly: OwinStartupAttribute(typeof(MeetMe.Web.Auth.Startup))]
 [assembly: OwinStartup(typeof(MeetMe.Web.Auth.Startup))]

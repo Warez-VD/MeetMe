@@ -1,7 +1,7 @@
-﻿using Bytes2you.Validation;
+﻿using System.Web.Mvc;
+using Bytes2you.Validation;
 using MeetMe.Services.Contracts;
 using MeetMe.Web.Models.Navigation;
-using System.Web.Mvc;
 
 namespace MeetMe.Web.Controllers
 {

@@ -1,11 +1,11 @@
 ﻿using System.Linq;
-using MeetMe.Services.Contracts;
-using Microsoft.AspNet.SignalR;
-using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
 using Bytes2you.Validation;
 using MeetMe.Data.Contracts;
 using MeetMe.Data.Models;
+using MeetMe.Services.Contracts;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.SignalR;
 
 namespace MeetMe.Web.Hubs
 {

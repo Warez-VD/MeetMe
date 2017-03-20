@@ -1,10 +1,10 @@
-﻿using AutoMapper;
-using MeetMe.Web.Models.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Web.Mvc;
+using AutoMapper;
+using MeetMe.Web.Models.Contracts;
 
 namespace MeetMe.Web.App_Start
 {

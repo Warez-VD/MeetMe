@@ -7,7 +7,7 @@ namespace MeetMe.Web.Controllers
     [Authorize]
     public class PublicationController : Controller
     {
-        private readonly byte[] EmptyPublicationImage = new byte[0];
+        private readonly byte[] emptyPublicationImage = new byte[0];
         private readonly IPublicationService publicationService;
         private readonly ITextService textService;
         private readonly IViewModelService viewModelService;
@@ -46,13 +46,13 @@ namespace MeetMe.Web.Controllers
             }
             else
             {
-                this.publicationService.CreatePublication(content, userId, this.EmptyPublicationImage);
+                this.publicationService.CreatePublication(content, userId, this.emptyPublicationImage);
             }
 
             var publications = this.publicationService.FriendsPublications(userId, skip, count);
             var model = this.viewModelService.GetMappedPublications(publications);
 
-            return PartialView("_PublicationPartial", model);
+            return this.PartialView("_PublicationPartial", model);
         }
 
         [HttpPost]

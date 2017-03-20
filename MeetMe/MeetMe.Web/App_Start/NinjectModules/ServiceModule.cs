@@ -1,7 +1,7 @@
-﻿using Ninject.Modules;
+﻿using MeetMe.Services.Contracts;
 using Ninject.Extensions.Conventions;
-using MeetMe.Services.Contracts;
 using Ninject.Extensions.Factory;
+using Ninject.Modules;
 using Ninject.Web.Common;
 
 namespace MeetMe.Web.App_Start.NinjectModules

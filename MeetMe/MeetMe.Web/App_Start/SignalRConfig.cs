@@ -17,12 +17,12 @@ namespace MeetMe.Web.App_Start
 
         public override object GetService(Type serviceType)
         {
-            return kernel.TryGet(serviceType) ?? base.GetService(serviceType);
+            return this.kernel.TryGet(serviceType) ?? base.GetService(serviceType);
         }
 
         public override IEnumerable<object> GetServices(Type serviceType)
         {
-            return kernel.GetAll(serviceType).Concat(base.GetServices(serviceType));
+            return this.kernel.GetAll(serviceType).Concat(base.GetServices(serviceType));
         }
     }
 }

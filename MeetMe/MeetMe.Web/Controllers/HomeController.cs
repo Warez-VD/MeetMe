@@ -1,13 +1,13 @@
-﻿using Bytes2you.Validation;
+﻿using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
+using Bytes2you.Validation;
 using MeetMe.Services.Contracts;
 using MeetMe.Web.Auth;
 using MeetMe.Web.Models.Home;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
 
 namespace MeetMe.Web.Controllers
 {
@@ -37,6 +37,30 @@ namespace MeetMe.Web.Controllers
             this.viewModelService = viewModelService;
         }
 
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return this.HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return this.HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+        }
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return this.HttpContext.GetOwinContext().Authentication;
+            }
+        }
+
         [HttpGet]
         public ActionResult Index()
         {
@@ -57,22 +81,6 @@ namespace MeetMe.Web.Controllers
             ViewBag.Message = "Your application description page.";
 
             return this.View();
-        }
-
-        public ApplicationSignInManager SignInManager
-        {
-            get
-            {
-                return this.HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-            }
-        }
-
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return this.HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
         }
 
         [HttpPost]
@@ -139,19 +147,11 @@ namespace MeetMe.Web.Controllers
             return this.PartialView("_ProfilePartial", model);
         }
 
-        private IAuthenticationManager AuthenticationManager
-        {
-            get
-            {
-                return this.HttpContext.GetOwinContext().Authentication;
-            }
-        }
-
         private void AddErrors(IdentityResult result)
         {
             foreach (var error in result.Errors)
             {
-                this.ModelState.AddModelError("", error);
+                this.ModelState.AddModelError(string.Empty, error);
             }
         }
 
