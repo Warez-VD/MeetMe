@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using MeetMe.Web.Models.Search;
+using MeetMe.Data.Models;
 
 namespace MeetMe.Services.Contracts
 {
     public interface ISearchService
     {
-        IEnumerable<SearchUserViewModel> SearchedUsers(string pattern, int skip, int count, string userId);
+        IList<CustomUser> SearchedUsers(string pattern, int skip, int count);
     }
 }

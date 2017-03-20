@@ -105,6 +105,8 @@
     <Compile Include="PublicationServiceTests\FriendsPublications_Should.cs" />
     <Compile Include="PublicationServiceTests\GetById_Should.cs" />
     <Compile Include="PublicationServiceTests\UserPublications_Should.cs" />
+    <Compile Include="SearchServiceTests\Constructor_Should.cs" />
+    <Compile Include="SearchServiceTests\SearchedUsers_Should.cs" />
     <Compile Include="StatisticServiceTests\AddMessageStatistic_Should.cs" />
     <Compile Include="StatisticServiceTests\AddNotificationStatistic_Should.cs" />
     <Compile Include="StatisticServiceTests\Constructor_Should.cs" />

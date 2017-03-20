@@ -6,6 +6,7 @@ using MeetMe.Services.Contracts;
 using MeetMe.Web.Models.Home;
 using MeetMe.Web.Models.Notifications;
 using MeetMe.Web.Models.Publications;
+using MeetMe.Web.Models.Search;
 
 namespace MeetMe.Services
 {
@@ -13,16 +14,24 @@ namespace MeetMe.Services
     {
         private readonly IMapperService mapperService;
         private readonly IImageService imageService;
+        private readonly IUserService userService;
+        private readonly IFriendService friendService;
 
         public ViewModelService(
             IMapperService mapperService,
-            IImageService imageService)
+            IImageService imageService,
+            IUserService userService,
+            IFriendService friendService)
         {
             Guard.WhenArgument(mapperService, "MapperService").IsNull().Throw();
             Guard.WhenArgument(imageService, "ImageService").IsNull().Throw();
+            Guard.WhenArgument(userService, "UserService").IsNull().Throw();
+            Guard.WhenArgument(friendService, "FriendService").IsNull().Throw();
 
             this.mapperService = mapperService;
             this.imageService = imageService;
+            this.userService = userService;
+            this.friendService = friendService;
         }
 
         public IEnumerable<PublicationViewModel> GetMappedPublications(IEnumerable<Publication> publications)
@@ -86,6 +95,32 @@ namespace MeetMe.Services
             }
 
             return mappedNotifications;
+        }
+
+        public IEnumerable<SearchUserViewModel> GetMappedSearchedUsers(IList<CustomUser> users, string userId)
+        {
+            var result = users.Select(x => this.mapperService.MapObject<SearchUserViewModel>(x)).ToList();
+
+            if (userId == string.Empty)
+            {
+                for (int i = 0; i < users.Count; i++)
+                {
+                    result[i].ImageUrl = this.imageService.ByteArrayToImageUrl(users[i].ProfileImage.Content);
+                }
+            }
+            else
+            {
+                var currentUser = this.userService.GetByIndentityId(userId);
+                var currentUserFriendsIds = this.friendService.GetAllUserFriendsIds(currentUser.Id);
+                for (int i = 0; i < users.Count; i++)
+                {
+                    bool isFriend = currentUserFriendsIds.Contains(users[i].Id);
+                    result[i].IsFriend = isFriend;
+                    result[i].ImageUrl = this.imageService.ByteArrayToImageUrl(users[i].ProfileImage.Content);
+                }
+            }
+
+            return result;
         }
     }
 }

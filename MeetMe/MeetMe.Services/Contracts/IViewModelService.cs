@@ -3,6 +3,7 @@ using MeetMe.Data.Models;
 using MeetMe.Web.Models.Home;
 using MeetMe.Web.Models.Notifications;
 using MeetMe.Web.Models.Publications;
+using MeetMe.Web.Models.Search;
 
 namespace MeetMe.Services.Contracts
 {
@@ -11,6 +12,8 @@ namespace MeetMe.Services.Contracts
         IEnumerable<PublicationViewModel> GetMappedPublications(IEnumerable<Publication> publications);
 
         IEnumerable<NotificationUserViewModel> GetMappedUserNotifications(IEnumerable<Notification> notifications);
+
+        IEnumerable<SearchUserViewModel> GetMappedSearchedUsers(IList<CustomUser> users, string userId);
 
         IList<CommentViewModel> GetMappedComments(Publication publication);
 

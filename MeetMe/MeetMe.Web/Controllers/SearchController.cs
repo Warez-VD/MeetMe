@@ -13,23 +13,27 @@ namespace MeetMe.Web.Controllers
         private const int DefaultUsersToShow = 5;
 
         private readonly ISearchService searchService;
+        private readonly IViewModelService viewModelService;
 
-        public SearchController(ISearchService searchService)
+        public SearchController(ISearchService searchService, IViewModelService viewModelService)
         {
             Guard.WhenArgument(searchService, "SearchService").IsNull().Throw();
+            Guard.WhenArgument(viewModelService, "ViewModelService").IsNull().Throw();
 
             this.searchService = searchService;
+            this.viewModelService = viewModelService;
         }
 
         [HttpGet]
         public ActionResult Index()
         {
             var userId = this.HttpContext.User.Identity.GetUserId();
-            var results = this.searchService.SearchedUsers(string.Empty, DefaultUsersSkip, DefaultUsersToShow, userId);
+            var results = this.searchService.SearchedUsers(string.Empty, DefaultUsersSkip, DefaultUsersToShow);
+            var mappedUsers = this.viewModelService.GetMappedSearchedUsers(results, userId);
             var model = new SearchViewModel();
             model.SearchedPattern = string.Empty;
             model.ResultsCount = results.Count();
-            model.FoundUsers = results;
+            model.FoundUsers = mappedUsers;
 
             return this.View(model);
         }
@@ -38,11 +42,12 @@ namespace MeetMe.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(string pattern, int skip, int count, string userId)
         {
-            var results = this.searchService.SearchedUsers(pattern, skip, count, userId);
+            var results = this.searchService.SearchedUsers(pattern, skip, count);
+            var mappedUsers = this.viewModelService.GetMappedSearchedUsers(results, userId);
             var model = new SearchViewModel();
             model.SearchedPattern = pattern;
             model.ResultsCount = results.Count();
-            model.FoundUsers = results;
+            model.FoundUsers = mappedUsers;
 
             return this.View(model);
         }
@@ -56,9 +61,10 @@ namespace MeetMe.Web.Controllers
                 pattern = string.Empty;
             }
 
-            var results = this.searchService.SearchedUsers(pattern, skip, count, userId);
+            var results = this.searchService.SearchedUsers(pattern, skip, count);
+            var model = this.viewModelService.GetMappedSearchedUsers(results, userId);
 
-            return this.PartialView("_SearchResultsPartial", results);
+            return this.PartialView("_SearchResultsPartial", model);
         }
     }
 }
