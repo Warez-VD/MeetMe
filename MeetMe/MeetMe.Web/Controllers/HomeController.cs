@@ -142,7 +142,7 @@ namespace MeetMe.Web.Controllers
         {
             string id = this.HttpContext.User.Identity.GetUserId();
             var user = this.userService.GetByIndentityId(id);
-            var model = this.viewModelService.GetMappedProfile(user);
+            var model = this.viewModelService.GetMappedProfilePartial(user);
 
             return this.PartialView("_ProfilePartial", model);
         }

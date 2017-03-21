@@ -1,4 +1,7 @@
-﻿@section styles {
+﻿@using MeetMe.Web.Models.Profile
+@model ProfileViewModel
+
+@section styles {
     <link href="~/Content/profile.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/publication.css" rel="stylesheet" />
 }
@@ -10,29 +13,35 @@
                 <div class="panel-body">
                     <div class="media">
                         <div align="center">
-                            <img class="thumbnail img-responsive" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="200px" height="200px">
+                            <img class="thumbnail img-responsive" src="@Model.ProfileImageUrl" width="200px" height="200px">
+                            <span><strong>@Model.FullName</strong></span>
                         </div>
                         <div class="media-body">
-                            <hr>
+                            <hr/>
                             <h3>
-                                <strong>Bio</strong>
+                                <strong>Age</strong>
                             </h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
-                            <hr>
+                            <p>
+                                @if (Model.Age != 0)
+                                {
+                                    @Model.Age
+                                }
+                            </p>
+                            <hr/>
                             <h3>
-                                <strong>Location</strong>
+                                <strong><i class="fa fa-map-marker"></i> Location</strong>
                             </h3>
-                            <p>Earth</p>
-                            <hr>
+                            <p>@Model.City</p>
+                            <hr/>
                             <h3>
-                                <strong>Gender</strong>
+                                <strong><i class="fa fa-graduation-cap"></i> Education</strong>
                             </h3>
-                            <p>Unknown</p>
-                            <hr>
+                            <p>@Model.School</p>
+                            <hr/>
                             <h3>
-                                <strong>Birthday</strong>
+                                <strong><i class="fa fa-briefcase"></i> Work</strong>
                             </h3>
-                            <p>January 01 1901</p>
+                            <p>@Model.Company</p>
                         </div>
                     </div>
                 </div>
@@ -50,6 +59,11 @@
                         <li>
                             <a href="#tab_default_2" data-toggle="tab">
                                 Personal Information
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#tab_default_3" data-toggle="tab">
+                                Friends
                             </a>
                         </li>
                     </ul>
@@ -110,6 +124,9 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="tab-pane" id="tab_default_3">
+                            <span>Friends</span>
                         </div>
                     </div>
                 </div>

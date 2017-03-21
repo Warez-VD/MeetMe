@@ -5,6 +5,7 @@ using MeetMe.Data.Models;
 using MeetMe.Services.Contracts;
 using MeetMe.Web.Models.Home;
 using MeetMe.Web.Models.Notifications;
+using MeetMe.Web.Models.Profile;
 using MeetMe.Web.Models.Publications;
 using MeetMe.Web.Models.Search;
 
@@ -65,7 +66,7 @@ namespace MeetMe.Services
             return result;
         }
 
-        public ProfilePartialViewModel GetMappedProfile(CustomUser user)
+        public ProfilePartialViewModel GetMappedProfilePartial(CustomUser user)
         {
             var profileImageUrl = this.imageService.ByteArrayToImageUrl(user.ProfileImage.Content);
             var result = this.mapperService.MapObject<ProfilePartialViewModel>(user);
@@ -119,6 +120,31 @@ namespace MeetMe.Services
                     result[i].ImageUrl = this.imageService.ByteArrayToImageUrl(users[i].ProfileImage.Content);
                 }
             }
+
+            return result;
+        }
+
+        public IEnumerable<ProfileFriendViewModel> GetMappedUserFriends(IEnumerable<CustomUser> friends)
+        {
+            var result = new List<ProfileFriendViewModel>();
+
+            foreach (var friend in friends)
+            {
+                var userImageUrl = this.imageService.ByteArrayToImageUrl(friend.ProfileImage.Content);
+                var mappedFriend = this.mapperService.MapObject<ProfileFriendViewModel>(friend);
+                mappedFriend.ProfileImageUrl = userImageUrl;
+
+                result.Add(mappedFriend);
+            }
+
+            return result;
+        }
+
+        public ProfileViewModel GetMappedProfile(CustomUser user)
+        {
+            var profileImageUrl = this.imageService.ByteArrayToImageUrl(user.ProfileImage.Content);
+            var result = this.mapperService.MapObject<ProfileViewModel>(user);
+            result.ProfileImageUrl = profileImageUrl;
 
             return result;
         }

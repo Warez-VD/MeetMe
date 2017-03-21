@@ -29,7 +29,7 @@ namespace MeetMe.Services.Tests.ViewModelServiceTests
             var user = new CustomUser() { ProfileImage = new ProfileImage() { Content = profileImageContent } };
 
             // Act
-            viewModelService.GetMappedProfile(user);
+            viewModelService.GetMappedProfilePartial(user);
 
             // Assert
             mockedImageService.Verify(x => x.ByteArrayToImageUrl(It.Is<byte[]>(c => c == profileImageContent)), Times.Once);
@@ -55,7 +55,7 @@ namespace MeetMe.Services.Tests.ViewModelServiceTests
             var user = new CustomUser() { ProfileImage = new ProfileImage() { Content = profileImageContent } };
 
             // Act
-            viewModelService.GetMappedProfile(user);
+            viewModelService.GetMappedProfilePartial(user);
 
             // Assert
             mockedMapperService.Verify(x => x.MapObject<ProfilePartialViewModel>(It.Is<CustomUser>(u => u == user)), Times.Once);
@@ -81,7 +81,7 @@ namespace MeetMe.Services.Tests.ViewModelServiceTests
             var user = new CustomUser() { ProfileImage = new ProfileImage() { Content = profileImageContent } };
 
             // Act
-            var result = viewModelService.GetMappedProfile(user);
+            var result = viewModelService.GetMappedProfilePartial(user);
 
             // Assert
             Assert.IsNotNull(result);
