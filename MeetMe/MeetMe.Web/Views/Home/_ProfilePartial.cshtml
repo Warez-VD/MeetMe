@@ -1,8 +1,53 @@
 ﻿@using MeetMe.Web.Models.Home
 @model ProfilePartialViewModel
 <div>
-    <a id="navbar-profile" href="@Url.Action("Index", "Profile", new { id = Model.Id })">
-        <span>Welcome, @Model.FirstName @Model.LastName</span>
-        <img src=@Model.ProfileImageUrl alt="User logo" />
-    </a>
+    <div class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
+                <img src="@Model.ProfileImageUrl" class="img-responsive img-circle" title="John Doe" alt="John Doe" width="30px" height="30px">
+            </span>
+            <span class="user-name">
+                @Model.FirstName @Model.LastName
+            </span>
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <div class="navbar-content">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <img src="@Model.ProfileImageUrl" alt="Alternate Text" class="img-responsive" width="120px" height="120px" />
+                            <p class="text-center small">
+                                <a href="./3X6zm">Change Photo</a>
+                            </p>
+                        </div>
+                        <div class="col-md-7">
+                            <span>@Model.FirstName @Model.LastName</span>
+                            <div class="divider">
+                            </div>
+                            <a href="@Url.Action("Index", "Profile", new { id = Model.Id })" class="btn btn-default btn-xs"><i class="fa fa-user-o" aria-hidden="true"></i> Profile</a>
+                            <a href="#" class="btn btn-default btn-xs"><i class="fa fa-address-card-o" aria-hidden="true"></i> Friends</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar-footer">
+                    <div class="navbar-footer-content">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="#" class="btn btn-default btn-sm"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Change Passowrd</a>
+                            </div>
+                            <div class="col-md-6">
+                                @using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <a id="btn-signout" class="btn btn-default btn-sm pull-right" href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-power-off" aria-hidden="true"></i> Sign out</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>

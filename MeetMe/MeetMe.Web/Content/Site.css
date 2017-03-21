@@ -23,16 +23,16 @@ textarea {
     max-width: 280px;
 }
 
-footer{
+footer {
     height: 100px;
-    width: 100%
+    width: 100%;
 }
 
-.special{
+.special {
     font-size: 30px;
 }
 
-.github{
+.github {
     color: black;
 }
 
@@ -42,12 +42,48 @@ footer{
     color: #000;
 }
 
-#navbar-profile img {
-    height: 40px;
-    border-radius: 50px;
+    #navbar-profile img {
+        height: 40px;
+        border-radius: 50px;
+    }
+
+.custom-autocomplete {
+    display: inline;
 }
 
-.custom-autocomplete
-{
-    display: inline;
+.navbar-content {
+    width: 320px;
+    padding: 15px;
+    padding-bottom: 0px;
+}
+
+    .navbar-content:before, .navbar-content:after {
+        display: table;
+        content: "";
+        line-height: 0;
+    }
+
+.navbar-nav.navbar-right:last-child {
+    margin-right: 15px !important;
+}
+
+#btn-signout {
+    margin-right: 15px !important;
+}
+
+.navbar-footer {
+    background-color: #DDD;
+}
+
+.navbar-footer-content {
+    padding: 15px 15px 15px 15px;
+}
+
+.dropdown-menu {
+    padding: 0px;
+    overflow: hidden;
+}
+
+#profile-partial-page {
+    margin-left: 40px;
 }
