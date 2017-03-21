@@ -270,6 +270,7 @@
     <Content Include="Content\home.jpg" />
     <Content Include="Content\logo.png" />
     <Content Include="Content\notification.css" />
+    <Content Include="Content\profile.css" />
     <Content Include="Content\publication.css" />
     <Content Include="Content\search.css" />
     <Content Include="Content\themes\base\accordion.css" />

@@ -11,7 +11,7 @@ namespace MeetMe.Services.Contracts
 
         IEnumerable<Publication> FriendsPublications(string userId, int skip, int count);
 
-        IEnumerable<Publication> UserPublications(string userId);
+        IEnumerable<Publication> UserPublications(string userId, int skip, int count);
 
         void AddLike(int id);
 

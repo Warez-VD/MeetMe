@@ -74,10 +74,16 @@ namespace MeetMe.Services
             return friendsPublications;
         }
 
-        public IEnumerable<Publication> UserPublications(string userId)
+        public IEnumerable<Publication> UserPublications(string userId, int skip, int count)
         {
             var user = this.userService.GetByIndentityId(userId);
-            return user.Publications.OrderByDescending(x => x.CreatedOn);
+            var result = user.Publications
+                .OrderByDescending(x => x.CreatedOn)
+                .Skip(skip)
+                .Take(count)
+                .ToList();
+
+            return result;
         }
 
         public void AddLike(int id)

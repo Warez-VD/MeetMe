@@ -35,6 +35,15 @@ namespace MeetMe.Web.Controllers
             return this.PartialView("_PublicationPartial", model);
         }
 
+        [HttpGet]
+        public ActionResult UserPublications(string id, int skip, int count)
+        {
+            var publications = this.publicationService.UserPublications(id, skip, count);
+            var model = this.viewModelService.GetMappedPublications(publications);
+
+            return this.PartialView("_PublicationPartial", model);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AddPublication(string content, string userId, string imageBase64, int skip, int count)

@@ -1,1 +1,116 @@
-﻿<h2>Profile</h2>
+﻿@section styles {
+    <link href="~/Content/profile.css" rel="stylesheet" type="text/css" />
+}
+
+<div class="mainbody container-fluid">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="media">
+                        <div align="center">
+                            <img class="thumbnail img-responsive" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="200px" height="200px">
+                        </div>
+                        <div class="media-body">
+                            <hr>
+                            <h3>
+                                <strong>Bio</strong>
+                            </h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
+                            <hr>
+                            <h3>
+                                <strong>Location</strong>
+                            </h3>
+                            <p>Earth</p>
+                            <hr>
+                            <h3>
+                                <strong>Gender</strong>
+                            </h3>
+                            <p>Unknown</p>
+                            <hr>
+                            <h3>
+                                <strong>Birthday</strong>
+                            </h3>
+                            <p>January 01 1901</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-10 col-xs-10 col-md-offset-1">
+            <div data-spy="scroll" class="tabbable-panel">
+                <div class="tabbable-line">
+                    <ul class="nav nav-tabs ">
+                        <li class="active">
+                            <a href="#tab_default_1" data-toggle="tab">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#tab_default_2" data-toggle="tab">
+                                Personal Information
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_default_1">
+                            <div class="col-md-offset-4 well">
+                                <form class="form-horizontal" role="form">
+                                    <h4>What's New</h4>
+                                    <div class="form-group" style="padding:14px;">
+                                        <textarea class="form-control" placeholder="Update your status"></textarea>
+                                    </div>
+                                    <button class="btn btn-primary pull-right" type="button">Post</button><ul class="list-inline"><li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li><li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li><li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li></ul>
+                                </form>
+                            </div>
+                            @Html.Action("UserPublications", "Publication", new { id = User.Identity.GetUserId(), skip = 0, count = 20 })
+                        </div>
+                        <div class="tab-pane" id="tab_default_2">
+                            <p>
+                                Education& Career
+                            </p>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="email">Highest Education:</label>
+                                        <p> MBA/PGDM</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Place of Birth:</label>
+                                        <p> pune, maharashtra</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Place of Birth:</label>
+                                        <p> pune, maharashtra</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Place of Birth:</label>
+                                        <p> pune, maharashtra</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="email">Place of Birth:</label>
+                                        <p> pune, maharashtra</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Place of Birth:</label>
+                                        <p> pune, maharashtra</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Place of Birth:</label>
+                                        <p> pune, maharashtra</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Place of Birth:</label>
+                                        <p> pune, maharashtra</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
