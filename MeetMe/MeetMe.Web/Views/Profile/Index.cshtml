@@ -1,5 +1,6 @@
 ﻿@section styles {
     <link href="~/Content/profile.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/publication.css" rel="stylesheet" />
 }
 
 <div class="mainbody container-fluid">
@@ -37,7 +38,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-7 col-md-7 col-sm-10 col-xs-10 col-md-offset-1">
+        <div class="col-lg-6 col-md-6 col-sm-9 col-xs-9 col-md-offset-1">
             <div data-spy="scroll" class="tabbable-panel">
                 <div class="tabbable-line">
                     <ul class="nav nav-tabs ">
@@ -54,7 +55,7 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_default_1">
-                            <div class="col-md-offset-4 well">
+                            <div class="well user-create-post">
                                 <form class="form-horizontal" role="form">
                                     <h4>What's New</h4>
                                     <div class="form-group" style="padding:14px;">
@@ -63,7 +64,9 @@
                                     <button class="btn btn-primary pull-right" type="button">Post</button><ul class="list-inline"><li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li><li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li><li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li></ul>
                                 </form>
                             </div>
-                            @Html.Action("UserPublications", "Publication", new { id = User.Identity.GetUserId(), skip = 0, count = 20 })
+                            <div class="user-publications">
+                                @Html.Action("UserPublications", "Publication", new { id = User.Identity.GetUserId(), skip = 0, count = 20 })
+                            </div>
                         </div>
                         <div class="tab-pane" id="tab_default_2">
                             <p>
