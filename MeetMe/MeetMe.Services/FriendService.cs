@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Bytes2you.Validation;
 using MeetMe.Data.Contracts;
@@ -38,8 +37,7 @@ namespace MeetMe.Services
             this.userFriendRepository.Add(userFriend);
             this.unitOfWork.Commit();
         }
-
-        // TODO: unit test
+        
         public ICollection<CustomUser> GetAllUserFriends(int id)
         {
             var friendIds = this.GetAllUserFriendsIds(id);

@@ -95,6 +95,9 @@
     <Compile Include="FriendServiceTests\AddFriendship_Should.cs" />
     <Compile Include="FriendServiceTests\Constructor_Should.cs" />
     <Compile Include="FriendServiceTests\GetAllUserFriendsIds_Should.cs" />
+    <Compile Include="FriendServiceTests\GetAllUserFriends_Should.cs" />
+    <Compile Include="FriendServiceTests\GetFriendShip_Should.cs" />
+    <Compile Include="FriendServiceTests\RemoveFriend_Should.cs" />
     <Compile Include="ImageServiceTests\ByteArrayToImageUrl_Should.cs" />
     <Compile Include="ImageServiceTests\GetImage_Should.cs" />
     <Compile Include="NotificationServiceTests\Constructor_Should.cs" />
