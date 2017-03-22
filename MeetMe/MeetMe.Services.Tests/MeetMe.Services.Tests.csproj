@@ -84,8 +84,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AccountServiceTests\ChangeProfileImage_Should.cs" />
     <Compile Include="AccountServiceTests\Constructor_Should.cs" />
     <Compile Include="AccountServiceTests\CreateUser_Should.cs" />
+    <Compile Include="AccountServiceTests\EditProfile_Should.cs" />
     <Compile Include="AccountServiceTests\Register_Should.cs" />
     <Compile Include="CommentServiceTests\Constructor_Should.cs" />
     <Compile Include="CommentServiceTests\CreatePublicationComment_Should.cs" />
