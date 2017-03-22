@@ -1,21 +1,21 @@
 ﻿using MeetMe.Data.Models;
 using MeetMe.Services.Contracts;
-using MeetMe.Web.Models.Profile;
+using MeetMe.Web.Models.Home;
 using Moq;
 using NUnit.Framework;
 
 namespace MeetMe.Services.Tests.ViewModelServiceTests
 {
     [TestFixture]
-    public class GetMappedProfile_Should
+    public class GetMappedProfilePartial_Should
     {
         [Test]
         public void CallImageService_ByteArrayToImageUrlOnce()
         {
             // Arrange
             var mockedMapperService = new Mock<IMapperService>();
-            var mappedProfile = new ProfileViewModel();
-            mockedMapperService.Setup(x => x.MapObject<ProfileViewModel>(It.IsAny<CustomUser>())).Returns(mappedProfile);
+            var mappedProfile = new ProfilePartialViewModel();
+            mockedMapperService.Setup(x => x.MapObject<ProfilePartialViewModel>(It.IsAny<CustomUser>())).Returns(mappedProfile);
             var mockedImageService = new Mock<IImageService>();
             var mockedUserService = new Mock<IUserService>();
             var mockedFriendService = new Mock<IFriendService>();
@@ -29,7 +29,7 @@ namespace MeetMe.Services.Tests.ViewModelServiceTests
             var user = new CustomUser() { ProfileImage = new ProfileImage() { Content = profileImageContent } };
 
             // Act
-            viewModelService.GetMappedProfile(user);
+            viewModelService.GetMappedProfilePartial(user);
 
             // Assert
             mockedImageService.Verify(x => x.ByteArrayToImageUrl(It.Is<byte[]>(c => c == profileImageContent)), Times.Once);
@@ -40,8 +40,8 @@ namespace MeetMe.Services.Tests.ViewModelServiceTests
         {
             // Arrange
             var mockedMapperService = new Mock<IMapperService>();
-            var mappedProfile = new ProfileViewModel();
-            mockedMapperService.Setup(x => x.MapObject<ProfileViewModel>(It.IsAny<CustomUser>())).Returns(mappedProfile);
+            var mappedProfile = new ProfilePartialViewModel();
+            mockedMapperService.Setup(x => x.MapObject<ProfilePartialViewModel>(It.IsAny<CustomUser>())).Returns(mappedProfile);
             var mockedImageService = new Mock<IImageService>();
             var mockedUserService = new Mock<IUserService>();
             var mockedFriendService = new Mock<IFriendService>();
@@ -55,10 +55,10 @@ namespace MeetMe.Services.Tests.ViewModelServiceTests
             var user = new CustomUser() { ProfileImage = new ProfileImage() { Content = profileImageContent } };
 
             // Act
-            viewModelService.GetMappedProfile(user);
+            viewModelService.GetMappedProfilePartial(user);
 
             // Assert
-            mockedMapperService.Verify(x => x.MapObject<ProfileViewModel>(It.Is<CustomUser>(u => u == user)), Times.Once);
+            mockedMapperService.Verify(x => x.MapObject<ProfilePartialViewModel>(It.Is<CustomUser>(u => u == user)), Times.Once);
         }
 
         [Test]
@@ -66,8 +66,8 @@ namespace MeetMe.Services.Tests.ViewModelServiceTests
         {
             // Arrange
             var mockedMapperService = new Mock<IMapperService>();
-            var mappedProfile = new ProfileViewModel();
-            mockedMapperService.Setup(x => x.MapObject<ProfileViewModel>(It.IsAny<CustomUser>())).Returns(mappedProfile);
+            var mappedProfile = new ProfilePartialViewModel();
+            mockedMapperService.Setup(x => x.MapObject<ProfilePartialViewModel>(It.IsAny<CustomUser>())).Returns(mappedProfile);
             var mockedImageService = new Mock<IImageService>();
             var mockedUserService = new Mock<IUserService>();
             var mockedFriendService = new Mock<IFriendService>();
@@ -81,12 +81,12 @@ namespace MeetMe.Services.Tests.ViewModelServiceTests
             var user = new CustomUser() { ProfileImage = new ProfileImage() { Content = profileImageContent } };
 
             // Act
-            var result = viewModelService.GetMappedProfile(user);
+            var result = viewModelService.GetMappedProfilePartial(user);
 
             // Assert
             Assert.IsNotNull(result);
             Assert.AreEqual(result, mappedProfile);
-            Assert.IsInstanceOf<ProfileViewModel>(result);
+            Assert.IsInstanceOf<ProfilePartialViewModel>(result);
         }
     }
 }

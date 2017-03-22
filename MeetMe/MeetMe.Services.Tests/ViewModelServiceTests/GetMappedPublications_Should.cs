@@ -102,7 +102,7 @@ namespace MeetMe.Services.Tests.ViewModelServiceTests
         }
 
         [Test]
-        public void ReturnCoorectCountMappedPublications()
+        public void ReturnCorrectCountMappedPublications()
         {
             // Arrange
             var mockedMapperService = new Mock<IMapperService>();

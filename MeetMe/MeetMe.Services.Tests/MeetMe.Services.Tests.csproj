@@ -132,9 +132,12 @@
     <Compile Include="ViewModelServiceTests\Constructor_Should.cs" />
     <Compile Include="ViewModelServiceTests\GetMappedComments_Should.cs" />
     <Compile Include="ViewModelServiceTests\GetMappedPersonalInfo_Should.cs" />
+    <Compile Include="ViewModelServiceTests\GetMappedProfilePartial_Should.cs" />
+    <Compile Include="ViewModelServiceTests\GetMappedProfilePersonalInfo_Should.cs" />
     <Compile Include="ViewModelServiceTests\GetMappedProfile_Should.cs" />
     <Compile Include="ViewModelServiceTests\GetMappedPublications_Should.cs" />
     <Compile Include="ViewModelServiceTests\GetMappedSearchedUsers_Should.cs" />
+    <Compile Include="ViewModelServiceTests\GetMappedUserFriends_Should.cs" />
     <Compile Include="ViewModelServiceTests\GetMappedUserNotifications_Should.cs" />
   </ItemGroup>
   <ItemGroup>
