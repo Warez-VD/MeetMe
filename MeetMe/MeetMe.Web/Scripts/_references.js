@@ -14,6 +14,7 @@
 /// <reference path="navigation.js" />
 /// <reference path="notification.js" />
 /// <reference path="notifications-view.js" />
+/// <reference path="profile.js" />
 /// <reference path="publication.js" />
 /// <reference path="requester.js" />
 /// <reference path="respond.js" />

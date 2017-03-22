@@ -17,16 +17,12 @@
                     <div class="row">
                         <div class="col-md-5">
                             <img src="@Model.ProfileImageUrl" alt="Alternate Text" class="img-responsive" width="120px" height="120px" />
-                            <p class="text-center small">
-                                <a href="./3X6zm">Change Photo</a>
-                            </p>
                         </div>
                         <div class="col-md-7">
                             <span>@Model.FirstName @Model.LastName</span>
                             <div class="divider">
                             </div>
                             <a href="@Url.Action("Index", "Profile", new { id = Model.Id })" class="btn btn-default btn-xs"><i class="fa fa-user-o" aria-hidden="true"></i> Profile</a>
-                            <a href="#" class="btn btn-default btn-xs"><i class="fa fa-address-card-o" aria-hidden="true"></i> Friends</a>
                         </div>
                     </div>
                 </div>

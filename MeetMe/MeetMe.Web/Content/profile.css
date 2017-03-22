@@ -6,3 +6,20 @@
     margin-left: 15%;
     margin-right:15%;
 }
+#profile-image-change {
+    position: absolute;
+    opacity: 0.001;
+    cursor: pointer;
+}
+
+.search-list {
+    padding-left: 5%;
+}
+
+#user-publication-picture {
+    position: absolute;
+    width: 1%;
+    cursor: pointer;
+    z-index: 100;
+    opacity: 0.001;
+}

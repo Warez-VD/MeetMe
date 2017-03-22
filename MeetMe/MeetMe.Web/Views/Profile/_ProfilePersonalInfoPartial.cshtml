@@ -1,0 +1,61 @@
+﻿@using MeetMe.Web.Models.Profile
+@model ProfilePersonalnfo
+
+@using (Ajax.BeginForm("Edit", "Profile", new { id = Model.Id }, new AjaxOptions()
+{
+    HttpMethod = "POST",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "edit-personal-form",
+    OnSuccess = "updateSuccess"
+}, new { id = "edit-personal-form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="text-left">
+        <h4>
+            First name:
+            <span class="editable text-success"> @Model.FirstName</span>
+            @Html.TextBoxFor(x => x.FirstName, new { @class = "hidden editmode" })
+            <br />
+            <small>@Html.ValidationMessageFor(x => x.FirstName, string.Empty, new { @class = "text-danger" })</small>
+        </h4>
+        <h4>
+            Last name:
+            <span class="editable text-success"> @Model.LastName</span>
+            @Html.TextBoxFor(x => x.LastName, new { @class = "hidden editmode" })
+            <br />
+            <small>@Html.ValidationMessageFor(x => x.LastName, string.Empty, new { @class = "text-danger" })</small>
+        </h4>
+        <h4>
+            Age:
+            @if (Model.Age != 0)
+            {
+                <span class="editable text-success"> @Model.Age</span>
+            }
+            @Html.TextBoxFor(x => x.Age, new { @class = "hidden editmode", type = "number" })
+            <br />
+            <small>@Html.ValidationMessageFor(x => x.Age, string.Empty, new { @class = "text-danger" })</small>
+        </h4>
+        <h4>
+            City:
+            <span class="editable text-success"> @Model.City</span>
+            @Html.TextBoxFor(x => x.City, new { @class = "hidden editmode" })
+            <br />
+            <small>@Html.ValidationMessageFor(x => x.City, string.Empty, new { @class = "text-danger" })</small>
+        </h4>
+        <h4>
+            School:
+            <span class="editable text-success"> @Model.School</span>
+            @Html.TextBoxFor(x => x.School, new { @class = "hidden editmode" })
+            <br />
+            <small>@Html.ValidationMessageFor(x => x.School, string.Empty, new { @class = "text-danger" })</small>
+        </h4>
+        <h4>
+            Company:
+            <span class="editable text-success"> @Model.Company</span>
+            @Html.TextBoxFor(x => x.Company, new { @class = "hidden editmode" })
+            <br />
+            <small>@Html.ValidationMessageFor(x => x.Company, string.Empty, new { @class = "text-danger" })</small>
+        </h4>
+    </div>
+    <input type="submit" id="btn-save" class="btn btn-success hidden editmode" value="Save" />
+}

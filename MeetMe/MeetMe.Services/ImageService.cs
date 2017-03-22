@@ -26,5 +26,13 @@ namespace MeetMe.Services
         {
             return Image.FromFile(path);
         }
+
+        public byte[] GetByteArrayFromStream(Stream inputStream)
+        {
+            MemoryStream target = new MemoryStream();
+            inputStream.CopyTo(target);
+            byte[] data = target.ToArray();
+            return data;
+        }
     }
 }

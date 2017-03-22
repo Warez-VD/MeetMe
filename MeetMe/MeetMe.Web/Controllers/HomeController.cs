@@ -147,14 +147,6 @@ namespace MeetMe.Web.Controllers
             return this.PartialView("_ProfilePartial", model);
         }
 
-        private void AddErrors(IdentityResult result)
-        {
-            foreach (var error in result.Errors)
-            {
-                this.ModelState.AddModelError(string.Empty, error);
-            }
-        }
-
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (this.Url.IsLocalUrl(returnUrl))

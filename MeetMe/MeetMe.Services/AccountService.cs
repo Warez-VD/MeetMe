@@ -1,7 +1,10 @@
-﻿using Bytes2you.Validation;
+﻿using System;
+using System.IO;
+using Bytes2you.Validation;
 using MeetMe.Data.Contracts;
 using MeetMe.Data.Models;
 using MeetMe.Services.Contracts;
+using MeetMe.Web.Models.Profile;
 
 namespace MeetMe.Services
 {
@@ -52,6 +55,30 @@ namespace MeetMe.Services
             var user = this.userFactory.CreateCustomUser(firstName, lastName, fullname, id, profileLogo);
             this.userRepository.Add(user);
             this.unitOfWork.Commit();
+        }
+
+        public void ChangeProfileImage(Stream inputFileStream, int id)
+        {
+            var fileContent = this.imageService.GetByteArrayFromStream(inputFileStream);
+            var user = this.userRepository.GetById(id);
+            user.ProfileImage.Content = fileContent;
+            this.userRepository.Update(user);
+            this.unitOfWork.Commit();
+        }
+
+        public CustomUser EditProfile(ProfilePersonalnfo personalInfo)
+        {
+            var user = this.userRepository.GetById(personalInfo.Id);
+            user.FirstName = personalInfo.FirstName;
+            user.LastName = personalInfo.LastName;
+            user.Age = personalInfo.Age;
+            user.City = personalInfo.City;
+            user.School = personalInfo.School;
+            user.Company = personalInfo.Company;
+
+            this.userRepository.Update(user);
+            this.unitOfWork.Commit();
+            return user;
         }
     }
 }

@@ -22,6 +22,8 @@ namespace MeetMe.Services.Contracts
 
         ProfileViewModel GetMappedProfile(CustomUser user);
 
+        ProfilePersonalnfo GetMappedProfilePersonalInfo(CustomUser user);
+
         ProfilePartialViewModel GetMappedProfilePartial(CustomUser user);
 
         PersonalInfoViewModel GetMappedPersonalInfo(CustomUser user);

@@ -56,6 +56,7 @@
     <Compile Include="Notifications\NotificationUserViewModel.cs" />
     <Compile Include="Notifications\NotificationViewModel.cs" />
     <Compile Include="Profile\ProfileFriendViewModel.cs" />
+    <Compile Include="Profile\ProfilePersonalnfo.cs" />
     <Compile Include="Profile\ProfileViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publications\CommentViewModel.cs" />

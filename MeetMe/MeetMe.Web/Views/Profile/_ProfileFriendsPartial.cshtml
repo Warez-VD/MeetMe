@@ -1,0 +1,13 @@
+﻿@using MeetMe.Web.Models.Profile
+@model IEnumerable<ProfileFriendViewModel>
+
+@foreach (var user in Model)
+{
+    <li class="search-item">
+        <a class="search-section" href="@Url.Action("Index", "Profile", new { id = user.Id })">
+            <img src="@user.ProfileImageUrl" width="100" height="100">
+            <span class="username-color">@user.FullName</span>
+        </a>
+        <hr />
+    </li>
+}

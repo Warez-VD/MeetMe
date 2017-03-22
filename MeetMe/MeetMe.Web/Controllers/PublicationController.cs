@@ -66,6 +66,26 @@ namespace MeetMe.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        public ActionResult AddPersonalPublication(string content, string userId, string imageBase64, int skip, int count)
+        {
+            if (imageBase64 != string.Empty)
+            {
+                var base64 = this.textService.ConvertBase64(imageBase64);
+                this.publicationService.CreatePublication(content, userId, base64);
+            }
+            else
+            {
+                this.publicationService.CreatePublication(content, userId, this.emptyPublicationImage);
+            }
+
+            var publications = this.publicationService.UserPublications(userId, skip, count);
+            var model = this.viewModelService.GetMappedPublications(publications);
+
+            return this.PartialView("_PublicationPartial", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddComment(int id, string comment, string userId)
         {
             this.publicationService.CreatePublicationComment(id, comment, userId);

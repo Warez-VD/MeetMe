@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Bytes2you.Validation;
 using MeetMe.Data.Models;
@@ -145,7 +146,14 @@ namespace MeetMe.Services
             var profileImageUrl = this.imageService.ByteArrayToImageUrl(user.ProfileImage.Content);
             var result = this.mapperService.MapObject<ProfileViewModel>(user);
             result.ProfileImageUrl = profileImageUrl;
+            result.PersonalInfo = this.GetMappedProfilePersonalInfo(user);
 
+            return result;
+        }
+
+        public ProfilePersonalnfo GetMappedProfilePersonalInfo(CustomUser user)
+        {
+            var result = this.mapperService.MapObject<ProfilePersonalnfo>(user);
             return result;
         }
     }

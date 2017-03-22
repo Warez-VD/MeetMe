@@ -365,6 +365,7 @@
     <Content Include="Scripts\navigation.js" />
     <Content Include="Scripts\notification.js" />
     <Content Include="Scripts\notifications-view.js" />
+    <Content Include="Scripts\profile.js" />
     <Content Include="Scripts\publication.js" />
     <Content Include="Scripts\requester.js" />
     <Content Include="Scripts\respond.js" />
@@ -396,6 +397,8 @@
     <Content Include="Views\Search\_SearchResultsPartial.cshtml" />
     <Content Include="Views\Notification\Index.cshtml" />
     <Content Include="Views\Notification\_NotificationsPartial.cshtml" />
+    <Content Include="Views\Profile\_ProfileFriendsPartial.cshtml" />
+    <Content Include="Views\Profile\_ProfilePersonalInfoPartial.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
