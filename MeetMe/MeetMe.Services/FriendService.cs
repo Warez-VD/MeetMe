@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Bytes2you.Validation;
 using MeetMe.Data.Contracts;
@@ -61,6 +62,25 @@ namespace MeetMe.Services
                 .ToList();
 
             return friendIds;
+        }
+
+        public UserFriend GetFriendShip(int currentUserId, int friendId)
+        {
+            var friendship = this.userFriendRepository
+                .All
+                .Where((x => x.UserId == currentUserId && x.FriendId == friendId))
+                .FirstOrDefault();
+
+            return friendship;
+        }
+
+        public void RemoveFriend(int currentUserId, int friendId)
+        {
+            var friendship = this.GetFriendShip(currentUserId, friendId);
+            var friendshipReverse = this.GetFriendShip(friendId, currentUserId);
+            this.userFriendRepository.Delete(friendship);
+            this.userFriendRepository.Delete(friendshipReverse);
+            this.unitOfWork.Commit();
         }
     }
 }

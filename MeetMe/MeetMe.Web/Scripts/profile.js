@@ -5,8 +5,8 @@ function ajaxSuccess() {
     $("#publication-image").remove();
 }
 
-function updateSuccess(data) {
-    console.log(data);
+function updateSuccess() {
+    toastr.success("Updated successfully");
 }
 
 function handleFileSelect(ev) {

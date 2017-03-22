@@ -4,7 +4,6 @@ using MeetMe.Services.Contracts;
 
 namespace MeetMe.Web.Controllers
 {
-    [Authorize]
     public class PublicationController : Controller
     {
         private readonly byte[] emptyPublicationImage = new byte[0];
@@ -26,6 +25,7 @@ namespace MeetMe.Web.Controllers
             this.viewModelService = viewModelService;
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult Publications(string id, int skip, int count)
         {
@@ -44,6 +44,7 @@ namespace MeetMe.Web.Controllers
             return this.PartialView("_PublicationPartial", model);
         }
 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AddPublication(string content, string userId, string imageBase64, int skip, int count)
@@ -64,6 +65,7 @@ namespace MeetMe.Web.Controllers
             return this.PartialView("_PublicationPartial", model);
         }
 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AddPersonalPublication(string content, string userId, string imageBase64, int skip, int count)
@@ -84,6 +86,7 @@ namespace MeetMe.Web.Controllers
             return this.PartialView("_PublicationPartial", model);
         }
 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AddComment(int id, string comment, string userId)

@@ -116,16 +116,37 @@
                             <div id="publications" class="user-publications">
                                 @Html.Action("UserPublications", "Publication", new { id = Model.AspIdentityUserId, skip = 0, count = 20 })
                             </div>
+                            <div id="show-publications-user" class="text-center show-publications">
+                                @Ajax.ActionLink("Show all publications", "UserPublications", "Publication", new { id = Model.AspIdentityUserId, skip = 20, count = byte.MaxValue }, new AjaxOptions
+                                {
+                                   HttpMethod = "GET",
+                                   InsertionMode = InsertionMode.InsertAfter,
+                                   UpdateTargetId = "publications",
+                                   OnSuccess = "showHidePublications"
+                                }, new { @class = "btn btn-info" })
+                            </div>
+                            <div id="hide-publications-user" class="text-center hidden hide-publications">
+                                @Ajax.ActionLink("Hide publications", "UserPublications", "Publication", new { id = Model.AspIdentityUserId, skip = 0, count = 20 }, new AjaxOptions
+                                {
+                                   HttpMethod = "GET",
+                                   InsertionMode = InsertionMode.Replace,
+                                   UpdateTargetId = "publications",
+                                   OnSuccess = "showPublications"
+                                }, new { @class = "btn btn-info" })
+                            </div>
                         </div>
                         <div class="tab-pane" id="tab_default_2">
                             <div class="well form-horizontal">
-                                <button id="btn-edit" class="btn btn-default fa-pull-right">Edit</button>
+                                @if (Model.AspIdentityUserId == User.Identity.GetUserId())
+                                {
+                                    <button id="btn-edit" class="btn btn-default fa-pull-right">Edit</button>
+                                }
                                 @Html.Partial("_ProfilePersonalInfoPartial", Model.PersonalInfo)
                             </div>
                         </div>
                         <div class="tab-pane" id="tab_default_3">
                             <ul class="search-list" id="all-results">
-                                @Html.Partial("_ProfileFriendsPartial", Model.Friends)
+                                @Html.Partial("_ProfileFriendsPartial", Model)
                             </ul>
                         </div>
                     </div>
@@ -136,5 +157,7 @@
 </div>
 
 @section scripts {
+    @Scripts.Render("~/Scripts/notification-profile.js")
     @Scripts.Render("~/Scripts/profile.js")
+    @Scripts.Render("~/Scripts/publication.js")
 }

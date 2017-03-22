@@ -25,31 +25,34 @@
                                         </p>
                                     </div>
                                     <hr />
-                                    <div class="col-sm-2 col-sm-offset-1">
-                                        @if (publication.Likes == 0)
-                                        {
-                                            <a data-id="@publication.Id" publication-author="@publication.AuthorId" data-userid="@User.Identity.GetUserId()" class="like-publication comment-icons glyphicon glyphicon-thumbs-up"><span id="publication-like-@publication.Id"></span></a>
-                                        }
-                                        else
-                                        {
-                                            <a data-id="@publication.Id" publication-author="@publication.AuthorId" data-userid="@User.Identity.GetUserId()" class="like-publication comment-icons glyphicon glyphicon-thumbs-up"><span id="publication-like-@publication.Id">@publication.Likes</span></a>
-                                        }
-                                    </div>
-                                    <div class="col-sm-2">
-                                        @if (publication.Dislikes == 0)
-                                        {
-                                            <a data-id="@publication.Id" class="dislike-publication comment-icons glyphicon glyphicon-thumbs-down"><span id="publication-dislike-@publication.Id"></span></a>
-                                        }
-                                        else
-                                        {
-                                            <a data-id="@publication.Id" class="dislike-publication comment-icons glyphicon glyphicon-thumbs-down"><span id="publication-dislike-@publication.Id">@publication.Dislikes</span></a>
-                                        }
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <a class="comment-icons glyphicon glyphicon-share">
-                                            <span> Share</span>
-                                        </a>
-                                    </div>
+                                    @if (this.Request.IsAuthenticated)
+                                    {
+                                        <div class="col-sm-2 col-sm-offset-1">
+                                            @if (publication.Likes == 0)
+                                            {
+                                                <a data-id="@publication.Id" publication-author="@publication.AuthorId" data-userid="@User.Identity.GetUserId()" class="like-publication comment-icons glyphicon glyphicon-thumbs-up"><span id="publication-like-@publication.Id"></span></a>
+                                            }
+                                            else
+                                            {
+                                                <a data-id="@publication.Id" publication-author="@publication.AuthorId" data-userid="@User.Identity.GetUserId()" class="like-publication comment-icons glyphicon glyphicon-thumbs-up"><span id="publication-like-@publication.Id">@publication.Likes</span></a>
+                                            }
+                                        </div>
+                                        <div class="col-sm-2">
+                                            @if (publication.Dislikes == 0)
+                                            {
+                                                <a data-id="@publication.Id" class="dislike-publication comment-icons glyphicon glyphicon-thumbs-down"><span id="publication-dislike-@publication.Id"></span></a>
+                                            }
+                                            else
+                                            {
+                                                <a data-id="@publication.Id" class="dislike-publication comment-icons glyphicon glyphicon-thumbs-down"><span id="publication-dislike-@publication.Id">@publication.Dislikes</span></a>
+                                            }
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a class="comment-icons glyphicon glyphicon-share">
+                                                <span> Share</span>
+                                            </a>
+                                        </div>
+                                    }
                                     <hr />
                                 </div>
                             </div>
@@ -66,9 +69,11 @@
                                     <span data-info="@publication.Id">Hide comments</span>
                                 </div>
                             </div>
-                            <div class="widget-area no-padding blank">
-                                <div class="status-upload">
-                                    @using (Ajax.BeginForm("AddComment", "Publication", new { id = publication.Id },
+                            @if (this.Request.IsAuthenticated)
+                            {
+                                <div class="widget-area no-padding blank">
+                                    <div class="status-upload">
+                                        @using (Ajax.BeginForm("AddComment", "Publication", new { id = publication.Id },
                                         new AjaxOptions()
                                         {
                                             HttpMethod = "Post",
@@ -76,14 +81,15 @@
                                             UpdateTargetId = $"comments-{publication.Id}",
                                             OnSuccess = "ajaxCommentSuccess"
                                         }))
-                                    {
-                                        @Html.AntiForgeryToken()
-                                        <textarea class="fa-align-center area" name="comment" placeholder="What are you doing right now?"></textarea>
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <textarea class="fa-align-center area" name="comment" placeholder="What are you doing right now?"></textarea>
                                             <input type="hidden" name="userId" value="@User.Identity.GetUserId()" />
                                             <button type="submit" title="Add comment" data-userid="@User.Identity.GetUserId()" data-author="@publication.AuthorId" class="btn btn-success green btn-comment"><i class="fa fa-comment-o"></i> Comment</button>
-                                    }
+                                        }
+                                    </div>
                                 </div>
-                            </div>
+                            }
                         </div>
                     </div>
                 </div>

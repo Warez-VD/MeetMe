@@ -1,13 +1,22 @@
 ﻿@using MeetMe.Web.Models.Profile
-@model IEnumerable<ProfileFriendViewModel>
+@model ProfileViewModel
 
-@foreach (var user in Model)
+@foreach (var user in Model.Friends)
 {
     <li class="search-item">
         <a class="search-section" href="@Url.Action("Index", "Profile", new { id = user.Id })">
             <img src="@user.ProfileImageUrl" width="100" height="100">
-            <span class="username-color">@user.FullName</span>
+            <span class="username-color">@user.FullName</span>  
         </a>
+        @if (this.Request.IsAuthenticated && this.Model.AspIdentityUserId == User.Identity.GetUserId())
+        {
+            @Ajax.ActionLink(" ", "RemoveFriend", "Profile", new { id = user.Id, userId = Model.AspIdentityUserId }, new AjaxOptions()
+            {
+               HttpMethod = "POST",
+               InsertionMode = InsertionMode.Replace,
+               UpdateTargetId = "all-results"
+            }, new { @class = "fa fa-remove pull-right text-danger" })
+        }
         <hr />
     </li>
 }

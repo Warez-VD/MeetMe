@@ -88,5 +88,19 @@ namespace MeetMe.Web.Controllers
 
             return this.Json(result, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public ActionResult RemoveFriend(int id, string userId)
+        {
+            var user = this.userService.GetByIndentityId(userId);
+            this.friendService.RemoveFriend(user.Id, id);
+
+            var friends = this.friendService.GetAllUserFriends(user.Id);
+            var model = this.viewModelService.GetMappedProfile(user);
+            var mappedFriends = this.viewModelService.GetMappedUserFriends(friends);
+            model.Friends = mappedFriends;
+
+            return this.PartialView("_ProfileFriendsPartial", model);
+        }
     }
 }
