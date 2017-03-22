@@ -81,7 +81,6 @@ namespace MeetMe.Services.Tests.FriendServiceTests
                 mockedUserFriendFactory.Object,
                 mockedUnitOfWork.Object);
             
-
             // Act
             var result = friendService.GetAllUserFriends(id);
 

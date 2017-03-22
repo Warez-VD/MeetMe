@@ -95,13 +95,17 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
             var mockedFriendService = new Mock<IFriendService>();
             var mockedUserService = new Mock<IUserService>();
-            var user = new CustomUser() { Id = 1, Publications = new List<Publication>()
+            var user = new CustomUser()
             {
-                new Publication() { Author = new CustomUser() { Id = 1 }, CreatedOn = new DateTime(2016, 10, 12) },
-                new Publication() { Author = new CustomUser() { Id = 1 }, CreatedOn = new DateTime(2016, 10, 13) },
-                new Publication() { Author = new CustomUser() { Id = 1 }, CreatedOn = new DateTime(2016, 10, 12) },
-                new Publication() { Author = new CustomUser() { Id = 1 }, CreatedOn = new DateTime(2016, 10, 15) }
-            } };
+                Id = 1,
+                Publications = new List<Publication>()
+                {
+                    new Publication() { Author = new CustomUser() { Id = 1 }, CreatedOn = new DateTime(2016, 10, 12) },
+                    new Publication() { Author = new CustomUser() { Id = 1 }, CreatedOn = new DateTime(2016, 10, 13) },
+                    new Publication() { Author = new CustomUser() { Id = 1 }, CreatedOn = new DateTime(2016, 10, 12) },
+                    new Publication() { Author = new CustomUser() { Id = 1 }, CreatedOn = new DateTime(2016, 10, 15) }
+                }
+            };
             mockedUserService.Setup(x => x.GetByIndentityId(It.IsAny<string>())).Returns(user);
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();
@@ -136,13 +140,17 @@ namespace MeetMe.Services.Tests.PublicationServiceTests
             var mockedPublicationRepository = new Mock<IEFRepository<Publication>>();
             var mockedFriendService = new Mock<IFriendService>();
             var mockedUserService = new Mock<IUserService>();
-            var user = new CustomUser() { Id = 1, Publications = new List<Publication>()
+            var user = new CustomUser()
             {
-                new Publication() { Author = new CustomUser() { Id = 1 }, CreatedOn = new DateTime(2016, 10, 12) },
-                new Publication() { Author = new CustomUser() { Id = 1 }, CreatedOn = new DateTime(2016, 10, 13) },
-                new Publication() { Author = new CustomUser() { Id = 1 }, CreatedOn = new DateTime(2016, 10, 12) },
-                new Publication() { Author = new CustomUser() { Id = 1 }, CreatedOn = new DateTime(2016, 10, 15) }
-            } };
+                Id = 1,
+                Publications = new List<Publication>()
+                {
+                    new Publication() { Author = new CustomUser() { Id = 1 }, CreatedOn = new DateTime(2016, 10, 12) },
+                    new Publication() { Author = new CustomUser() { Id = 1 }, CreatedOn = new DateTime(2016, 10, 13) },
+                    new Publication() { Author = new CustomUser() { Id = 1 }, CreatedOn = new DateTime(2016, 10, 12) },
+                    new Publication() { Author = new CustomUser() { Id = 1 }, CreatedOn = new DateTime(2016, 10, 15) }
+                }
+            };
             mockedUserService.Setup(x => x.GetByIndentityId(It.IsAny<string>())).Returns(user);
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var mockedPublicationFactory = new Mock<IPublicationFactory>();

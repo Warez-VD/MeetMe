@@ -66,7 +66,7 @@ namespace MeetMe.Services
         {
             var friendship = this.userFriendRepository
                 .All
-                .Where((x => x.UserId == currentUserId && x.FriendId == friendId))
+                .Where(x => x.UserId == currentUserId && x.FriendId == friendId)
                 .FirstOrDefault();
 
             return friendship;

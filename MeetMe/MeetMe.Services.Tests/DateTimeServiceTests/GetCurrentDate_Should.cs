@@ -16,9 +16,9 @@ namespace MeetMe.Services.Tests.DateTimeServiceTests
             var result = dateTimeService.GetCurrentDate();
 
             // Assert
-            Assert.AreEqual(result.Day, DateTime.Now.Day);
-            Assert.AreEqual(result.Month, DateTime.Now.Month);
-            Assert.AreEqual(result.Year, DateTime.Now.Year);
+            Assert.AreEqual(result.Day, DateTime.UtcNow.Day);
+            Assert.AreEqual(result.Month, DateTime.UtcNow.Month);
+            Assert.AreEqual(result.Year, DateTime.UtcNow.Year);
             Assert.IsInstanceOf<DateTime>(result);
         }
     }

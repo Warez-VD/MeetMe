@@ -25,19 +25,26 @@
                HttpMethod = "POST",
                OnSuccess = "removeNotificationCount"
            })
-        </li>
-        <li><a href="@Url.Action("Index", "Notification", new { id = User.Identity.GetUserId() })">Show notifications</a></li>
-    </ul>
-</li>
-<li>
-    <a href="@Url.Action("Message", "Home")">
-        <span class="fa fa-envelope"></span>
-        Messages <span id="messageCount">
-            @if (Model.MessagesCount != 0)
+            </li>
+            <li><a href="@Url.Action("Index", "Notification", new { id = User.Identity.GetUserId() })">Show notifications</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="@Url.Action("Message", "Home")">
+            Messages <span class="fa fa-envelope"></span><span id="messageCount">
+                @if (Model.MessagesCount != 0)
             {
-                @Model.MessagesCount
-            }
-        </span>
-    </a>
-</li>
+                    @Model.MessagesCount
+                }
+            </span>
+        </a>
+    </li>
+    @if (User.IsInRole("admin"))
+    {
+        <li>
+            <a href="@Url.Action("Index", "Dashboard", new { area = "administration" })">
+                Administration <span class="fa fa-cogs"></span>
+            </a>
+        </li>
+    }
 </ul>
