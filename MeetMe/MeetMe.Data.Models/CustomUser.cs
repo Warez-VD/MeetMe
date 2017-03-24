@@ -48,6 +48,8 @@ namespace MeetMe.Data.Models
         [MaxLength(100)]
         public string Company { get; set; }
 
+        public bool IsBanned { get; set; }
+
         public int ProfileImageId { get; set; }
 
         public virtual ProfileImage ProfileImage { get; set; }

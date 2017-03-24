@@ -58,5 +58,26 @@ namespace MeetMe.Services
 
             return usernames;
         }
+
+        public IEnumerable<CustomUser> GetAllUsers()
+        {
+            return this.userRepository.All.ToList();
+        }
+
+        public void BanUser(string userId)
+        {
+            var user = this.GetByIndentityId(userId);
+            user.IsBanned = true;
+            this.userRepository.Update(user);
+            this.unitOfWork.Commit();
+        }
+
+        public void UnbanUser(string userId)
+        {
+            var user = this.GetByIndentityId(userId);
+            user.IsBanned = false;
+            this.userRepository.Update(user);
+            this.unitOfWork.Commit();
+        }
     }
 }

@@ -11,6 +11,12 @@ namespace MeetMe.Services.Contracts
 
         IEnumerable<string> GetUsernames();
 
+        IEnumerable<CustomUser> GetAllUsers();
+
         void AddFriend(string userId, int friendId);
+
+        void BanUser(string userId);
+
+        void UnbanUser(string userId);
     }
 }

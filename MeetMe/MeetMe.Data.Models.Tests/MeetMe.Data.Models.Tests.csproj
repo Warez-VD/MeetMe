@@ -95,6 +95,7 @@
     <Compile Include="CustomUserTests\Fullname_Should.cs" />
     <Compile Include="CustomUserTests\Id_Should.cs" />
     <Compile Include="CustomUserTests\Images_Should.cs" />
+    <Compile Include="CustomUserTests\IsBanned_Should.cs" />
     <Compile Include="CustomUserTests\LastName_Should.cs" />
     <Compile Include="CustomUserTests\ProfileImageId_Should.cs" />
     <Compile Include="CustomUserTests\Publications_Should.cs" />

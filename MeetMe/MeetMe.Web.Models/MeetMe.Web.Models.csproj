@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\DashboardViewModel.cs" />
     <Compile Include="Contracts\ICustomMappings.cs" />
     <Compile Include="Contracts\IMapFrom.cs" />
     <Compile Include="Home\HomeViewModel.cs" />

@@ -1,7 +1,30 @@
-﻿@{
+﻿@using Kendo.Mvc.UI
+@using MeetMe.Web.Models.Admin
+@model IEnumerable<DashboardViewModel>
+
+@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<p>Use this area to provide additional information.</p>
+<div>
+    @(Html.Kendo().Grid(Model)
+    .Name("Grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.FullName).Title("Full name");
+    })
+    .HtmlAttributes(new { style = "height: 550px;" })
+    .Pageable(pageable => pageable
+       .Input(true)
+       .Numeric(false)
+     )
+    .Sortable()
+    .Scrollable(scr => scr.Height(430))
+    .Filterable()
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(10)
+        .ServerOperation(false)
+     ).Deferred(true)
+    )
+</div>
+<h3>About page</h3>

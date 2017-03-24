@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Bytes2you.Validation;
 using MeetMe.Data.Models;
 using MeetMe.Services.Contracts;
+using MeetMe.Web.Models.Admin;
 using MeetMe.Web.Models.Home;
 using MeetMe.Web.Models.Notifications;
 using MeetMe.Web.Models.Profile;
@@ -154,6 +154,19 @@ namespace MeetMe.Services
         public ProfilePersonalnfo GetMappedProfilePersonalInfo(CustomUser user)
         {
             var result = this.mapperService.MapObject<ProfilePersonalnfo>(user);
+            return result;
+        }
+
+        public IEnumerable<DashboardViewModel> GetMappedAdminUsers(IEnumerable<CustomUser> users)
+        {
+            var result = new List<DashboardViewModel>();
+
+            foreach (var user in users)
+            {
+                var mappedUser = this.mapperService.MapObject<DashboardViewModel>(user);
+                result.Add(mappedUser);
+            }
+
             return result;
         }
     }

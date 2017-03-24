@@ -1,10 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@{ var awesomeArea = new { area = "Administration" }; }
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MeetMe</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/kendo")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("styles", required: false)
 </head>
@@ -47,7 +50,6 @@
                 else
                 {
                     @Html.Action("Index", "Navigation", new { id = User.Identity.GetUserId() })
-                    
                     <div class="navbar-form navbar-right" role="search">
                         @using (Html.BeginForm("Index", "Search", FormMethod.Post, new { @class = "custom-autocomplete" }))
                         {
@@ -86,6 +88,7 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/kendo")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/toastr")
     @Scripts.Render("~/bundles/jqueryval")

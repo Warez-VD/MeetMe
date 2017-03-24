@@ -17,6 +17,10 @@ namespace MeetMe.Web
             bundles.Add(new ScriptBundle("~/bundles/jqueryunobtrusive").Include(
                         "~/Scripts/jquery.unobtrusive-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
+                       "~/Scripts/KendoUI/kendo.all.min.js",
+                       "~/Scripts/KendoUI/kendo.aspnetmvc.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/hubs").Include(
                         "~/Scripts/notification.js"));
 
@@ -42,6 +46,10 @@ namespace MeetMe.Web
                       "~/Content/font-awesome.css",
                       "~/Content/toastr.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/kendo").Include(
+                        "~/Content/KendoUI/kendo.common-nova.min.css",
+                        "~/Content/KendoUI/kendo.nova.min.css"));
         }
     }
 }

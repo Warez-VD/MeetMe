@@ -16,8 +16,8 @@ namespace MeetMe.Web.Areas.Administration
         {
             context.MapRoute(
                 "Administration_default",
-                "Administration/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                "administration/{controller}/{action}/{id}",
+                new { controller = "Dashboard", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

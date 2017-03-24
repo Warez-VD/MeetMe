@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using MeetMe.Data.Models;
+using MeetMe.Web.Models.Admin;
 using MeetMe.Web.Models.Home;
 using MeetMe.Web.Models.Notifications;
 using MeetMe.Web.Models.Profile;
@@ -17,6 +18,8 @@ namespace MeetMe.Services.Contracts
         IEnumerable<SearchUserViewModel> GetMappedSearchedUsers(IList<CustomUser> users, string userId);
 
         IEnumerable<ProfileFriendViewModel> GetMappedUserFriends(IEnumerable<CustomUser> friends);
+
+        IEnumerable<DashboardViewModel> GetMappedAdminUsers(IEnumerable<CustomUser> users);
 
         IList<CommentViewModel> GetMappedComments(Publication publication);
 
