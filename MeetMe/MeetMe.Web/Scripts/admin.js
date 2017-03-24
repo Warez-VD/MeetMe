@@ -9,7 +9,7 @@ $(() => {
 function banUser(ev) {
     let target = $(ev.target);
     let userId = target.attr("data-id");
-    let url = `/administration/dashboard/banuser/${userId}`;
+    let url = `/admin/banuser/${userId}`;
     requester.postJSON(url)
         .then((result) => {
             target.val("Unban user");
@@ -23,7 +23,7 @@ function banUser(ev) {
 function unbanUser(ev) {
     let target = $(ev.target);
     let userId = target.attr("data-id");
-    let url = `/administration/dashboard/unbanuser/${userId}`;
+    let url = `/admin/unbanuser/${userId}`;
     requester.postJSON(url)
         .then((result) => {
             target.val("Ban user");

@@ -13,7 +13,6 @@ namespace MeetMe.Web
         {
             EnginesConfig.RemoveWebFormsEngine();
             DbConfig.Initialize();
-            AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

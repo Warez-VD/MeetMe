@@ -1,13 +1,10 @@
-﻿@{ var awesomeArea = new { area = "Administration" }; }
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MeetMe</title>
     @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/kendo")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("styles", required: false)
 </head>
@@ -88,7 +85,6 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/kendo")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/toastr")
     @Scripts.Render("~/bundles/jqueryval")

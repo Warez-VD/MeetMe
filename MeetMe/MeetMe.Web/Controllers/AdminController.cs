@@ -1,20 +1,20 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using Bytes2you.Validation;
-using MeetMe.Web.Auth;
 using MeetMe.Services.Contracts;
-using Microsoft.AspNet.Identity.Owin;
+using MeetMe.Web.Auth;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
-namespace MeetMe.Web.Areas.Administration.Controllers
+namespace MeetMe.Web.Controllers
 {
     [Authorize]
-    public class DashboardController : Controller
+    public class AdminController : Controller
     {
         private readonly IUserService userService;
         private readonly IViewModelService viewModelService;
 
-        public DashboardController(IUserService userService, IViewModelService viewModelService)
+        public AdminController(IUserService userService, IViewModelService viewModelService)
         {
             Guard.WhenArgument(userService, "UserService").IsNull().Throw();
             Guard.WhenArgument(viewModelService, "ViewModelService").IsNull().Throw();

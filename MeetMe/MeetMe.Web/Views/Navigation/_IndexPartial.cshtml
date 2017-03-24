@@ -42,7 +42,7 @@
     @if (User.IsInRole("admin"))
     {
         <li>
-            <a href="@Url.Action("Index", "Dashboard", new { area = "administration" })">
+            <a href="@Url.Action("Index", "Admin")">
                 Administration <span class="fa fa-cogs"></span>
             </a>
         </li>

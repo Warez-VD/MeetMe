@@ -8,10 +8,6 @@ using MeetMe.Web.Models.Home;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Kendo.Mvc.UI;
-using MeetMe.Web.Models.Admin;
-using Kendo.Mvc.Extensions;
-using System.Collections.Generic;
 
 namespace MeetMe.Web.Controllers
 {
@@ -82,11 +78,7 @@ namespace MeetMe.Web.Controllers
         [HttpGet]
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-            var users = this.userService.GetAllUsers();
-            var model = this.viewModelService.GetMappedAdminUsers(users);
-
-            return this.View(model);
+            return this.View();
         }
 
         [HttpPost]

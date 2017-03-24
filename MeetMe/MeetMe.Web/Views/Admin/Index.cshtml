@@ -1,0 +1,40 @@
+﻿@using MeetMe.Web.Models.Admin
+@model IEnumerable<DashboardViewModel>
+
+@{
+    WebGrid grid = new WebGrid(null, rowsPerPage: 10);
+    grid.Bind(Model, autoSortAndPage: true, rowCount: 10);
+}
+
+@section styles {
+    @Styles.Render("~/Content/admin.css")
+}
+<div id="admin-panel">
+    @grid.GetHtml(tableStyle: "table table-bordered",
+ mode: WebGridPagerModes.All,
+ firstText: "<< First",
+ previousText: "< Prev",
+ nextText: "Next >",
+ lastText: "Last >>",
+    columns: grid.Columns(
+    grid.Column("FullName", "Full name"),
+    grid.Column(
+        header: "User ban",
+        format:
+        @<span>
+            @if (item.IsBanned)
+            {
+                <input type='button' class='btn btn-success unban-user'
+                       data-id="@item.AspIdentityUserId" value='Unban user' />
+            }
+            else
+            {
+                <input type='button' class='btn btn-danger ban-user'
+                       data-id="@item.AspIdentityUserId" value='Ban user' />
+            }
+        </span>)))
+</div>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/admin.js")
+}

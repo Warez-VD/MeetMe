@@ -56,9 +56,6 @@
       <HintPath>..\packages\Castle.Core.3.2.0\lib\net45\Castle.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Kendo.Mvc">
-      <HintPath>..\..\..\TasteIt\TasteIt\External Libraries\Kendo.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -244,8 +241,7 @@
     <Compile Include="App_Start\EnginesConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\SignalRConfig.cs" />
-    <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
-    <Compile Include="Areas\Administration\Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
@@ -274,9 +270,6 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\home.css" />
     <Content Include="Content\home.jpg" />
-    <Content Include="Content\KendoUI\kendo.common-nova.min.css" />
-    <Content Include="Content\KendoUI\kendo.common.min.css" />
-    <Content Include="Content\KendoUI\kendo.nova.min.css" />
     <Content Include="Content\logo.png" />
     <Content Include="Content\notification.css" />
     <Content Include="Content\profile.css" />
@@ -352,12 +345,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Areas\Administration\Views\web.config" />
-    <Content Include="Areas\Administration\Views\Dashboard\Index.cshtml" />
-    <Content Include="Content\KendoUI\kendo.common.min.css.map" />
-    <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
-    <Content Include="Content\KendoUI\kendo.common-nova.min.css.map" />
-    <Content Include="Content\KendoUI\kendo.nova.min.css.map" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -377,8 +364,6 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\KendoUI\kendo.all.min.js" />
-    <Content Include="Scripts\KendoUI\kendo.aspnetmvc.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\navigation.js" />
     <Content Include="Scripts\notification-profile.js" />
@@ -419,6 +404,7 @@
     <Content Include="Views\Notification\_NotificationsPartial.cshtml" />
     <Content Include="Views\Profile\_ProfileFriendsPartial.cshtml" />
     <Content Include="Views\Profile\_ProfilePersonalInfoPartial.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
