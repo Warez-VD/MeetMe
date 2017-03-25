@@ -2,6 +2,7 @@
 /// <reference path="admin.js" />
 /// <reference path="autocomplete.js" />
 /// <reference path="bootstrap.js" />
+/// <reference path="chat.js" />
 /// <reference path="jquery.signalr-2.2.1.min.js" />
 /// <reference path="jquery.unobtrusive-ajax.min.js" />
 /// <reference path="jquery.validate.js" />

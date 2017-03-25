@@ -174,7 +174,23 @@ namespace MeetMe.Services
 
         public ConversationViewModel GetMappedConversation(Conversation conversation)
         {
+            var conversationMessages = conversation.Messages.ToList();
             var result = this.mapperService.MapObject<ConversationViewModel>(conversation);
+
+            for (int i = 0; i < conversationMessages.Count; i++)
+            {
+                var logoUrl = this.imageService.ByteArrayToImageUrl(conversationMessages[i].User.ProfileImage.Content);
+                result.Messages[i].AuthorImageUrl = logoUrl;
+            }
+
+            return result;
+        }
+
+        public MessageViewModel GetMappedMessage(Message message)
+        {
+            var result = this.mapperService.MapObject<MessageViewModel>(message);
+            var logoUrl = this.imageService.ByteArrayToImageUrl(message.User.ProfileImage.Content);
+            result.AuthorImageUrl = logoUrl;
             return result;
         }
     }

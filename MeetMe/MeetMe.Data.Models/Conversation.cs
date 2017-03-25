@@ -4,9 +4,11 @@ namespace MeetMe.Data.Models
 {
     public class Conversation
     {
+        private ICollection<Message> messages;
+
         public Conversation()
         {
-            this.Messages = new HashSet<Message>();
+            this.messages = new HashSet<Message>();
         }
 
         public Conversation(string firstUserId, string secondUserId)
@@ -22,6 +24,10 @@ namespace MeetMe.Data.Models
 
         public string SecondUserId { get; set; }
 
-        public ICollection<Message> Messages { get; set; }
+        public virtual ICollection<Message> Messages
+        {
+            get { return this.messages; }
+            set { this.messages = value; }
+        }
     }
 }

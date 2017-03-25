@@ -54,6 +54,7 @@
     <Compile Include="Home\ProfilePartialViewModel.cs" />
     <Compile Include="Home\RegisterViewModel.cs" />
     <Compile Include="Messages\ConversationViewModel.cs" />
+    <Compile Include="Messages\MessageIndexViewModel.cs" />
     <Compile Include="Messages\MessageViewModel.cs" />
     <Compile Include="Navigation\StatisticViewModel.cs" />
     <Compile Include="Notifications\NotificationUserViewModel.cs" />

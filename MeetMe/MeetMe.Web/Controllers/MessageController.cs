@@ -44,9 +44,9 @@ namespace MeetMe.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Conversation(string id, string friendId)
+        public ActionResult Conversation(string id)
         {
-            var conversation = this.conversationService.GetByUserAndFriendId(id, friendId);
+            var conversation = this.conversationService.GetByUserId(id);
             var model = this.viewModelService.GetMappedConversation(conversation);
 
             return this.PartialView("_ConversationPartial", model);

@@ -6,6 +6,8 @@ namespace MeetMe.Services.Contracts
     {
         void CreateConversation(string userId, string friendId);
 
-        Conversation GetByUserAndFriendId(string userId, string friendId);
+        Conversation GetByUserId(string userId);
+
+        Message AddMessageToConversation(CustomUser user, string userId, string content);
     }
 }

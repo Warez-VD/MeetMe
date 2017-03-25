@@ -33,5 +33,7 @@ namespace MeetMe.Services.Contracts
         PersonalInfoViewModel GetMappedPersonalInfo(CustomUser user);
 
         ConversationViewModel GetMappedConversation(Conversation conversation);
+
+        MessageViewModel GetMappedMessage(Message message);
     }
 }

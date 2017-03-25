@@ -35,7 +35,7 @@
                         </div>
                         <div class="col-xs-12 col-sm-7">
                             <span>
-                                @Ajax.ActionLink(friend.FullName, "Conversation", "Message", new { id = friend.AspIdentityUserId, friendId = User.Identity.GetUserId() }, new AjaxOptions()
+                                @Ajax.ActionLink(friend.FullName, "Conversation", "Message", new { id = friend.AspIdentityUserId }, new AjaxOptions()
                        {
                            HttpMethod = "GET",
                            InsertionMode = InsertionMode.Replace,
@@ -58,5 +58,6 @@
 
 @section scripts {
     @Scripts.Render("~/Scripts/messages.js")
+    @Scripts.Render("~/Scripts/chat.js")
     <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
 }

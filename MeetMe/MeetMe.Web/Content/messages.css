@@ -1,4 +1,9 @@
-﻿#messages-panel {
+﻿.message-img {
+    width: 15px;
+    height: 15px;
+}
+
+#messages-panel {
     margin-top: 2%;
 }
 
