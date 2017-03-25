@@ -24,6 +24,10 @@ namespace MeetMe.Data.Contracts
 
         IDbSet<Notification> Notifications { get; set; }
 
+        IDbSet<Message> Messages { get; set; }
+
+        IDbSet<Conversation> Conversations { get; set; }
+
         IDbSet<T> Set<T>() where T : class;
 
         DbEntityEntry<T> Entry<T>(T entity) where T : class;

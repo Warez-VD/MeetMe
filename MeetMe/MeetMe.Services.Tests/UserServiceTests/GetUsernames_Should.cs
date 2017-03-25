@@ -25,11 +25,13 @@ namespace MeetMe.Services.Tests.UserServiceTests
             mockedUserRepository.Setup(x => x.All).Returns(users);
             var mockedFriendService = new Mock<IFriendService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            var mockedConversationService = new Mock<IConversationService>();
 
             var userService = new UserService(
                 mockedUserRepository.Object,
                 mockedFriendService.Object,
-                mockedUnitOfWork.Object);
+                mockedUnitOfWork.Object,
+                mockedConversationService.Object);
             var expectedUsers = new List<string>() { "Some name", "Other name", "Some othername" };
 
             // Act
@@ -48,11 +50,13 @@ namespace MeetMe.Services.Tests.UserServiceTests
             mockedUserRepository.Setup(x => x.All).Returns(users);
             var mockedFriendService = new Mock<IFriendService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            var mockedConversationService = new Mock<IConversationService>();
 
             var userService = new UserService(
                 mockedUserRepository.Object,
                 mockedFriendService.Object,
-                mockedUnitOfWork.Object);
+                mockedUnitOfWork.Object,
+                mockedConversationService.Object);
             var expectedUsers = new List<string>();
 
             // Act

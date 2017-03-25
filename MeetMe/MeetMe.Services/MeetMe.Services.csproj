@@ -55,11 +55,14 @@
     <Compile Include="Contracts\IAspIdentityUserFactory.cs" />
     <Compile Include="Contracts\ICommentFactory.cs" />
     <Compile Include="Contracts\ICommentService.cs" />
+    <Compile Include="Contracts\IConversationFactory.cs" />
+    <Compile Include="Contracts\IConversationService.cs" />
     <Compile Include="Contracts\ICustomUserFactory.cs" />
     <Compile Include="Contracts\IDateTimeService.cs" />
     <Compile Include="Contracts\IFriendService.cs" />
     <Compile Include="Contracts\IImageService.cs" />
     <Compile Include="Contracts\IMapperService.cs" />
+    <Compile Include="Contracts\IMessageFactory.cs" />
     <Compile Include="Contracts\INotificationFactory.cs" />
     <Compile Include="Contracts\INotificationService.cs" />
     <Compile Include="Contracts\IProfileLogoFactory.cs" />
@@ -73,6 +76,7 @@
     <Compile Include="Contracts\IUserFriendFactory.cs" />
     <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="Contracts\IViewModelService.cs" />
+    <Compile Include="ConversationService.cs" />
     <Compile Include="DateTimeService.cs" />
     <Compile Include="FriendService.cs" />
     <Compile Include="ImageService.cs" />

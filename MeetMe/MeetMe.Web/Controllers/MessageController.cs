@@ -9,19 +9,23 @@ namespace MeetMe.Web.Controllers
         private readonly IUserService userService;
         private readonly IViewModelService viewModelService;
         private readonly IFriendService friendService;
+        private readonly IConversationService conversationService;
 
         public MessageController(
             IUserService userService,
             IViewModelService viewModelService,
-            IFriendService friendService)
+            IFriendService friendService,
+            IConversationService conversationService)
         {
             Guard.WhenArgument(userService, "UserService").IsNull().Throw();
             Guard.WhenArgument(viewModelService, "ViewModelService").IsNull().Throw();
             Guard.WhenArgument(friendService, "FriendService").IsNull().Throw();
+            Guard.WhenArgument(conversationService, "ConversationService").IsNull().Throw();
 
             this.userService = userService;
             this.viewModelService = viewModelService;
             this.friendService = friendService;
+            this.conversationService = conversationService;
         }
 
         [HttpGet]
@@ -37,6 +41,15 @@ namespace MeetMe.Web.Controllers
             var model = this.viewModelService.GetMappedUserFriends(userFriends);
 
             return this.View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Conversation(string id, string friendId)
+        {
+            var conversation = this.conversationService.GetByUserAndFriendId(id, friendId);
+            var model = this.viewModelService.GetMappedConversation(conversation);
+
+            return this.PartialView("_ConversationPartial", model);
         }
     }
 }

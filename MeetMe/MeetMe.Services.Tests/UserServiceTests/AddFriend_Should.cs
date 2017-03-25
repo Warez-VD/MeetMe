@@ -23,10 +23,12 @@ namespace MeetMe.Services.Tests.UserServiceTests
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var users = new List<CustomUser>() { new CustomUser() { AspIdentityUserId = userId } }.AsQueryable();
             mockedUserRepository.Setup(x => x.All).Returns(users);
+            var mockedConversationService = new Mock<IConversationService>();
             var userService = new UserService(
                 mockedUserRepository.Object,
                 mockedFriendService.Object,
-                mockedUnitOfWork.Object);
+                mockedUnitOfWork.Object,
+                mockedConversationService.Object);
             int friendId = 12;
 
             // Act
@@ -49,10 +51,12 @@ namespace MeetMe.Services.Tests.UserServiceTests
             var user = new CustomUser() { Id = 12, AspIdentityUserId = userId };
             var users = new List<CustomUser>() { user }.AsQueryable();
             mockedUserRepository.Setup(x => x.All).Returns(users);
+            var mockedConversationService = new Mock<IConversationService>();
             var userService = new UserService(
                 mockedUserRepository.Object,
                 mockedFriendService.Object,
-                mockedUnitOfWork.Object);
+                mockedUnitOfWork.Object,
+                mockedConversationService.Object);
             int friendId = 12;
 
             // Act

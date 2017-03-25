@@ -15,6 +15,8 @@ namespace MeetMe.Services.Contracts
 
         void AddFriend(string userId, int friendId);
 
+        void CreateConversation(string userId, int friendId);
+
         void BanUser(string userId);
 
         void UnbanUser(string userId);

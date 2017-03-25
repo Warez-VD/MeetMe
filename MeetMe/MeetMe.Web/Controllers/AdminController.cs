@@ -36,6 +36,7 @@ namespace MeetMe.Web.Controllers
         {
             var manager = this.Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
             manager.AddToRole(id, "banned");
+
             this.userService.BanUser(id);
 
             string successMessage = "User banned successfully";

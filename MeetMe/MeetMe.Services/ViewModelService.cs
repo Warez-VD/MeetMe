@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Bytes2you.Validation;
 using MeetMe.Data.Models;
 using MeetMe.Services.Contracts;
 using MeetMe.Web.Models.Admin;
 using MeetMe.Web.Models.Home;
+using MeetMe.Web.Models.Messages;
 using MeetMe.Web.Models.Notifications;
 using MeetMe.Web.Models.Profile;
 using MeetMe.Web.Models.Publications;
@@ -167,6 +169,12 @@ namespace MeetMe.Services
                 result.Add(mappedUser);
             }
 
+            return result;
+        }
+
+        public ConversationViewModel GetMappedConversation(Conversation conversation)
+        {
+            var result = this.mapperService.MapObject<ConversationViewModel>(conversation);
             return result;
         }
     }

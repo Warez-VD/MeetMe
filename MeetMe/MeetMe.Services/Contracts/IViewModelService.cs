@@ -6,6 +6,7 @@ using MeetMe.Web.Models.Notifications;
 using MeetMe.Web.Models.Profile;
 using MeetMe.Web.Models.Publications;
 using MeetMe.Web.Models.Search;
+using MeetMe.Web.Models.Messages;
 
 namespace MeetMe.Services.Contracts
 {
@@ -30,5 +31,7 @@ namespace MeetMe.Services.Contracts
         ProfilePartialViewModel GetMappedProfilePartial(CustomUser user);
 
         PersonalInfoViewModel GetMappedPersonalInfo(CustomUser user);
+
+        ConversationViewModel GetMappedConversation(Conversation conversation);
     }
 }

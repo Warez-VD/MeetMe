@@ -7,6 +7,8 @@ namespace MeetMe.Web.Models.Profile
     {
         public int Id { get; set; }
 
+        public string AspIdentityUserId { get; set; }
+
         public string FullName { get; set; }
 
         public string City { get; set; }

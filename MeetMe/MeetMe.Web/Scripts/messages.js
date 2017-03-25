@@ -29,8 +29,4 @@ $(() => {
             elem.slideUp(100);
         }
     });
-
-    $(".c-clickable").on("click", (ev) => {
-        console.log($(ev.target).attr("data-id"));
-    });
 });

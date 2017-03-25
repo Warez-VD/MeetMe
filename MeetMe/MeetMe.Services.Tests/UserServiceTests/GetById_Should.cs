@@ -16,11 +16,13 @@ namespace MeetMe.Services.Tests.UserServiceTests
             var mockedUserRepository = new Mock<IEFRepository<CustomUser>>();
             var mockedFriendService = new Mock<IFriendService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            
+            var mockedConversationService = new Mock<IConversationService>();
+
             var userService = new UserService(
                 mockedUserRepository.Object,
                 mockedFriendService.Object,
-                mockedUnitOfWork.Object);
+                mockedUnitOfWork.Object,
+                mockedConversationService.Object);
             int userId = 11;
 
             // Act
@@ -40,11 +42,13 @@ namespace MeetMe.Services.Tests.UserServiceTests
             mockedUserRepository.Setup(x => x.GetById(It.Is<int>(i => i == userId))).Returns(user);
             var mockedFriendService = new Mock<IFriendService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            var mockedConversationService = new Mock<IConversationService>();
 
             var userService = new UserService(
                 mockedUserRepository.Object,
                 mockedFriendService.Object,
-                mockedUnitOfWork.Object);
+                mockedUnitOfWork.Object,
+                mockedConversationService.Object);
 
             // Act
             var result = userService.GetById(userId);
@@ -63,11 +67,13 @@ namespace MeetMe.Services.Tests.UserServiceTests
             mockedUserRepository.Setup(x => x.GetById(It.Is<int>(i => i == userId))).Returns(user);
             var mockedFriendService = new Mock<IFriendService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            var mockedConversationService = new Mock<IConversationService>();
 
             var userService = new UserService(
                 mockedUserRepository.Object,
                 mockedFriendService.Object,
-                mockedUnitOfWork.Object);
+                mockedUnitOfWork.Object,
+                mockedConversationService.Object);
             int otherUserId = 50;
 
             // Act

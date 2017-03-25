@@ -12,19 +12,23 @@ namespace MeetMe.Services
         private readonly IEFRepository<CustomUser> userRepository;
         private readonly IFriendService friendService;
         private readonly IUnitOfWork unitOfWork;
+        private readonly IConversationService conversationService;
 
         public UserService(
             IEFRepository<CustomUser> userRepository,
             IFriendService friendService,
-            IUnitOfWork unitOfWork)
+            IUnitOfWork unitOfWork,
+            IConversationService conversationService)
         {
             Guard.WhenArgument(userRepository, "UserRepository").IsNull().Throw();
             Guard.WhenArgument(friendService, "FriendService").IsNull().Throw();
             Guard.WhenArgument(unitOfWork, "UnitOfWork").IsNull().Throw();
-            
+            Guard.WhenArgument(conversationService, "ConversationService").IsNull().Throw();
+
             this.userRepository = userRepository;
             this.friendService = friendService;
             this.unitOfWork = unitOfWork;
+            this.conversationService = conversationService;
         }
 
         public void AddFriend(string userId, int friendId)
@@ -32,6 +36,12 @@ namespace MeetMe.Services
             var user = this.GetByIndentityId(userId);
             var friendUser = this.userRepository.GetById(friendId);
             this.friendService.AddFriendship(user.Id, friendUser.AspIdentityUserId, friendId);
+        }
+
+        public void CreateConversation(string userId, int friendId)
+        {
+            var friendUser = this.userRepository.GetById(friendId);
+            this.conversationService.CreateConversation(userId, friendUser.AspIdentityUserId);   
         }
 
         public CustomUser GetById(int id)

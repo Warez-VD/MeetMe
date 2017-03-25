@@ -257,6 +257,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Hubs\Chat.cs" />
     <Compile Include="Hubs\Notification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -409,6 +410,7 @@
     <Content Include="Views\Profile\_ProfilePersonalInfoPartial.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Message\_ConversationPartial.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

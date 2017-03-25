@@ -41,6 +41,10 @@ namespace MeetMe.Data
 
         public virtual IDbSet<Notification> Notifications { get; set; }
 
+        public virtual IDbSet<Message> Messages { get; set; }
+
+        public virtual IDbSet<Conversation> Conversations { get; set; }
+
         public static MeetMeDbContext Create()
         {
             return new MeetMeDbContext();

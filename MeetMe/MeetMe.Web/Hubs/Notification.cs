@@ -114,6 +114,7 @@ namespace MeetMe.Web.Hubs
             var user = this.userService.GetByIndentityId(userId);
             var receiverUser = this.userService.GetById(receiverId);
             this.userService.AddFriend(receiverUser.AspIdentityUserId, user.Id);
+            this.userService.CreateConversation(receiverUser.AspIdentityUserId, user.Id);
             var message = string.Format(FriendshipAcceptance, user.FullName);
             
             this.statisticService.AddNotificationStatistic(receiverUser.AspIdentityUserId);

@@ -16,12 +16,14 @@ namespace MeetMe.Services.Tests.UserServiceTests
             // Arrange
             var mockedFriendService = new Mock<IFriendService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            var mockedConversationService = new Mock<IConversationService>();
 
             // Act
             var ex = Assert.Throws<ArgumentNullException>(() => new UserService(
                 null,
                 mockedFriendService.Object,
-                mockedUnitOfWork.Object));
+                mockedUnitOfWork.Object,
+                mockedConversationService.Object));
 
             // Assert
             Assert.That(ex.Message.Contains("UserRepository"));
@@ -33,12 +35,14 @@ namespace MeetMe.Services.Tests.UserServiceTests
             // Arrange
             var mockedUserRepository = new Mock<IEFRepository<CustomUser>>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            var mockedConversationService = new Mock<IConversationService>();
 
             // Act
             var ex = Assert.Throws<ArgumentNullException>(() => new UserService(
                 mockedUserRepository.Object,
                 null,
-                mockedUnitOfWork.Object));
+                mockedUnitOfWork.Object,
+                mockedConversationService.Object));
 
             // Assert
             Assert.That(ex.Message.Contains("FriendService"));
@@ -50,15 +54,36 @@ namespace MeetMe.Services.Tests.UserServiceTests
             // Arrange
             var mockedUserRepository = new Mock<IEFRepository<CustomUser>>();
             var mockedFriendService = new Mock<IFriendService>();
+            var mockedConversationService = new Mock<IConversationService>();
 
             // Act
             var ex = Assert.Throws<ArgumentNullException>(() => new UserService(
                 mockedUserRepository.Object,
                 mockedFriendService.Object,
-                null));
+                null,
+                mockedConversationService.Object));
 
             // Assert
             Assert.That(ex.Message.Contains("UnitOfWork"));
+        }
+
+        [Test]
+        public void ThrowsWhen_ConversationServiceIsNull()
+        {
+            // Arrange
+            var mockedUserRepository = new Mock<IEFRepository<CustomUser>>();
+            var mockedFriendService = new Mock<IFriendService>();
+            var mockedUnitOfWork = new Mock<IUnitOfWork>();
+
+            // Act
+            var ex = Assert.Throws<ArgumentNullException>(() => new UserService(
+                mockedUserRepository.Object,
+                mockedFriendService.Object,
+                mockedUnitOfWork.Object,
+                null));
+
+            // Assert
+            Assert.That(ex.Message.Contains("ConversationService"));
         }
 
         [Test]
@@ -68,12 +93,14 @@ namespace MeetMe.Services.Tests.UserServiceTests
             var mockedUserRepository = new Mock<IEFRepository<CustomUser>>();
             var mockedFriendService = new Mock<IFriendService>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            var mockedConversationService = new Mock<IConversationService>();
 
             // Act
             var userService = new UserService(
                 mockedUserRepository.Object,
                 mockedFriendService.Object,
-                mockedUnitOfWork.Object);
+                mockedUnitOfWork.Object,
+                mockedConversationService.Object);
 
             // Assert
             Assert.IsNotNull(userService);
