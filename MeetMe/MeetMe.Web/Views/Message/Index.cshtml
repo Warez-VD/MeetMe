@@ -1,0 +1,151 @@
+﻿@using MeetMe.Web.Models.Profile
+@model IEnumerable<ProfileFriendViewModel>
+
+@section styles {
+    @Styles.Render("~/Content/messages.css")
+}
+
+<div class="row" id="messages-panel">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading c-list">
+                <span class="title">Friends</span>
+                <ul class="pull-right c-controls">
+                    <li><a href="#" class="hide-search" data-command="toggle-search" data-toggle="tooltip" data-placement="top" title="Show search"><i class="fa fa-ellipsis-v"></i></a></li>
+                </ul>
+            </div>
+
+            <div class="row" style="display: none;">
+                <div class="col-xs-12">
+                    <div class="input-group c-search">
+                        <input type="text" class="form-control" id="contact-list-search">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search text-muted"></span></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="list-group" id="contact-list">
+                @foreach (var friend in Model)
+                {
+                    <li class="list-group-item">
+                        <div class="col-xs-12 col-sm-3">
+                            <img src="@friend.ProfileImageUrl" alt="@friend.FullName" class="img-responsive img-circle" />
+                        </div>
+                        <div class="col-xs-12 col-sm-9">
+                            <span class="name c-clickable" data-id="@friend.Id">@friend.FullName</span><br />
+                            <span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="@friend.City"></span>
+                            <span class="fa fa-comments text-muted c-info" data-toggle="tooltip" title="Show chat"></span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-8 current-chat">
+        <div class="row current-chat-area">
+            <div class="col-md-12">
+                <ul class="media-list">
+                    <li class="media">
+                        <div class="media-body">
+                            <div class="media">
+                                <a class="pull-left" href="#">
+                                    <img class="media-object img-circle " src="https://app.teamsupport.com/dc/1078/UserAvatar/1839999/48/1470773165634">
+                                </a>
+                                <div class="media-body">
+                                    Donec sit amet ligula enim. Duis vel condimentum massa.
+                                    Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim.
+                                    Duis vel condimentum massa.
+                                    Donec sit amet ligula enim. Duis vel condimentum massa.
+                                    <br>
+                                    <small class="text-muted">Alex Deo | 23rd June at 5:00pm</small>
+                                    <hr>
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+                    <li class="media">
+                        <div class="media-body">
+                            <div class="media">
+                                <a class="pull-left" href="#">
+                                    <img class="media-object img-circle " src="https://app.teamsupport.com/dc/1078/UserAvatar/2733968/48/1470773158079">
+                                </a>
+                                <div class="media-body">
+                                    Donec sit amet ligula enim. Duis vel condimentum massa.
+                                    Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim.
+                                    Duis vel condimentum massa.
+                                    Donec sit amet ligula enim. Duis vel condimentum massa.
+                                    <br>
+                                    <small class="text-muted">Jhon Rexa | 23rd June at 5:00pm</small>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="media">
+                        <div class="media-body">
+                            <div class="media">
+                                <a class="pull-left" href="#">
+                                    <img class="media-object img-circle " src="https://app.teamsupport.com/dc/1078/UserAvatar/1839999/48/1470773165634">
+                                </a>
+                                <div class="media-body">
+                                    Donec sit amet ligula enim. Duis vel condimentum massa.
+                                    Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim.
+                                    Duis vel condimentum massa.
+                                    Donec sit amet ligula enim. Duis vel condimentum massa.
+                                    <br>
+                                    <small class="text-muted">Alex Deo | 23rd June at 5:00pm</small>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="media">
+                        <div class="media-body">
+                            <div class="media">
+                                <a class="pull-left" href="#">
+                                    <img class="media-object img-circle" src="https://app.teamsupport.com/dc/1078/UserAvatar/2733968/48/1470773158079">
+                                </a>
+                                <div class="media-body">
+                                    Donec sit amet ligula enim. Duis vel condimentum massa.
+                                    Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim.
+                                    Duis vel condimentum massa.
+                                    Donec sit amet ligula enim. Duis vel condimentum massa.
+                                    <br>
+                                    <small class="text-muted">Jhon Rexa | 23rd June at 5:00pm</small>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-footer">
+                <input type="text" id="send-message" class="form-control">
+                <button class="btn btn-default" type="button">Send</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+@section scripts {
+    @Scripts.Render("~/Scripts/messages.js")
+    <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
+}

@@ -30,7 +30,7 @@
         </ul>
     </li>
     <li>
-        <a href="@Url.Action("Message", "Home")">
+        <a href="@Url.Action("Index", "Message", new { id = User.Identity.GetUserId() })">
             Messages <span class="fa fa-envelope"></span><span id="messageCount">
                 @if (Model.MessagesCount != 0)
             {

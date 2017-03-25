@@ -11,6 +11,7 @@
 /// <reference path="jquery-3.1.1.slim.min.js" />
 /// <reference path="jquery-ui-1.12.1.js" />
 /// <reference path="jquery-ui-1.12.1.min.js" />
+/// <reference path="messages.js" />
 /// <reference path="modernizr-2.6.2.js" />
 /// <reference path="navigation.js" />
 /// <reference path="notification.js" />

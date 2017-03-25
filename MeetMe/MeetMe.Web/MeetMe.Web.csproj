@@ -242,6 +242,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\SignalRConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
@@ -271,6 +272,7 @@
     <Content Include="Content\home.css" />
     <Content Include="Content\home.jpg" />
     <Content Include="Content\logo.png" />
+    <Content Include="Content\messages.css" />
     <Content Include="Content\notification.css" />
     <Content Include="Content\profile.css" />
     <Content Include="Content\publication.css" />
@@ -364,6 +366,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\messages.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\navigation.js" />
     <Content Include="Scripts\notification-profile.js" />
@@ -405,6 +408,7 @@
     <Content Include="Views\Profile\_ProfileFriendsPartial.cshtml" />
     <Content Include="Views\Profile\_ProfilePersonalInfoPartial.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

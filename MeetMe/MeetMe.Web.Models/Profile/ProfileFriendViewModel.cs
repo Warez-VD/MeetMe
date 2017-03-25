@@ -9,6 +9,8 @@ namespace MeetMe.Web.Models.Profile
 
         public string FullName { get; set; }
 
+        public string City { get; set; }
+
         public string ProfileImageUrl { get; set; }
     }
 }
