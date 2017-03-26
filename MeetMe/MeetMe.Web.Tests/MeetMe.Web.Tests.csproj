@@ -121,6 +121,13 @@
     <Compile Include="Controllers\AdminControllerTests\Constructor_Should.cs" />
     <Compile Include="Controllers\AdminControllerTests\Index_Should.cs" />
     <Compile Include="Controllers\AdminControllerTests\UnbanUser_Should.cs" />
+    <Compile Include="Controllers\PublicationControllerTests\AddComment_Should.cs" />
+    <Compile Include="Controllers\PublicationControllerTests\AddPersonalPublication_Should.cs" />
+    <Compile Include="Controllers\PublicationControllerTests\AddPublication_Should.cs" />
+    <Compile Include="Controllers\PublicationControllerTests\Comments_Should.cs" />
+    <Compile Include="Controllers\PublicationControllerTests\Constructor_Should.cs" />
+    <Compile Include="Controllers\PublicationControllerTests\Publications_Should.cs" />
+    <Compile Include="Controllers\PublicationControllerTests\UserPublications_Should.cs" />
     <Compile Include="Controllers\SearchControllerTests\Index_Should.cs" />
     <Compile Include="Controllers\SearchControllerTests\ShowMoreResults_Should.cs" />
     <Compile Include="Controllers\UsersControllerTests\Constructor_Should.cs" />

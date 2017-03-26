@@ -34,7 +34,7 @@ namespace MeetMe.Web.Controllers
 
             return this.PartialView("_PublicationPartial", model);
         }
-
+        
         [HttpGet]
         public ActionResult UserPublications(string id, int skip, int count)
         {
