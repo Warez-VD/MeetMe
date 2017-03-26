@@ -91,6 +91,11 @@
     <Compile Include="AccountServiceTests\Register_Should.cs" />
     <Compile Include="CommentServiceTests\Constructor_Should.cs" />
     <Compile Include="CommentServiceTests\CreatePublicationComment_Should.cs" />
+    <Compile Include="ConversationServiceTests\AddMessageToConversation_Should.cs" />
+    <Compile Include="ConversationServiceTests\Constructor_Should.cs" />
+    <Compile Include="ConversationServiceTests\CreateConversation_Should.cs" />
+    <Compile Include="ConversationServiceTests\GetAllByUserId_Should.cs" />
+    <Compile Include="ConversationServiceTests\GetById_Should.cs" />
     <Compile Include="DateTimeServiceTests\GetCurrentDate_Should.cs" />
     <Compile Include="FriendServiceTests\AddFriendship_Should.cs" />
     <Compile Include="FriendServiceTests\Constructor_Should.cs" />

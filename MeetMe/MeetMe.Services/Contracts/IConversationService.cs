@@ -7,8 +7,6 @@ namespace MeetMe.Services.Contracts
     {
         void CreateConversation(string userId, string friendId);
 
-        Conversation GetByUserId(string userId);
-
         Conversation GetById(int id);
 
         IEnumerable<Conversation> GetAllByUserId(string userId);

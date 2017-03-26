@@ -38,16 +38,6 @@ namespace MeetMe.Services
             this.unitOfWork.Commit();
         }
 
-        public Conversation GetByUserId(string userId)
-        {
-            var conversation = this.conversationRepository
-                .All
-                .Where(x => x.FirstUserId == userId || x.SecondUserId == userId)
-                .FirstOrDefault();
-
-            return conversation;
-        }
-
         public Conversation GetById(int id)
         {
             var conversation = this.conversationRepository.GetById(id);
