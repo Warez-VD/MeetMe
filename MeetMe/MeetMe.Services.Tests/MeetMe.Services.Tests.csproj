@@ -134,7 +134,11 @@
     <Compile Include="UserServiceTests\GetUsernames_Should.cs" />
     <Compile Include="UserServiceTests\UnbanUser_Should.cs" />
     <Compile Include="ViewModelServiceTests\Constructor_Should.cs" />
+    <Compile Include="ViewModelServiceTests\GetMappedAdminUsers_Should.cs" />
     <Compile Include="ViewModelServiceTests\GetMappedComments_Should.cs" />
+    <Compile Include="ViewModelServiceTests\GetMappedConversations_Should.cs" />
+    <Compile Include="ViewModelServiceTests\GetMappedConversation_Should.cs" />
+    <Compile Include="ViewModelServiceTests\GetMappedMessage_Should.cs" />
     <Compile Include="ViewModelServiceTests\GetMappedPersonalInfo_Should.cs" />
     <Compile Include="ViewModelServiceTests\GetMappedProfilePartial_Should.cs" />
     <Compile Include="ViewModelServiceTests\GetMappedProfilePersonalInfo_Should.cs" />

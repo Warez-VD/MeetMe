@@ -36,7 +36,6 @@ namespace MeetMe.Services.Tests.UserServiceTests
                 mockedUnitOfWork.Object,
                 mockedConversationService.Object);
 
-
             // Act
             userService.UnbanUser(userId);
 
@@ -68,8 +67,7 @@ namespace MeetMe.Services.Tests.UserServiceTests
                 mockedFriendService.Object,
                 mockedUnitOfWork.Object,
                 mockedConversationService.Object);
-
-
+            
             // Act
             userService.UnbanUser(userId);
 

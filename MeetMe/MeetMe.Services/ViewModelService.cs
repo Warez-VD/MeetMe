@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Bytes2you.Validation;
 using MeetMe.Data.Models;
@@ -200,14 +199,7 @@ namespace MeetMe.Services
 
             foreach (var conversation in conversations)
             {
-                var conversationMessages = conversation.Messages.ToList();
-                var mappedConversation = this.mapperService.MapObject<ConversationViewModel>(conversation);
-
-                for (int i = 0; i < conversationMessages.Count; i++)
-                {
-                    var logoUrl = this.imageService.ByteArrayToImageUrl(conversationMessages[i].User.ProfileImage.Content);
-                    mappedConversation.Messages[i].AuthorImageUrl = logoUrl;
-                }
+                var mappedConversation = this.GetMappedConversation(conversation);
 
                 result.Add(mappedConversation);
             }
