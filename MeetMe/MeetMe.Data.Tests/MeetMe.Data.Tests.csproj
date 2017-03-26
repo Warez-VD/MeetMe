@@ -87,8 +87,10 @@
     <Compile Include="EFRepositoryTests\Update_Should.cs" />
     <Compile Include="MeetMeDbContextTests\Comments_Should.cs" />
     <Compile Include="MeetMeDbContextTests\Constructor_Should.cs" />
+    <Compile Include="MeetMeDbContextTests\Conversations_Should.cs" />
     <Compile Include="MeetMeDbContextTests\Create_Should.cs" />
     <Compile Include="MeetMeDbContextTests\CustomUsers_Should.cs" />
+    <Compile Include="MeetMeDbContextTests\Messages_Should.cs" />
     <Compile Include="MeetMeDbContextTests\Notifications_Should.cs" />
     <Compile Include="MeetMeDbContextTests\ProfileImages_Should.cs" />
     <Compile Include="MeetMeDbContextTests\PublicationImages_Should.cs" />
