@@ -34,6 +34,7 @@ namespace MeetMe.Web.Tests.Controllers.NotificationControllerTests
                 mockedViewModelService.Object);
             int id = 2;
             string userId = "some-id";
+
             // Act & Assert
             notificationController
                 .WithCallTo(x => x.RemoveNotification(id, userId))

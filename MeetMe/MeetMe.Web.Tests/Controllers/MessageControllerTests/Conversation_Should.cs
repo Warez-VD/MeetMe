@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Moq;
-using NUnit.Framework;
+﻿using MeetMe.Data.Models;
 using MeetMe.Services.Contracts;
 using MeetMe.Web.Controllers;
 using MeetMe.Web.Models.Messages;
-using MeetMe.Data.Models;
+using Moq;
+using NUnit.Framework;
 using TestStack.FluentMVCTesting;
 
 namespace MeetMe.Web.Tests.Controllers.MessageControllerTests
