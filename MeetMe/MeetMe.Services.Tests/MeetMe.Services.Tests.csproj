@@ -125,10 +125,14 @@
     <Compile Include="StatisticServiceTests\RemoveNotificationStatistic_Should.cs" />
     <Compile Include="TextServiceTests\ConvertBase64_Should.cs" />
     <Compile Include="UserServiceTests\AddFriend_Should.cs" />
+    <Compile Include="UserServiceTests\BanUser_Should.cs" />
     <Compile Include="UserServiceTests\Constructor_Should.cs" />
+    <Compile Include="UserServiceTests\CreateConversation_Should.cs" />
+    <Compile Include="UserServiceTests\GetAllUsers_Should.cs" />
     <Compile Include="UserServiceTests\GetById_Should.cs" />
     <Compile Include="UserServiceTests\GetByIndentityId_Should.cs" />
     <Compile Include="UserServiceTests\GetUsernames_Should.cs" />
+    <Compile Include="UserServiceTests\UnbanUser_Should.cs" />
     <Compile Include="ViewModelServiceTests\Constructor_Should.cs" />
     <Compile Include="ViewModelServiceTests\GetMappedComments_Should.cs" />
     <Compile Include="ViewModelServiceTests\GetMappedPersonalInfo_Should.cs" />
