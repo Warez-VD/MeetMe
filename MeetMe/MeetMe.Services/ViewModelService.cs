@@ -193,5 +193,26 @@ namespace MeetMe.Services
             result.AuthorImageUrl = logoUrl;
             return result;
         }
+
+        public IList<ConversationViewModel> GetMappedConversations(IEnumerable<Conversation> conversations)
+        {
+            var result = new List<ConversationViewModel>();
+
+            foreach (var conversation in conversations)
+            {
+                var conversationMessages = conversation.Messages.ToList();
+                var mappedConversation = this.mapperService.MapObject<ConversationViewModel>(conversation);
+
+                for (int i = 0; i < conversationMessages.Count; i++)
+                {
+                    var logoUrl = this.imageService.ByteArrayToImageUrl(conversationMessages[i].User.ProfileImage.Content);
+                    mappedConversation.Messages[i].AuthorImageUrl = logoUrl;
+                }
+
+                result.Add(mappedConversation);
+            }
+
+            return result;
+        }
     }
 }

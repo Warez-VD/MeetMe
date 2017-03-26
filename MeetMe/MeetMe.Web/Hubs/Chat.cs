@@ -1,13 +1,12 @@
-﻿using Microsoft.AspNet.SignalR;
-using Microsoft.AspNet.Identity;
-using System;
-using MeetMe.Services.Contracts;
+﻿using System.Threading.Tasks;
 using Bytes2you.Validation;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+using MeetMe.Services.Contracts;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.SignalR;
 
 namespace MeetMe.Web.Hubs
 {
+    [Authorize]
     public class Chat : Hub
     {
         private readonly IConversationService conversationService;
@@ -28,10 +27,10 @@ namespace MeetMe.Web.Hubs
             this.viewModelService = viewModelService;
         }
 
-        public void SendMessage(string message, string userId, string friendId)
+        public void SendMessage(string message, int id, string userId, string friendId)
         {
-            var user = this.userService.GetByIndentityId(userId);
-            var newMessage = this.conversationService.AddMessageToConversation(user, userId, message);
+            var user = this.userService.GetByIndentityId(this.Context.User.Identity.GetUserId());
+            var newMessage = this.conversationService.AddMessageToConversation(id, user, message);
             var mappedMessage = this.viewModelService.GetMappedMessage(newMessage);
             if (mappedMessage.AuthorId == userId)
             {

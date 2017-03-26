@@ -2,11 +2,11 @@
 using MeetMe.Data.Models;
 using MeetMe.Web.Models.Admin;
 using MeetMe.Web.Models.Home;
+using MeetMe.Web.Models.Messages;
 using MeetMe.Web.Models.Notifications;
 using MeetMe.Web.Models.Profile;
 using MeetMe.Web.Models.Publications;
 using MeetMe.Web.Models.Search;
-using MeetMe.Web.Models.Messages;
 
 namespace MeetMe.Services.Contracts
 {
@@ -21,6 +21,8 @@ namespace MeetMe.Services.Contracts
         IEnumerable<ProfileFriendViewModel> GetMappedUserFriends(IEnumerable<CustomUser> friends);
 
         IEnumerable<DashboardViewModel> GetMappedAdminUsers(IEnumerable<CustomUser> users);
+
+        IList<ConversationViewModel> GetMappedConversations(IEnumerable<Conversation> conversations);
 
         IList<CommentViewModel> GetMappedComments(Publication publication);
 

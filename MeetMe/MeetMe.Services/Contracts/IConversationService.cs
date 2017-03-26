@@ -1,4 +1,5 @@
-﻿using MeetMe.Data.Models;
+﻿using System.Collections.Generic;
+using MeetMe.Data.Models;
 
 namespace MeetMe.Services.Contracts
 {
@@ -8,6 +9,10 @@ namespace MeetMe.Services.Contracts
 
         Conversation GetByUserId(string userId);
 
-        Message AddMessageToConversation(CustomUser user, string userId, string content);
+        Conversation GetById(int id);
+
+        IEnumerable<Conversation> GetAllByUserId(string userId);
+
+        Message AddMessageToConversation(int id, CustomUser user, string content);
     }
 }

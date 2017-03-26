@@ -9,6 +9,7 @@ using Microsoft.AspNet.SignalR;
 
 namespace MeetMe.Web.Hubs
 {
+    [Authorize]
     public class Notification : Hub
     {
         private const string PublicationCreation = "{0} posted new publication";

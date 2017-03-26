@@ -1,9 +1,12 @@
-﻿using Bytes2you.Validation;
-using MeetMe.Services.Contracts;
+﻿using System.Linq;
 using System.Web.Mvc;
+using Bytes2you.Validation;
+using MeetMe.Services.Contracts;
+using MeetMe.Web.Models.Messages;
 
 namespace MeetMe.Web.Controllers
 {
+    [Authorize]
     public class MessageController : Controller
     {
         private readonly IUserService userService;
@@ -38,15 +41,20 @@ namespace MeetMe.Web.Controllers
 
             var user = this.userService.GetByIndentityId(id);
             var userFriends = this.friendService.GetAllUserFriends(user.Id);
-            var model = this.viewModelService.GetMappedUserFriends(userFriends);
+            var mappedFriends = this.viewModelService.GetMappedUserFriends(userFriends).ToList();
+            var conversations = this.conversationService.GetAllByUserId(id);
+            var mappedConversations = this.viewModelService.GetMappedConversations(conversations);
+            var model = new MessageIndexViewModel();
+            model.Friends = mappedFriends;
+            model.Conversations = mappedConversations;
 
             return this.View(model);
         }
 
         [HttpGet]
-        public ActionResult Conversation(string id)
+        public ActionResult Conversation(int id)
         {
-            var conversation = this.conversationService.GetByUserId(id);
+            var conversation = this.conversationService.GetById(id);
             var model = this.viewModelService.GetMappedConversation(conversation);
 
             return this.PartialView("_ConversationPartial", model);

@@ -9,7 +9,7 @@
                     <span class="glyphicon glyphicon-comment"></span> Chat
                 </div>
                 <div class="panel-body" id="chat-content">
-                    <ul class="chat">
+                    <ul class="chat" id="chat-list">
                         @foreach (var message in Model.Messages)
                         {
                             if (message.AuthorId != Model.FirstUserId)
@@ -52,7 +52,7 @@
                 </div>
                 <div class="panel-footer">
                     <div class="input-group">
-                        <input id="btn-input" datafriend-id="@Model.FirstUserId" data-userid="@Model.SecondUserId" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                        <input id="btn-input" data-id="@Model.Id" datafriend-id="@Model.FirstUserId" data-userid="@Model.SecondUserId" type="text" class="form-control input-sm" placeholder="Type your message here..." />
                         <span class="input-group-btn">
                             <input class="btn btn-warning btn-sm" id="btn-chat" type="submit" value="Send" />
                         </span>
@@ -63,5 +63,5 @@
     </div>
 </div>
 <script>
-    $("#chat-content").scrollTop(300);
+    $("#chat-content").scrollTop($("#chat-content").height() * 2);
 </script>

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Bytes2you.Validation;
 using MeetMe.Data.Contracts;
 using MeetMe.Data.Models;
@@ -47,16 +48,33 @@ namespace MeetMe.Services
             return conversation;
         }
 
-        public Message AddMessageToConversation(CustomUser user, string userId, string content)
+        public Conversation GetById(int id)
+        {
+            var conversation = this.conversationRepository.GetById(id);
+
+            return conversation;
+        }
+
+        public Message AddMessageToConversation(int id, CustomUser user, string content)
         {
             var message = this.messageService.CreateMessage(user, content);
 
-            var conversation = this.GetByUserId(userId);
+            var conversation = this.GetById(id);
             conversation.Messages.Add(message);
             this.conversationRepository.Update(conversation);
             this.unitOfWork.Commit();
 
             return message;
+        }
+
+        public IEnumerable<Conversation> GetAllByUserId(string userId)
+        {
+            var conversation = this.conversationRepository
+                .All
+                .Where(x => x.FirstUserId == userId || x.SecondUserId == userId)
+                .ToList();
+
+            return conversation;
         }
     }
 }
