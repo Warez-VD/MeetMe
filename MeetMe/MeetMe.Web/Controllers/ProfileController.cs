@@ -35,8 +35,6 @@ namespace MeetMe.Web.Controllers
         [HttpGet]
         public ActionResult Index(int id)
         {
-            // TODO: if id is null
-
             var user = this.userService.GetById(id);
             var friends = this.friendService.GetAllUserFriends(user.Id);
             var model = this.viewModelService.GetMappedProfile(user);

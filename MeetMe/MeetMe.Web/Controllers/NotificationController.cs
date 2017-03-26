@@ -36,6 +36,11 @@ namespace MeetMe.Web.Controllers
         [HttpGet]
         public ActionResult Index(string id)
         {
+            if (id == null)
+            {
+                return this.RedirectToAction("Index", "Home");
+            }
+
             var model = new NotificationViewModel();
             var notifications = this.notificationService.UserNotifications(DefaultNotificationsSkip, DefaultNotificationsTake, id);
             model.Notifications = this.viewModelService.GetMappedUserNotifications(notifications);
