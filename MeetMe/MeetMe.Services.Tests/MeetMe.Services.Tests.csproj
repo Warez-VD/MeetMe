@@ -100,6 +100,8 @@
     <Compile Include="FriendServiceTests\RemoveFriend_Should.cs" />
     <Compile Include="ImageServiceTests\ByteArrayToImageUrl_Should.cs" />
     <Compile Include="ImageServiceTests\GetImage_Should.cs" />
+    <Compile Include="MessageServiceTests\Constructor_Should.cs" />
+    <Compile Include="MessageServiceTests\CreateMessage_Should.cs" />
     <Compile Include="NotificationServiceTests\Constructor_Should.cs" />
     <Compile Include="NotificationServiceTests\CreateNotification_Should.cs" />
     <Compile Include="NotificationServiceTests\RemoveAllNotifications_Should.cs" />
