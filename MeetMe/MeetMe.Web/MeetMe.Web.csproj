@@ -240,6 +240,7 @@
     <Compile Include="App_Start\DbConfig.cs" />
     <Compile Include="App_Start\EnginesConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\NinjectModules\AuthModule.cs" />
     <Compile Include="App_Start\SignalRConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\MessageController.cs" />

@@ -39,6 +39,22 @@
       <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
@@ -47,11 +63,17 @@
       <HintPath>..\packages\Moq.4.7.1\lib\net45\Moq.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
@@ -95,7 +117,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Controllers\AdminControllerTests\BanUser_Should.cs" />
+    <Compile Include="Controllers\AdminControllerTests\Constructor_Should.cs" />
+    <Compile Include="Controllers\AdminControllerTests\Index_Should.cs" />
+    <Compile Include="Controllers\AdminControllerTests\UnbanUser_Should.cs" />
+    <Compile Include="Hubs\ChatTests\Constructor_Should.cs" />
+    <Compile Include="Hubs\NotificationTests\Constructor_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -103,15 +130,32 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MeetMe.Data.Models\MeetMe.Data.Models.csproj">
+      <Project>{7cf478e2-12f4-4bd2-b6fe-6d6176a7851f}</Project>
+      <Name>MeetMe.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MeetMe.Data\MeetMe.Data.csproj">
+      <Project>{f51420fd-1b11-4929-ad3f-d930a821d11f}</Project>
+      <Name>MeetMe.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MeetMe.Services\MeetMe.Services.csproj">
       <Project>{90d9df7f-fe36-4f3e-b09f-39b4c547db87}</Project>
       <Name>MeetMe.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MeetMe.Web.Auth\MeetMe.Web.Auth.csproj">
+      <Project>{7f482720-17d8-4988-9bed-a2cde73c70c2}</Project>
+      <Name>MeetMe.Web.Auth</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MeetMe.Web.Models\MeetMe.Web.Models.csproj">
+      <Project>{45abbb85-9fbc-4db5-886c-358a0d6473b2}</Project>
+      <Name>MeetMe.Web.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\MeetMe.Web\MeetMe.Web.csproj">
       <Project>{87F54A71-F69F-4592-B175-5C1E9E204F2F}</Project>
       <Name>MeetMe.Web</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

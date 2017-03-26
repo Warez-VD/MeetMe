@@ -1,13 +1,14 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
 using MeetMe.Data.Models;
+using MeetMe.Web.Auth.Contracts;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 
 namespace MeetMe.Web.Auth
 {
-    public class ApplicationSignInManager : SignInManager<AspIdentityUser, string>
+    public class ApplicationSignInManager : SignInManager<AspIdentityUser, string>, ISignInManager
     {
         public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager) :
             base(userManager, authenticationManager)

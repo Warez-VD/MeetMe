@@ -1,10 +1,7 @@
-﻿using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Bytes2you.Validation;
 using MeetMe.Services.Contracts;
-using MeetMe.Web.Auth;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
+using MeetMe.Web.Auth.Contracts;
 
 namespace MeetMe.Web.Controllers
 {
@@ -13,16 +10,22 @@ namespace MeetMe.Web.Controllers
     {
         private readonly IUserService userService;
         private readonly IViewModelService viewModelService;
+        private readonly IUserManager userManager;
 
-        public AdminController(IUserService userService, IViewModelService viewModelService)
+        public AdminController(
+            IUserService userService,
+            IViewModelService viewModelService,
+            IUserManager userManager)
         {
             Guard.WhenArgument(userService, "UserService").IsNull().Throw();
             Guard.WhenArgument(viewModelService, "ViewModelService").IsNull().Throw();
+            Guard.WhenArgument(userManager, "UserManager").IsNull().Throw();
 
             this.userService = userService;
             this.viewModelService = viewModelService;
+            this.userManager = userManager;
         }
-
+        
         [HttpGet]
         public ActionResult Index()
         {
@@ -34,8 +37,7 @@ namespace MeetMe.Web.Controllers
         [HttpPost]
         public ActionResult BanUser(string id)
         {
-            var manager = this.Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            manager.AddToRole(id, "banned");
+            this.userManager.AddToRoleAsync(id, "banned");
 
             this.userService.BanUser(id);
 
@@ -46,8 +48,7 @@ namespace MeetMe.Web.Controllers
         [HttpPost]
         public ActionResult UnbanUser(string id)
         {
-            var manager = this.Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            manager.RemoveFromRole(id, "banned");
+            this.userManager.RemoveFromRoleAsync(id, "banned");
             this.userService.UnbanUser(id);
 
             string successMessage = "User unbanned successfully";

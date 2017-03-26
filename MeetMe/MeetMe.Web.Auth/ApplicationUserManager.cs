@@ -1,6 +1,7 @@
 ﻿using System;
 using MeetMe.Data;
 using MeetMe.Data.Models;
+using MeetMe.Web.Auth.Contracts;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -8,7 +9,7 @@ using Microsoft.Owin;
 
 namespace MeetMe.Web.Auth
 {
-    public class ApplicationUserManager : UserManager<AspIdentityUser>
+    public class ApplicationUserManager : UserManager<AspIdentityUser>, IUserManager
     {
         public ApplicationUserManager(IUserStore<AspIdentityUser> store)
             : base(store)
@@ -51,9 +52,7 @@ namespace MeetMe.Web.Auth
             manager.UserLockoutEnabledByDefault = true;
             manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
             manager.MaxFailedAccessAttemptsBeforeLockout = 5;
-
-            manager.EmailService = new EmailService();
-            manager.SmsService = new SmsService();
+            
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
