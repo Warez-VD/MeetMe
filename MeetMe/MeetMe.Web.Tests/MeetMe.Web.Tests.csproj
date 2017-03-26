@@ -121,6 +121,8 @@
     <Compile Include="Controllers\AdminControllerTests\Constructor_Should.cs" />
     <Compile Include="Controllers\AdminControllerTests\Index_Should.cs" />
     <Compile Include="Controllers\AdminControllerTests\UnbanUser_Should.cs" />
+    <Compile Include="Controllers\SearchControllerTests\Index_Should.cs" />
+    <Compile Include="Controllers\SearchControllerTests\ShowMoreResults_Should.cs" />
     <Compile Include="Controllers\UsersControllerTests\Constructor_Should.cs" />
     <Compile Include="Controllers\UsersControllerTests\Usernames_Should.cs" />
     <Compile Include="Hubs\ChatTests\Constructor_Should.cs" />

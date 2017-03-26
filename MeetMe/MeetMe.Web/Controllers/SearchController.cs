@@ -2,8 +2,8 @@
 using System.Web.Mvc;
 using Bytes2you.Validation;
 using MeetMe.Services.Contracts;
+using MeetMe.Web.Helpers.Contracts;
 using MeetMe.Web.Models.Search;
-using Microsoft.AspNet.Identity;
 
 namespace MeetMe.Web.Controllers
 {
@@ -14,20 +14,31 @@ namespace MeetMe.Web.Controllers
 
         private readonly ISearchService searchService;
         private readonly IViewModelService viewModelService;
+        private readonly IIdentityHelper identityHelper;
 
-        public SearchController(ISearchService searchService, IViewModelService viewModelService)
+        public SearchController(
+            ISearchService searchService,
+            IViewModelService viewModelService,
+            IIdentityHelper identityHelper)
         {
             Guard.WhenArgument(searchService, "SearchService").IsNull().Throw();
             Guard.WhenArgument(viewModelService, "ViewModelService").IsNull().Throw();
+            Guard.WhenArgument(identityHelper, "IdentityHelper").IsNull().Throw();
 
             this.searchService = searchService;
             this.viewModelService = viewModelService;
+            this.identityHelper = identityHelper;
         }
 
         [HttpGet]
         public ActionResult Index()
         {
-            var userId = this.HttpContext.User.Identity.GetUserId();
+            var userId = this.identityHelper.GetCurrentUserId();
+            if (userId == null)
+            {
+                return this.RedirectToAction("Index", "Home");
+            }
+
             var results = this.searchService.SearchedUsers(string.Empty, DefaultUsersSkip, DefaultUsersToShow);
             var mappedUsers = this.viewModelService.GetMappedSearchedUsers(results, userId);
             var model = new SearchViewModel();

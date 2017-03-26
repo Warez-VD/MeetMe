@@ -241,6 +241,7 @@
     <Compile Include="App_Start\EnginesConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectModules\AuthModule.cs" />
+    <Compile Include="App_Start\NinjectModules\WebModule.cs" />
     <Compile Include="App_Start\SignalRConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
@@ -258,6 +259,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Contracts\IIdentityHelper.cs" />
+    <Compile Include="Helpers\IdentityHelper.cs" />
     <Compile Include="Hubs\Chat.cs" />
     <Compile Include="Hubs\Notification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

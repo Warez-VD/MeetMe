@@ -65,7 +65,8 @@ namespace MeetMe.Web.App_Start
             kernel.Load(
                 new DataModule(),
                 new ServiceModule(),
-                new AuthModule());
+                new AuthModule(),
+                new WebModule());
         }        
     }
 }
