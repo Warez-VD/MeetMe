@@ -17,9 +17,9 @@
  
 -----------------------------------------------------------------------------------------------------------------------
 
-![Initial](./ScreenShots/MeetMeHome.jpg)
-![Initial](./ScreenShots/MeetMeHome.jpg)
-![Initial](./ScreenShots/MeetMeJenkins.jpg)
+![Initial](./Screenshots/MeetMeHome.jpg)
+![Initial](./Screenshots/MeetMeHome.jpg)
+![Initial](./Screenshots/MeetMeJenkins.jpg)
 
 -----------------------------------------------------------------------------------------------------------------------
 
