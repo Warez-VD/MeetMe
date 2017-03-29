@@ -17,7 +17,7 @@
  
 -----------------------------------------------------------------------------------------------------------------------
 
-![Initial](./Screenshots/MeetMeHome.png")
+![Initial](./Screenshots/MeetMeHome.png)
 ![Initial](./Screenshots/MeetMeHome.png)
 ![Initial](./Screenshots/MeetMeJenkins.png)
 
